@@ -1,0 +1,60 @@
+if &compatible
+  set nocompatible                  "disable compatability with Vi*
+endif
+
+" ==================== General  =====================
+
+if &t_Co > 2 || has("gui_running")  "if terminal has colors or when GUI (always colors) then...
+  syntax on                           "switch syntax highlighting on*
+endif
+
+set autoread                        "reload files changed outside vim
+set backspace=indent,eol,start      "allow backspacing over everything in insert mode*
+set display=truncate                "show @@@ in the last line if it is truncated*
+set fileformat=unix                 "use unix as standard file type
+set history=200                     "keep 200 commands and 200 serch patterns in history*
+set nowrap                          "do not wrap lines
+set number                          "show line numbers
+set ruler                           "show colum and line number at the bottom*
+set scrolloff=5                     "show a few lines of context around the cursor*
+set showcmd                         "show incomplete command down the bottom*
+set showmode                        "show current mode at the bottom
+set showtabline=2                   "show tabline at all time*
+set ttimeout                        "makes typing Esc take effect more quickly*
+set ttimeoutlen=100                 "makes typing Esc take effect more quickly*
+set wildmenu                        "enable auto complation menu* 
+set wildmode=list:longest           "make wildmenu behave like bash completion
+
+" ==================== Search =======================
+
+if has('reltime')                   "if possible to timeout then....
+  set hlsearch                        "hightlight search matches
+  set incsearch                       "incrementally highlight search matches*
+  set ignorecase                      "ignore case when searching...
+  set smartcase                       "except when search string contains uppercase
+endif
+
+" ==================== Indentation ==================
+
+if 1                                "if Vim has compiled with +eval features then...
+  filetype plugin indent on           "enable file detection and load indent files*
+endif
+
+set autoindent                      "auto indent
+set expandtab                       "use spaces instead of tabs
+set shiftwidth=2                    "1 tab == 2 spaces
+set softtabstop=2                   "1 tab == 2 spaces
+set tabstop=2                       "1 tab == 2 spaces
+
+" ==================== Security =====================
+
+set clipboard=                      "disable copying to the system clipboard
+set nobackup                        "disable creation of backup files
+set noswapfile                      "disable swapfiles that acts as autosave in case of crash
+set viminfo=                        "disable viminfo file from copying data from current session
+
+" ==================== Plugins ======================
+
+call plug#begin()
+  Plug 'pearofducks/ansible-vim'    "enable plugin for ansible
+call plug#end()

@@ -1,0 +1,40 @@
+#!/bin/bash
+
+# ===================== alias =====================
+
+alias c='clear'
+alias ll='ls -l'
+alias l='ls -lart'
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+
+if (which git &>/dev/null); then
+  alias s='git status'
+fi
+
+if (which vim &>/dev/null); then
+  alias vi='vim'
+fi
+
+if (which htop &>/dev/null); then
+  alias top='htop'
+fi
+
+# ===================== git =======================
+
+if (which git &>/dev/null); then
+  parse_git_branch() { git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'; }
+else
+  parse_git_branch() { :; }
+fi
+
+# ===================== colors ====================
+
+export CLICOLOR=1
+
+# ===================== prompt ====================
+
+PROMPT_DIRTRIM=2
+
+PS1="\e[0m[\e[32m\u\e[0m@\e[0m\h \e[94m\w \e[33m\$(parse_git_branch)\e[0m]\e[0m$ "

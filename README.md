@@ -1,2 +1,2 @@
 # dotprofiles
-Dotprofiles I use for working with Ansible.
+Dotprofiles I use for working (mainly) with Ansible.
