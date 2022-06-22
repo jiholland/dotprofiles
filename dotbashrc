@@ -37,4 +37,4 @@ export CLICOLOR=1
 
 PROMPT_DIRTRIM=2
 
-PS1="\e[0m[\e[32m\u\e[0m@\e[0m\h \e[94m\w \e[33m\$(parse_git_branch)\e[0m]\e[0m$ "
+PS1="\e[0m\][\e[32m\]\u\e[0m\]@\e[0m\]\h \e[94m\]\w \e[33m\]\$(parse_git_branch)\e[0m\]]\e[0m\]$ "
