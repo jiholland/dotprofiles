@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ===================== alias =====================
+# =================== Alias ====================
 
 alias c='clear'
 alias ll='ls -l'
@@ -21,7 +21,7 @@ if (which htop &>/dev/null); then
   alias top='htop'
 fi
 
-# ===================== git =======================
+# =================== Git branch ===============
 
 if (which git &>/dev/null); then
   parse_git_branch() { git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'; }
@@ -29,12 +29,29 @@ else
   parse_git_branch() { :; }
 fi
 
-# ===================== colors ====================
+# =================== Colors ===================
 
-export CLICOLOR=1
+export CLICOLOR=1                          # enable colors
 
-# ===================== prompt ====================
+green="\[\e[32m\]"
+yellow="\[\e[33m\]"
+white="\[\e[37m\]"
+bright_blue="\[\e[94m\]"
 
-PROMPT_DIRTRIM=2
+# =================== Prompt ===================
 
-PS1="\[\e[0m\][\[\e[32m\]\u\[\e[0m\]@\[\e[0m\]\h \[\e[94m\]\w \[\e[33m\]\$(parse_git_branch)\[\e[0m\]]\[\e[0m\]$ "
+PROMPT_DIRTRIM=2                           # number of trailing directories to retian when expanding the 'w' and 'W' prompt string escapes
+
+open_brk="${white}["                       # the '[' bracket
+username="${green}\u"                      # the username of the current user
+at="${white}@"                             # the '@' sign
+hostname="${white}\h"                      # the hostname up to the first `.'
+closed_brk="${white}]"                     # the ']' bracket
+working_dir="${bright_blue}\w"             # the current working directory, with $HOME abbreviated with a tilde (uses the value of the PROMPT_DIRTRIM variable)
+git_branch="${yellow}\$(parse_git_branch)" # the current git branch
+prompt_indicator="${white}\$"              # if the effective UID is 0, a #, otherwise a $
+
+PS1="${open_brk}${username}${at}${hostname} ${working_dir} ${git_branch}${closed_brk}${prompt_indicator} "
+
+# use 'source ~/.bashrc' to reload settings
+# see 'man bash' for more information

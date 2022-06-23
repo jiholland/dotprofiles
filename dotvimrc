@@ -2,7 +2,7 @@ if &compatible
   set nocompatible                  "disable compatability with Vi*
 endif
 
-" ==================== General  =====================
+" ==================== General ====================
 
 if &t_Co > 2 || has("gui_running")  "if terminal has colors or when GUI (always colors) then...
   syntax on                           "switch syntax highlighting on*
@@ -22,7 +22,7 @@ set showmode                        "show current mode at the bottom
 set showtabline=2                   "show tabline at all time*
 set ttimeout                        "makes typing Esc take effect more quickly*
 set ttimeoutlen=100                 "makes typing Esc take effect more quickly*
-set wildmenu                        "enable auto complation menu* 
+set wildmenu                        "enable auto complation menu*
 set wildmode=list:longest           "make wildmenu behave like bash completion
 
 " ==================== Search =======================
