@@ -42,10 +42,10 @@ bright_blue="\[\e[94m\]"                   # bright blue frontground color
 PROMPT_DIRTRIM=2                           # number of trailing directories to retian when expanding the 'w' and 'W' prompt string escapes
 
 open_brk="${normal_color}["                # the '[' bracket
+closed_brk="${normal_color}]"              # the ']' bracket
 username="${green}\u"                      # the username of the current user
 at="${normal_color}@"                      # the '@' sign
 hostname="${normal_color}\h"               # the hostname up to the first `.'
-closed_brk="${normal_color}]"              # the ']' bracket
 working_dir="${bright_blue}\w"             # the current working directory, with $HOME abbreviated with a tilde (uses the value of the PROMPT_DIRTRIM variable)
 git_branch="${yellow}\$(parse_git_branch)" # the current git branch
 prompt_indicator="${normal_color}\$"       # if the effective UID is 0, a #, otherwise a $
