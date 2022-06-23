@@ -28,30 +28,29 @@ if (which git &>/dev/null); then
 else
   parse_git_branch() { :; }
 fi
-
 # =================== Colors ===================
 
 export CLICOLOR=1                          # enable colors
 
-green="\[\e[32m\]"
-yellow="\[\e[33m\]"
-white="\[\e[37m\]"
-bright_blue="\[\e[94m\]"
+normal_color="\[\e[0m\]"                   # all attributes off
+green="\[\e[32m\]"                         # green frontground color
+yellow="\[\e[33m\]"                        # yellow frontground color
+bright_blue="\[\e[94m\]"                   # bright blue frontground color
 
 # =================== Prompt ===================
 
 PROMPT_DIRTRIM=2                           # number of trailing directories to retian when expanding the 'w' and 'W' prompt string escapes
 
-open_brk="${white}["                       # the '[' bracket
+open_brk="${normal_color}["                # the '[' bracket
 username="${green}\u"                      # the username of the current user
-at="${white}@"                             # the '@' sign
-hostname="${white}\h"                      # the hostname up to the first `.'
-closed_brk="${white}]"                     # the ']' bracket
+at="${normal_color}@"                      # the '@' sign
+hostname="${normal_color}\h"               # the hostname up to the first `.'
+closed_brk="${normal_color}]"              # the ']' bracket
 working_dir="${bright_blue}\w"             # the current working directory, with $HOME abbreviated with a tilde (uses the value of the PROMPT_DIRTRIM variable)
 git_branch="${yellow}\$(parse_git_branch)" # the current git branch
-prompt_indicator="${white}\$"              # if the effective UID is 0, a #, otherwise a $
+prompt_indicator="${normal_color}\$"       # if the effective UID is 0, a #, otherwise a $
 
 PS1="${open_brk}${username}${at}${hostname} ${working_dir} ${git_branch}${closed_brk}${prompt_indicator} "
 
-# use 'source ~/.bashrc' to reload settings
 # see 'man bash' for more information
+# use 'source ~/.bashrc' to reload settings
