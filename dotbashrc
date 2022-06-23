@@ -28,6 +28,7 @@ if (which git &>/dev/null); then
 else
   parse_git_branch() { :; }
 fi
+
 # =================== Colors ===================
 
 export CLICOLOR=1                          # enable colors
