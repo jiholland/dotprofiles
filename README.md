@@ -1,2 +1,7 @@
-# dotprofiles
-Dotprofiles I use for working (mainly) with Ansible.
+     _____________________________________________________
+    < Dotprofiles I use for working (mainly) with Ansible >
+     -----------------------------------------------------
+          \   ,__,
+           \  (oo)____
+              (__)    )\
+                 ||--|| *
