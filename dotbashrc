@@ -31,25 +31,25 @@ fi
 
 # =================== Colors ===================
 
-export CLICOLOR=1                          # enable colors
+export CLICOLOR=1                           # enable colors
 
-normal_color="\[\e[0m\]"                   # all attributes off
-green="\[\e[32m\]"                         # green frontground color
-yellow="\[\e[33m\]"                        # yellow frontground color
-bright_blue="\[\e[94m\]"                   # bright blue frontground color
+nocolor="\[\e[0m\]"                         # all attributes off
+green="\[\e[32m\]"                          # green frontground color
+yellow="\[\e[33m\]"                         # yellow frontground color
+bright_blue="\[\e[94m\]"                    # bright blue frontground color
 
 # =================== Prompt ===================
 
-PROMPT_DIRTRIM=2                           # number of trailing directories to retian when expanding the 'w' and 'W' prompt string escapes
+PROMPT_DIRTRIM=2                            # number of trailing directories to retian when expanding the 'w' and 'W' prompt string escapes
 
-open_brk="${normal_color}["                # the '[' bracket
-closed_brk="${normal_color}]"              # the ']' bracket
-username="${green}\u"                      # the username of the current user
-at="${normal_color}@"                      # the '@' sign
-hostname="${normal_color}\h"               # the hostname up to the first `.'
-working_dir="${bright_blue}\w"             # the current working directory, with $HOME abbreviated with a tilde (uses the value of the PROMPT_DIRTRIM variable)
-git_branch="${yellow}\$(parse_git_branch)" # the current git branch
-prompt_indicator="${normal_color}\$"       # if the effective UID is 0, a #, otherwise a $
+open_brk="${nocolor}["                      # the '[' bracket
+closed_brk="${nocolor}]"                    # the ']' bracket
+username="${green}\u"                       # the username of the current user
+at="${nocolor}@"                            # the '@' sign
+hostname="${nocolor}\h"                     # the hostname up to the first `.'
+working_dir="${bright_blue}\w"              # the current working directory, with $HOME abbreviated with a tilde (uses the value of the PROMPT_DIRTRIM variable)
+git_branch="${yellow}\$(parse_git_branch)"  # the current git branch
+prompt_indicator="${nocolor}\$"             # if the effective UID is 0, a #, otherwise a $
 
 PS1="${open_brk}${username}${at}${hostname} ${working_dir} ${git_branch}${closed_brk}${prompt_indicator} "
 
