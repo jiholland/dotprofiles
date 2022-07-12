@@ -24,7 +24,7 @@ fi
 # =================== Git branch ===============
 
 if (which git &>/dev/null); then
-  parse_git_branch() { git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'; }
+  parse_git_branch() { git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1) /'; }
 else
   parse_git_branch() { :; }
 fi
@@ -51,7 +51,7 @@ working_dir="${bright_blue}\w"              # the current working directory, wit
 git_branch="${yellow}\$(parse_git_branch)"  # the current git branch
 prompt_indicator="${nocolor}\$"             # if the effective UID is 0, a #, otherwise a $
 
-PS1="${open_brk}${username}${at}${hostname} ${working_dir} ${git_branch}${closed_brk}${prompt_indicator} "
+PS1="${open_brk}${username}${at}${hostname} ${working_dir} ${git_branch}${closed_brk}${prompt_indicator}${nocolor} "
 
 # see 'man bash' for more information
 # use 'source ~/.bashrc' to reload settings
