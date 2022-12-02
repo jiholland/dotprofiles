@@ -1,0 +1,61 @@
+#!/opt/homebrew/bin/bash
+
+# ===================== completion ================
+
+[[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"
+
+# =================== Alias ====================
+
+alias c='clear'
+alias ll='ls -l'
+alias l='ls -lart'
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+
+if (which git &>/dev/null); then
+  alias s='git status'
+fi
+
+if (which vim &>/dev/null); then
+  alias vi='vim'
+fi
+
+if (which htop &>/dev/null); then
+  alias top='htop'
+fi
+
+# =================== Git branch ===============
+
+if (which git &>/dev/null); then
+  parse_git_branch() { git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1) /'; }
+else
+  parse_git_branch() { :; }
+fi
+
+# =================== Colors ===================
+
+export CLICOLOR=1                           # enable colors
+
+nocolor="\[\e[0m\]"                         # all attributes off
+green="\[\e[32m\]"                          # green frontground color
+yellow="\[\e[33m\]"                         # yellow frontground color
+bright_blue="\[\e[94m\]"                    # bright blue frontground color
+
+# =================== Prompt ===================
+
+PROMPT_DIRTRIM=2                            # number of trailing directories to retian when expanding the 'w' and 'W' prompt string escapes
+
+open_brk="${nocolor}["                      # the '[' bracket
+closed_brk="${nocolor}]"                    # the ']' bracket
+username="${green}\u"                       # the username of the current user
+at="${nocolor}@"                            # the '@' sign
+hostname="${nocolor}\h"                     # the hostname up to the first `.'
+working_dir="${bright_blue}\w"              # the current working directory, with $HOME abbreviated with a tilde (uses the value of the PROMPT_DIRTRIM variable)
+git_branch="${yellow}\$(parse_git_branch)"  # the current git branch
+prompt_indicator="${nocolor}\$"             # if the effective UID is 0, a #, otherwise a $
+
+PS1="${open_brk}${username}${at}${hostname} ${working_dir} ${git_branch}${closed_brk}${prompt_indicator}${nocolor} "
+
+# see 'man bash' for more information
+# use 'source ~/.bashrc' to reload settings
