@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 # =================== Alias ====================
 
@@ -53,5 +53,5 @@ prompt_indicator="${nocolor}\$"             # if the effective UID is 0, a #, ot
 
 PS1="${open_brk}${username}${at}${hostname} ${working_dir} ${git_branch}${closed_brk}${prompt_indicator}${nocolor} "
 
-# see 'man bash' for more information
-# use 'source ~/.bashrc' to reload settings
+# see 'man zsh' for more information
+# use 'source ~/.zshrc' to reload settings
