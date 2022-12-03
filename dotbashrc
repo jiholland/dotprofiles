@@ -13,6 +13,10 @@ alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 
+if (which python3 &>/dev/null); then
+  alias python='python3'
+fi
+
 if (which git &>/dev/null); then
   alias s='git status'
 fi
