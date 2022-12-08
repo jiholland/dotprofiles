@@ -15,6 +15,7 @@ alias mv='mv -i'
 
 if (which python3 &>/dev/null); then
   alias python='python3'
+  alias p='python3'
 fi
 
 if (which git &>/dev/null); then
@@ -40,11 +41,12 @@ fi
 # =================== Colors ===================
 
 export CLICOLOR=1                           # enable colors
+export LSCOLORS=GxFxCxDxBxegedabagaced
 
 nocolor="\[\e[0m\]"                         # all attributes off
 green="\[\e[32m\]"                          # green frontground color
 yellow="\[\e[33m\]"                         # yellow frontground color
-bright_blue="\[\e[94m\]"                    # bright blue frontground color
+cyan="\[\e[36m\]"                           # cyan frontground color
 
 # =================== Prompt ===================
 
@@ -55,7 +57,7 @@ closed_brk="${nocolor}]"                    # the ']' bracket
 username="${green}\u"                       # the username of the current user
 at="${nocolor}@"                            # the '@' sign
 hostname="${nocolor}\h"                     # the hostname up to the first `.'
-working_dir="${bright_blue}\w"              # the current working directory, with $HOME abbreviated with a tilde (uses the value of the PROMPT_DIRTRIM variable)
+working_dir="${cyan}\w"                     # the current working directory, with $HOME abbreviated with a tilde (uses the value of the PROMPT_DIRTRIM variable)
 git_branch="${yellow}\$(parse_git_branch)"  # the current git branch
 prompt_indicator="${nocolor}\$"             # if the effective UID is 0, a #, otherwise a $
 
