@@ -41,7 +41,7 @@ fi
 # =================== Colors ===================
 
 export CLICOLOR=1                           # enable colors
-export LSCOLORS=GxFxCxDxBxegedabagaced
+export LSCOLORS=GxFxCxDxBxegedabagaced      # customising the colors
 
 nocolor="\[\e[0m\]"                         # all attributes off
 green="\[\e[32m\]"                          # green frontground color
