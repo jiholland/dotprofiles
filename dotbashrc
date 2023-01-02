@@ -60,6 +60,6 @@ at="${nocolor}@"                            # The '@' sign.
 hostname="${nocolor}\h"                     # The hostname up to the first `.'
 working_dir="${cyan}\w"                     # The current working directory, with $HOME abbreviated with a tilde (uses the value of the PROMPT_DIRTRIM variable).
 git_branch="${yellow}\$(parse_git_branch)"  # The current git branch.
-prompt_indicator="${nocolor}\$"             # If the effective UID is 0, a #, otherwise a $.
+prompt_indicator="${nocolor}\$"             # A '#' if the shell is running with privileges, a '$' if not.
 
 PS1="${open_brk}${username}${at}${hostname} ${working_dir} ${git_branch}${closed_brk}${prompt_indicator}${nocolor} "
