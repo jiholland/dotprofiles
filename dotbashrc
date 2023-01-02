@@ -5,10 +5,11 @@
 [[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"
 
 bind 'set bell-style none'                 # Disable terminal bell.
+
 # =================== Export =====================
 
-if test -d /opt/homebrew/bin; then         # Add homebrew's bin and sbin to path.
-  export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
+if (which brew &>/dev/null); then          # Add homebrew's bin and sbin to path.
+  export PATH="$(brew --prefix)/bin:$(brew --prefix)/sbin:$PATH"
 fi
 
 if (which pyenv &>/dev/null); then         # Add pyenv's bin to path.
