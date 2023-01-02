@@ -2,12 +2,16 @@
 
 # =================== General ==================
 
-autoload -U compinit; compinit             # Enabling the zsh completion system.
+autoload -U compinit; compinit             # Enable the zsh completion system.
 unsetopt BEEP                              # Disable terminal bell.
+setopt AUTO_CD                             # Go to folder path without using cd.
+setopt MENU_COMPLETE                       # Automatically highlight first element of completion menu.
+setopt AUTO_LIST                           # Automatically list choices on ambiguous completion.
+setopt PROMPT_SUBST                        # Enable parameter expansion, command substitution and arithmetic expansion in the prompt.
 
 # =================== Export =====================
 
-if test -d /opt/homebrew/bin; then         # Add homebrew's bin to path.
+if test -d /opt/homebrew/bin; then         # Add homebrew's bin and sbin to path.
   export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
 fi
 
@@ -16,8 +20,13 @@ if (which pyenv &>/dev/null); then         # Add pyenv's bin to path.
   eval "$(pyenv init --path)"
 fi
 
-export CLICOLOR=1                           # Enable colors.
-export LSCOLORS=GxFxCxDxBxegedabagaced      # Customising the colors.
+if (which vim &>/dev/null); then           # Set vim as editor.
+  export VISUAL=vim
+fi
+
+export LANG=en_US.UTF-8                    # Use english (us) and UTF-8 encoding for console output.
+export CLICOLOR=1                          # Enable colors.
+export LSCOLORS=GxFxCxDxBxegedabagaced     # Customising the colors.
 
 # =================== Alias ====================
 
@@ -25,16 +34,16 @@ alias c='clear'
 alias ll='ls -l'
 alias l='ls -lart'
 
+if (which vim &>/dev/null); then
+  alias vi='vim'
+fi
+
 if (which python3 &>/dev/null); then
   alias python='python3'
 fi
 
 if (which git &>/dev/null); then
   alias s='git status'
-fi
-
-if (which vim &>/dev/null); then
-  alias vi='vim'
 fi
 
 # =================== Git branch ===============
@@ -47,20 +56,18 @@ fi
 
 # =================== Prompt ===================
 
-setopt PROMPT_SUBST                          # Enable parameter expansion, command substitution and arithmetic expansion in the prompt.
+nocolor='%f'                               # All attributes off.
+green='%F{green}'                          # Green frontground color.
+yellow='%F{yellow}'                        # Yellow frontground color.
+cyan='%F{cyan}'                            # Cyan frontground color.
 
-nocolor='%f'                                 # All attributes off.
-green='%F{green}'                            # Green frontground color.
-yellow='%F{yellow}'                          # Yellow frontground color.
-cyan='%F{cyan}'                              # Cyan frontground color.
-
-open_brk='${nocolor}['                       # The '[' bracket.
-closed_brk='${nocolor}]'                     # The ']' bracket.
-username='${green}%n'                        # The username of the current user.
-at='${nocolor}@'                             # The '@' sign.
-hostname='${nocolor}%m'                      # The hostname up to the first `.'
-working_dir='${cyan}%2~'                     # The current working directory, with $HOME abbreviated with a tilde (2 trailing components of current dir).
-git_branch='${yellow}$(parse_git_branch)'    # The current git branch.
-prompt_indicator='${nocolor}%(!.#.$)'        # A '#' if the shell is running with privileges, a '$' if not.
+open_brk='${nocolor}['                     # The '[' bracket.
+closed_brk='${nocolor}]'                   # The ']' bracket.
+username='${green}%n'                      # The username of the current user.
+at='${nocolor}@'                           # The '@' sign.
+hostname='${nocolor}%m'                    # The hostname up to the first `.'
+working_dir='${cyan}%2~'                   # The current working directory, with $HOME abbreviated with a tilde (2 trailing components of current dir).
+git_branch='${yellow}$(parse_git_branch)'  # The current git branch.
+prompt_indicator='${nocolor}%(!.#.$)'      # A '#' if the shell is running with privileges, a '$' if not.
 
 PS1="${open_brk}${username}${at}${hostname} ${working_dir} ${git_branch}${closed_brk}${prompt_indicator} "

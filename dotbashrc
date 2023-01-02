@@ -4,9 +4,10 @@
 
 [[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"
 
+bind 'set bell-style none'                 # Disable terminal bell.
 # =================== Export =====================
 
-if test -d /opt/homebrew/bin; then         # Add homebrew's bin to path.
+if test -d /opt/homebrew/bin; then         # Add homebrew's bin and sbin to path.
   export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
 fi
 
@@ -15,8 +16,13 @@ if (which pyenv &>/dev/null); then         # Add pyenv's bin to path.
   eval "$(pyenv init --path)"
 fi
 
-export CLICOLOR=1                           # Enable colors.
-export LSCOLORS=GxFxCxDxBxegedabagaced      # Customising the colors.
+if (which vim &>/dev/null); then           # Set vim as editor.
+  export VISUAL=vim
+fi
+
+export LANG=en_US.UTF-8                    # Use english (us) and UTF-8 encoding for console output.
+export CLICOLOR=1                          # Enable colors.
+export LSCOLORS=GxFxCxDxBxegedabagaced     # Customising the colors.
 
 # =================== Alias ====================
 
@@ -46,20 +52,20 @@ fi
 
 # =================== Prompt ===================
 
-PROMPT_DIRTRIM=2                            # Number of trailing directories to retian when expanding the 'w' and 'W' prompt string escapes.
+PROMPT_DIRTRIM=2                           # Number of trailing directories to retian when expanding the 'w' and 'W' prompt string escapes.
 
-nocolor="\[\e[0m\]"                         # All attributes off.
-green="\[\e[32m\]"                          # Green frontground color.
-yellow="\[\e[33m\]"                         # Yellow frontground color.
-cyan="\[\e[36m\]"                           # Cyan frontground color.
+nocolor="\[\e[0m\]"                        # All attributes off.
+green="\[\e[32m\]"                         # Green frontground color.
+yellow="\[\e[33m\]"                        # Yellow frontground color.
+cyan="\[\e[36m\]"                          # Cyan frontground color.
 
-open_brk="${nocolor}["                      # The '[' bracket.
-closed_brk="${nocolor}]"                    # The ']' bracket.
-username="${green}\u"                       # The username of the current user.
-at="${nocolor}@"                            # The '@' sign.
-hostname="${nocolor}\h"                     # The hostname up to the first `.'
-working_dir="${cyan}\w"                     # The current working directory, with $HOME abbreviated with a tilde (uses the value of the PROMPT_DIRTRIM variable).
-git_branch="${yellow}\$(parse_git_branch)"  # The current git branch.
-prompt_indicator="${nocolor}\$"             # A '#' if the shell is running with privileges, a '$' if not.
+open_brk="${nocolor}["                     # The '[' bracket.
+closed_brk="${nocolor}]"                   # The ']' bracket.
+username="${green}\u"                      # The username of the current user.
+at="${nocolor}@"                           # The '@' sign.
+hostname="${nocolor}\h"                    # The hostname up to the first `.'
+working_dir="${cyan}\w"                    # The current working directory, with $HOME abbreviated with a tilde (uses the value of the PROMPT_DIRTRIM variable).
+git_branch="${yellow}\$(parse_git_branch)" # The current git branch.
+prompt_indicator="${nocolor}\$"            # A '#' if the shell is running with privileges, a '$' if not.
 
 PS1="${open_brk}${username}${at}${hostname} ${working_dir} ${git_branch}${closed_brk}${prompt_indicator}${nocolor} "

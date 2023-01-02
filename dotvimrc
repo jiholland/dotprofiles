@@ -8,6 +8,7 @@ if &t_Co > 2 || has("gui_running")  "if terminal has colors or when GUI (always 
   syntax on                           "switch syntax highlighting on*
 endif
 
+set belloff=all                     "disable bell
 set autoread                        "reload files changed outside vim
 set backspace=indent,eol,start      "allow backspacing over everything in insert mode*
 set display=truncate                "show @@@ in the last line if it is truncated*
