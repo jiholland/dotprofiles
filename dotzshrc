@@ -1,0 +1,76 @@
+#!/bin/zsh
+
+# =================== General ==================
+
+unsetopt BEEP                                # Disable terminal bell.
+
+# =================== Path =====================
+
+# Add homebrew's bin to path.
+if test -d /opt/homebrew/bin; then
+  export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
+fi
+
+# Add pyenv's bin to path.
+if (which pyenv &>/dev/null); then
+  export PATH="$HOME/.pyenv/bin:$PATH"
+  eval "$(pyenv init --path)"
+fi 
+
+# =================== Alias ====================
+
+alias c='clear'
+alias ll='ls -l'
+alias l='ls -lart'
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+
+if (which python3 &>/dev/null); then
+  alias python='python3'
+  alias p='python3'
+fi
+
+if (which git &>/dev/null); then
+  alias s='git status'
+fi
+
+if (which vim &>/dev/null); then
+  alias vi='vim'
+fi
+
+if (which htop &>/dev/null); then
+  alias top='htop'
+fi
+
+# =================== Git branch ===============
+
+if (which git &>/dev/null); then
+  parse_git_branch() { git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1) /'; }
+else
+  parse_git_branch() { :; }
+fi
+
+# =================== Colors ===================
+
+autoload -U colors && colors                 # Enable colors.
+
+nocolor='%f'                                 # All attributes off.
+green='%F{green}'                            # Green frontground color.
+yellow='%F{yellow}'                          # Yellow frontground color.
+cyan='%F{cyan}'                              # Cyan frontground color.
+
+# =================== Prompt ===================
+
+setopt PROMPT_SUBST                          # Enable parameter expansion, command substitution and arithmetic expansion in the prompt.
+
+open_brk='${nocolor}['                       # The '[' bracket.
+closed_brk='${nocolor}]'                     # The ']' bracket.
+username='${green}%n'                        # The username of the current user.
+at='${nocolor}@'                             # The '@' sign.
+hostname='${nocolor}%m'                      # The hostname up to the first `.'
+working_dir='${cyan}%2~'                     # The current working directory, with $HOME abbreviated with a tilde (2 trailing components of current dir).
+git_branch='${yellow}$(parse_git_branch)'    # The current git branch.
+prompt_indicator='${nocolor}%#'              # A '#' if the shell is running with privileges, a '%' if not.
+
+PS1="${open_brk}${username}${at}${hostname} ${working_dir} ${git_branch}${closed_brk}${prompt_indicator} "

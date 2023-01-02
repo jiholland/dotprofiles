@@ -1,8 +1,21 @@
 #!/bin/bash
 
-# ===================== completion ================
+# =================== General ==================
 
 [[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"
+
+# =================== Path =====================
+
+# Add homebrew's bin to path.
+if test -d /opt/homebrew/bin; then
+  export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
+fi
+
+# Add pyenv's bin to path.
+if (which pyenv &>/dev/null); then
+  export PATH="$HOME/.pyenv/bin:$PATH"
+  eval "$(pyenv init --path)"
+fi
 
 # =================== Alias ====================
 
@@ -29,6 +42,13 @@ fi
 if (which htop &>/dev/null); then
   alias top='htop'
 fi
+
+# =================== Pyenv ====================
+
+if (which pyenv &>/dev/null); then
+  export PATH="$HOME/.pyenv/bin:$PATH"
+  eval "$(pyenv init --path)"
+fi 
 
 # =================== Git branch ===============
 
