@@ -23,13 +23,9 @@ export LSCOLORS=GxFxCxDxBxegedabagaced      # Customising the colors.
 alias c='clear'
 alias ll='ls -l'
 alias l='ls -lart'
-alias rm='rm -i'
-alias cp='cp -i'
-alias mv='mv -i'
 
 if (which python3 &>/dev/null); then
   alias python='python3'
-  alias p='python3'
 fi
 
 if (which git &>/dev/null); then
@@ -38,10 +34,6 @@ fi
 
 if (which vim &>/dev/null); then
   alias vi='vim'
-fi
-
-if (which htop &>/dev/null); then
-  alias top='htop'
 fi
 
 # =================== Git branch ===============
