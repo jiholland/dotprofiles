@@ -1,15 +1,9 @@
 #!/bin/bash
 
-# =================== General ==================
-
-[[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"
-
-bind 'set bell-style none'                 # Disable terminal bell.
-
 # =================== Export =====================
 
-if (which brew &>/dev/null); then          # Add homebrew's bin and sbin to path.
-  export PATH="$(brew --prefix)/bin:$(brew --prefix)/sbin:$PATH"
+if test -d /opt/homebrew/bin; then         # Add homebrew's bin to path.
+  export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
 fi
 
 if (which pyenv &>/dev/null); then         # Add pyenv's bin to path.
@@ -24,6 +18,12 @@ fi
 export LANG=en_US.UTF-8                    # Use english (us) and UTF-8 encoding for console output.
 export CLICOLOR=1                          # Enable colors.
 export LSCOLORS=GxFxCxDxBxegedabagaced     # Customising the colors.
+
+# =================== General ==================
+
+[[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"
+
+bind 'set bell-style none'                 # Disable terminal bell.
 
 # =================== Alias ====================
 

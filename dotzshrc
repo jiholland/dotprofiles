@@ -1,10 +1,29 @@
 #!/bin/zsh
 
-# =================== General ==================
+# =================== Export =====================
+
+if test -d /opt/homebrew/bin; then         # Add homebrew's bin to path.
+  export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
+fi
+
+if (which pyenv &>/dev/null); then         # Add pyenv's bin to path.
+  export PATH="$HOME/.pyenv/bin:$PATH"
+  eval "$(pyenv init --path)"
+fi
+
+if (which vim &>/dev/null); then           # Set vim as editor.
+  export VISUAL=vim
+fi
+
+export LANG=en_US.UTF-8                    # Use english (us) and UTF-8 encoding for console output.
+export CLICOLOR=1                          # Enable colors.
+export LSCOLORS=GxFxCxDxBxegedabagaced     # Customising the colors.
 
 if (which brew &>/dev/null); then          # Make Homebrew’s completions available in zsh.
   export FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 fi
+
+# =================== General ==================
 
 autoload -U compinit; compinit             # Enable the zsh completion system.
 unsetopt BEEP                              # Disable terminal bell.
