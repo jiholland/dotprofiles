@@ -19,7 +19,7 @@ if (which vim &>/dev/null); then           # Set vim as editor.
   export VISUAL='vim'
 fi
 
-export LANG='en_US.UTF-8'                    # Use english (us) and UTF-8 encoding for console output.
+export LANG='en_US.UTF-8'                  # Use english (us) and UTF-8 encoding for console output.
 export LSCOLORS='GxFx'                     # Set colors for ls command (directory and symbolic link).
 
 # =================== General ==================
@@ -28,7 +28,6 @@ autoload -U compinit; compinit             # Enable the zsh completion system.
 unsetopt BEEP                              # Disable terminal bell.
 setopt PROMPT_SUBST                        # Enable parameter expansion, command substitution and arithmetic expansion in the prompt.
 setopt AUTO_CD                             # Go to folder path without using cd.
-setopt MENU_COMPLETE                       # Automatically highlight first element of completion menu.
 
 # =================== Alias ====================
 
