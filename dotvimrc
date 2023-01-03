@@ -53,9 +53,3 @@ set clipboard=                      "disable copying to the system clipboard
 set nobackup                        "disable creation of backup files
 set noswapfile                      "disable swapfiles that acts as autosave in case of crash
 set viminfo=                        "disable viminfo file from copying data from current session
-
-" ==================== Plugins ======================
-
-call plug#begin()
-  Plug 'pearofducks/ansible-vim'    "enable plugin for ansible
-call plug#end()

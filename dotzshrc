@@ -11,51 +11,31 @@ if (which pyenv &>/dev/null); then         # Add pyenv's bin to path.
   eval "$(pyenv init --path)"
 fi
 
-if (which vim &>/dev/null); then           # Set vim as editor.
-  export VISUAL=vim
-fi
-
-export LANG=en_US.UTF-8                    # Use english (us) and UTF-8 encoding for console output.
-export CLICOLOR=1                          # Enable colors.
-export LSCOLORS=GxFxCxDxBxegedabagaced     # Customising the colors.
-
 if (which brew &>/dev/null); then          # Make Homebrew’s completions available in zsh.
   export FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 fi
+
+if (which vim &>/dev/null); then           # Set vim as editor.
+  export VISUAL='vim'
+fi
+
+export LANG=en_US.UTF-8                    # Use english (us) and UTF-8 encoding for console output.
+export LSCOLORS='GxFx'                     # Set colors for ls command (directory and symbolic link).
 
 # =================== General ==================
 
 autoload -U compinit; compinit             # Enable the zsh completion system.
 unsetopt BEEP                              # Disable terminal bell.
+setopt PROMPT_SUBST                        # Enable parameter expansion, command substitution and arithmetic expansion in the prompt.
 setopt AUTO_CD                             # Go to folder path without using cd.
 setopt MENU_COMPLETE                       # Automatically highlight first element of completion menu.
-setopt AUTO_LIST                           # Automatically list choices on ambiguous completion.
-setopt PROMPT_SUBST                        # Enable parameter expansion, command substitution and arithmetic expansion in the prompt.
-
-# =================== Export =====================
-
-if (which brew &>/dev/null); then           # Add homebrew's bin and sbin to path.
-  export PATH="$(brew --prefix)/bin:$(brew --prefix)/sbin:$PATH"
-fi
-
-if (which pyenv &>/dev/null); then         # Add pyenv's bin to path.
-  export PATH="$HOME/.pyenv/bin:$PATH"
-  eval "$(pyenv init --path)"
-fi
-
-if (which vim &>/dev/null); then           # Set vim as editor.
-  export VISUAL=vim
-fi
-
-export LANG=en_US.UTF-8                    # Use english (us) and UTF-8 encoding for console output.
-export CLICOLOR=1                          # Enable colors.
-export LSCOLORS=GxFxCxDxBxegedabagaced     # Customising the colors.
 
 # =================== Alias ====================
 
 alias c='clear'
-alias ll='ls -l'
-alias l='ls -lart'
+alias ls='ls --color'
+alias ll='ls -l --color'
+alias l='ls -lart --color'
 
 if (which vim &>/dev/null); then
   alias vi='vim'

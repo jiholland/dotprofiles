@@ -12,24 +12,25 @@ if (which pyenv &>/dev/null); then         # Add pyenv's bin to path.
 fi
 
 if (which vim &>/dev/null); then           # Set vim as editor.
-  export VISUAL=vim
+  export VISUAL='vim'
 fi
 
 export LANG=en_US.UTF-8                    # Use english (us) and UTF-8 encoding for console output.
-export CLICOLOR=1                          # Enable colors.
-export LSCOLORS=GxFxCxDxBxegedabagaced     # Customising the colors.
+export LS_COLORS='di=1;36:ln=1;35'         # Set colors for ls command (directory and symbolic link).
 
 # =================== General ==================
 
 [[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"
 
 bind 'set bell-style none'                 # Disable terminal bell.
+shopt -s autocd                            # Change directory without using cd. 
 
 # =================== Alias ====================
 
 alias c='clear'
-alias ll='ls -l'
-alias l='ls -lart'
+alias ls='ls --color'
+alias ll='ls -l --color'
+alias l='ls -lart --color'
 
 if (which python3 &>/dev/null); then
   alias python='python3'
