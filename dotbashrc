@@ -16,7 +16,7 @@ if (which vim &>/dev/null); then           # Set vim as editor.
 fi
 
 export LANG='en_US.UTF-8'                  # Use english (us) and UTF-8 encoding for console output.
-export LS_COLORS='di=1;36:ln=1;35'         # Set colors for ls command (directory and symbolic link).
+export LS_COLORS='di=0;36:ln=1;35'         # Set colors for ls command (directory and symbolic link).
 
 # =================== General ==================
 
@@ -57,9 +57,9 @@ fi
 PROMPT_DIRTRIM=2                           # Number of trailing directories to retian when expanding the 'w' and 'W' prompt string escapes.
 
 nocolor="\[\e[0m\]"                        # All attributes off.
-green="\[\e[32m\]"                         # Green frontground color.
-yellow="\[\e[33m\]"                        # Yellow frontground color.
-cyan="\[\e[36m\]"                          # Cyan frontground color.
+green="\[\e[0;32m\]"                       # Regular green frontground color.
+yellow="\[\e[0;33m\]"                      # Regular yellow frontground color.
+cyan="\[\e[0;36m\]"                        # Regular cyan frontground color.
 
 open_brk="${nocolor}["                     # The '[' bracket.
 closed_brk="${nocolor}]"                   # The ']' bracket.
