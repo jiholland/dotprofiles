@@ -15,7 +15,7 @@ if (which vim &>/dev/null); then           # Set vim as editor.
   export VISUAL='vim'
 fi
 
-export LANG='C.UTF-8'                      # Use ASCII and UTF-8 encoding for console output.
+export LANG='POSIX'                        # Use POSIX encoding for console output.
 export LS_COLORS='di=0;36:ln=1;35'         # Set colors for ls command (directory and symbolic link).
 
 # =================== General ==================
