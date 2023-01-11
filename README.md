@@ -1,5 +1,6 @@
      _________________________________________________
-    < Minimalistic dotprofiles for vim, bash and zsh. >
+    / Minimalistic dotprofiles for zsh, bash and vim. \
+    \ Should work well for python programming.        /
      -------------------------------------------------
           \   ,__,
            \  (oo)____

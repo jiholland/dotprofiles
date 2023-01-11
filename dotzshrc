@@ -2,32 +2,32 @@
 
 # =================== Export =====================
 
-if test -d /opt/homebrew/bin; then         # Add homebrew's bin to path.
+if test -d /opt/homebrew/bin; then         # Add homebrew's bin and sbin to path.
   export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
 fi
 
-if (which pyenv &>/dev/null); then         # Add pyenv's bin to path.
+if which pyenv &>/dev/null; then           # Add pyenv's bin to path.
   export PATH="$HOME/.pyenv/bin:$PATH"
   eval "$(pyenv init --path)"
 fi
 
-if (which brew &>/dev/null); then          # Make Homebrew’s completions available in zsh.
+if which brew &>/dev/null; then            # Make homebrew’s completions available in zsh.
   export FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 fi
 
-if (which vim &>/dev/null); then           # Set vim as editor.
+if which vim &>/dev/null; then             # Set vim as default editor.
   export VISUAL='vim'
 fi
 
-export LANG='POSIX'                        # Use POSIX encoding for console output.
+export LANG='POSIX'                        # Use posix encoding for console output.
 export LSCOLORS='GxFx'                     # Set colors for ls command (directory and symbolic link).
 
 # =================== General ==================
 
 autoload -U compinit; compinit             # Enable the zsh completion system.
 unsetopt BEEP                              # Disable terminal bell.
+setopt AUTO_CD                             # Change directory without using cd.
 setopt PROMPT_SUBST                        # Enable parameter expansion, command substitution and arithmetic expansion in the prompt.
-setopt AUTO_CD                             # Go to folder path without using cd.
 
 # =================== Alias ====================
 
@@ -36,25 +36,29 @@ alias ls='ls --color'
 alias ll='ls -l --color'
 alias l='ls -lart --color'
 
-if (which vim &>/dev/null); then
+if which vim &>/dev/null; then
   alias vi='vim'
 fi
 
-if (which python3 &>/dev/null); then
-  alias python='python3'
-fi
-
-if (which git &>/dev/null); then
+if which git &>/dev/null; then
   alias s='git status'
 fi
 
-if (which htop &>/dev/null); then
+if which htop &>/dev/null; then
   alias top='htop'
+fi
+
+if which tree &>/dev/null; then
+  alias tree='tree -C'
+fi
+
+if test -r ~/.aliases; then                # Source additional aliases.
+  source ~/.aliases
 fi
 
 # =================== Git branch ===============
 
-if (which git &>/dev/null); then
+if which git &>/dev/null; then
   parse_git_branch() { git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1) /'; }
 else
   parse_git_branch() { :; }
