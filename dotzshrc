@@ -2,7 +2,7 @@
 
 # =================== Export =====================
 
-if (test -d /opt/homebrew/bin); then         # Add homebrew's bin and sbin to path.
+if (test -d /opt/homebrew/bin); then       # Add homebrew's bin and sbin to path.
   export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
 fi
 
