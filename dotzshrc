@@ -31,10 +31,10 @@ setopt PROMPT_SUBST                        # Enable parameter expansion, command
 
 # =================== Alias ====================
 
+alias ls='ls --color'                      # Add colors to list directory contents command. Colors are based on LSCOLORS.
+alias ll='ls -l'                           # List files in the long format.
+alias l='ls -la'                           # List files in the long format and include directory entries whose names begin with a dot (‘.’). 
 alias c='clear'
-alias ls='ls --color'
-alias ll='ls -l --color'
-alias l='ls -lart --color'
 
 if (which vim &>/dev/null); then
   alias vi='vim'
@@ -48,7 +48,7 @@ if (which htop &>/dev/null); then
   alias top='htop'
 fi
 
-if (which tree &>/dev/null); then
+if (which tree &>/dev/null); then          # Add colors to tree command.
   alias tree='tree -C'
 fi
 

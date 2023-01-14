@@ -2,15 +2,6 @@
 
 # =================== Export =====================
 
-if (test -d /opt/homebrew/bin); then       # Add homebrew's bin and sbin to path.
-  export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
-fi
-
-if (which pyenv &>/dev/null); then         # Add pyenv's bin to path.
-  export PATH="$HOME/.pyenv/bin:$PATH"
-  eval "$(pyenv init --path)"
-fi
-
 if (which vim &>/dev/null); then           # Set vim as default editor.
   export VISUAL='vim'
 fi
@@ -20,33 +11,29 @@ export LS_COLORS='di=0;36:ln=1;35'         # Set colors for ls command (director
 
 # =================== General ==================
 
-if (test -r /opt/homebrew/etc/profile.d/bash_completion.sh); then
-  source /opt/homebrew/etc/profile.d/bash_completion.sh
-fi
-
 bind 'set bell-style none'                 # Disable terminal bell.
 shopt -s autocd                            # Change directory without using cd. 
 
 # =================== Alias ====================
 
+alias ls='ls --color'                      # Add colors to list directory contents command (colors are based on LSCOLORS).
+alias ll='ls -l'                           # List files in the long format.
+alias l='ls -la'                           # List files in the long format and include directory entries whose names begin with a dot (‘.’).
 alias c='clear'
-alias ls='ls --color'
-alias ll='ls -l --color'
-alias l='ls -lart --color'
-
-if (which git &>/dev/null); then
-  alias s='git status'
-fi
 
 if (which vim &>/dev/null); then
   alias vi='vim'
+fi
+
+if (which git &>/dev/null); then
+  alias s='git status'
 fi
 
 if (which htop &>/dev/null); then
   alias top='htop'
 fi
 
-if (which tree &>/dev/null); then
+if (which tree &>/dev/null); then          # Add colors to tree command.
   alias tree='tree -C'
 fi
 
