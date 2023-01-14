@@ -12,30 +12,30 @@ export LS_COLORS='di=0;36:ln=1;35'         # Set colors for ls command (director
 # =================== General ==================
 
 bind 'set bell-style none'                 # Disable terminal bell.
-shopt -s autocd                            # Change directory without using cd. 
+shopt -s autocd                            # Change directory without using cd command.
 
 # =================== Alias ====================
+
+alias c='clear'
 
 alias ls='ls --color'                      # Add colors to list directory contents command (colors are based on LS_COLORS).
 alias ll='ls -l'                           # List files in the long format.
 alias l='ls -la'                           # List files in the long format and include directory entries whose names begin with a dot (‘.’).
 
-alias c='clear'
-
-if (which vim &>/dev/null); then
-  alias vi='vim'
+if (which tree &>/dev/null); then          # Add colors to tree command.
+  alias tree='tree -C'
 fi
 
 if (which git &>/dev/null); then
   alias s='git status'
 fi
 
-if (which htop &>/dev/null); then
-  alias top='htop'
+if (which vim &>/dev/null); then
+  alias vi='vim'
 fi
 
-if (which tree &>/dev/null); then          # Add colors to tree command.
-  alias tree='tree -C'
+if (which htop &>/dev/null); then
+  alias top='htop'
 fi
 
 if (test -r ~/.aliases); then              # Source additional aliases.
