@@ -1,55 +1,55 @@
 if &compatible
-  set nocompatible                  "disable compatability with Vi*
+  set nocompatible                  "Disable compatability with Vi.
 endif
 
 " ==================== General ====================
 
-if &t_Co > 2 || has("gui_running")  "if terminal has colors or when GUI (always colors) then...
-  syntax on                           "switch syntax highlighting on*
+if &t_Co > 2 || has("gui_running")  "If terminal has colors or when GUI (always colors) then...
+  syntax on                           "Switch syntax highlighting on.
 endif
 
-set belloff=all                     "disable bell
-set autoread                        "reload files changed outside vim
-set backspace=indent,eol,start      "allow backspacing over everything in insert mode*
-set display=truncate                "show @@@ in the last line if it is truncated*
-set fileformat=unix                 "use unix as standard file type
-set history=200                     "keep 200 commands and 200 serch patterns in history*
-set nowrap                          "do not wrap lines
-set number                          "show line numbers
-set ruler                           "show colum and line number at the bottom*
-set scrolloff=5                     "show a few lines of context around the cursor*
-set showcmd                         "show incomplete command down the bottom*
-set showmode                        "show current mode at the bottom
-set showtabline=2                   "show tabline at all time*
-set ttimeout                        "makes typing Esc take effect more quickly*
-set ttimeoutlen=100                 "makes typing Esc take effect more quickly*
-set wildmenu                        "enable auto complation menu*
-set wildmode=list:longest           "make wildmenu behave like bash completion
+set belloff=all                     "Disable bell.
+set autoread                        "Reload files changed outside Vim.
+set backspace=indent,eol,start      "Allow backspacing over everything in insert mode.
+set display=truncate                "Show @@@ in the last line if it is truncated.
+set fileformat=unix                 "Use unix as standard file type.
+set history=200                     "Keep 200 commands and 200 serch patterns in history.
+set nowrap                          "Do not wrap lines.
+set number                          "Show line numbers.
+set ruler                           "Show colum and line number at the bottom.
+set scrolloff=5                     "Show a few lines of context around the cursor.
+set showcmd                         "Show incomplete command down the bottom.
+set showmode                        "Show current mode at the bottom.
+set showtabline=2                   "Show tabline at all time.
+set ttimeout                        "Makes typing Esc take effect more quickly.
+set ttimeoutlen=100                 "Makes typing Esc take effect more quickly.
+set wildmenu                        "Enable auto complation menu.
+set wildmode=list:longest           "Make wildmenu behave like bash completion.
 
 " ==================== Search =======================
 
-if has('reltime')                   "if possible to timeout then....
-  set hlsearch                        "hightlight search matches
-  set incsearch                       "incrementally highlight search matches*
-  set ignorecase                      "ignore case when searching...
-  set smartcase                       "except when search string contains uppercase
+if has('reltime')                   "If possible to timeout then...
+  set hlsearch                        "Hightlight search matches.
+  set incsearch                       "Incrementally highlight search matches.
+  set ignorecase                      "Ignore case when searching
+  set smartcase                       "except when search string contains uppercase.
 endif
 
 " ==================== Indentation ==================
 
-if 1                                "if Vim has compiled with +eval features then...
-  filetype plugin indent on           "enable file detection and load indent files*
+if 1                                "If Vim has compiled with +eval features then...
+  filetype plugin indent on           "Enable file detection and load indent files.
 endif
 
-set autoindent                      "auto indent
-set expandtab                       "use spaces instead of tabs
+set autoindent                      "Enable auto indent.
+set expandtab                       "Use spaces instead of tabs.
 set shiftwidth=2                    "1 tab == 2 spaces
 set softtabstop=2                   "1 tab == 2 spaces
 set tabstop=2                       "1 tab == 2 spaces
 
 " ==================== Security =====================
 
-set clipboard=                      "disable copying to the system clipboard
-set nobackup                        "disable creation of backup files
-set noswapfile                      "disable swapfiles that acts as autosave in case of crash
-set viminfo=                        "disable viminfo file from copying data from current session
+set clipboard=                      "Disable copying to the system clipboard.
+set nobackup                        "Disable creation of backup files.
+set noswapfile                      "Disable swapfiles that acts as autosave in case of crash.
+set viminfo=                        "Disable viminfo file from copying data from current session.
