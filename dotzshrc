@@ -29,7 +29,7 @@ unsetopt BEEP                              # Disable terminal bell.
 setopt AUTO_CD                             # Change directory without using cd command.
 setopt PROMPT_SUBST                        # Enable parameter expansion, command substitution and arithmetic expansion in the prompt.
 
-# =================== Alias ====================
+# =================== Aliases ==================
 
 alias c='clear'
 
