@@ -7,7 +7,7 @@ Clean and minimalistic dotprofiles for
     ~/.vimrc     # Python programming
 
 
-**Note-to-self**📝<br>
+#### Note-to-self
 To always source bashrc,  add something like this to ~/.bash\_profile (or ~/.profile):
 
 
