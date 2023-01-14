@@ -16,7 +16,7 @@ shopt -s autocd                            # Change directory without using cd.
 
 # =================== Alias ====================
 
-alias ls='ls --color'                      # Add colors to list directory contents command (colors are based on LSCOLORS).
+alias ls='ls --color'                      # Add colors to list directory contents command (colors are based on LS_COLORS).
 alias ll='ls -l'                           # List files in the long format.
 alias l='ls -la'                           # List files in the long format and include directory entries whose names begin with a dot (‘.’).
 alias c='clear'
