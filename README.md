@@ -3,7 +3,7 @@
 Clean and minimalistic dotprofiles for
 
     ~/.zshrc     # MacOS (ARM)
-    ~/.bashrc    # RHEL
+    ~/.bashrc    # Red Hat Enterprise Linux
     ~/.vimrc     # Python programming
 
 
