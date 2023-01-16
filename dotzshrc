@@ -57,7 +57,7 @@ fi
 # =================== Aliases ==================
 
 if [[ -n "$(tput colors)" && "$(tput colors)" -ge 8 ]]
-then                                       # Add colors to various commands if colors are supported.
+then                                       # If colors are supported, add colors to various commands.
   export LSCOLORS='GxFx'                   # Export colors for ls command (directory, symbolic link and leave the rest to default values).
   alias ls='ls --color' 
   alias grep='grep --color'
@@ -79,6 +79,6 @@ if (which git &>/dev/null); then
   alias s='git status'
 fi
 
-if [ -r "$HOME/.aliases" ]; then           # Source additional aliases.
-  source "$HOME/.aliases"
+if [ -r "$HOME/.aliases" ]; then
+  source "$HOME/.aliases"                  # Source additional aliases.
 fi
