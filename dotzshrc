@@ -1,84 +1,84 @@
 #!/bin/zsh
 
-# =================== Export =====================
-
-if (test -d /opt/homebrew/bin); then       # Add homebrew's bin and sbin to path.
-  export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
+if (test -z "$PS1" ); then
+  return                                   # If not running interactively, don't do anything.
 fi
 
-if (which pyenv &>/dev/null); then         # Add pyenv's bin to path.
-  export PATH="$HOME/.pyenv/bin:$PATH"
-  eval "$(pyenv init --path)"
+# =================== PATH =====================
+
+BREW_PREFIX="/opt/homebrew"                # Default brew prefix for macOS with ARM chip. Change as needed.
+
+if [ -d "$BREW_PREFIX/bin" ]
+then
+  if [[ "$PATH" != *"$BREW_PREFIX/sbin:"* ]]
+  then
+    PATH="$BREW_PREFIX/sbin:$PATH"         # Add homebrew's sbin to PATH
+  fi
+  if [[ "$PATH" != *"$BREW_PREFIX/bin:"* ]]
+  then
+    PATH="$BREW_PREFIX/bin:$PATH"          # Add homebrew's bin to PATH   
+  fi
+  if [[ "$FPATH" != *"$BREW_PREFIX/share/zsh/site-functions:"* ]]
+  then                                     # Make homebrew's completions available in zsh.
+    export FPATH="$BREW_PREFIX/share/zsh/site-functions:$FPATH"
+  fi
 fi
 
-if (which brew &>/dev/null); then          # Make homebrew’s completions available in zsh.
-  export FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+if (which pyenv &>/dev/null); then
+  if [[ "$PATH" != *"$HOME/.pyenv/bin:"* ]]; then
+    export PATH="$HOME/.pyenv/bin:$PATH"   # Add pyenv's bin to PATH and export PATH.
+  fi
+  eval "$(pyenv init -)"                   # Install pyenv as shell function, enable shims and autocompletion.
 fi
-
-if (which vim &>/dev/null); then           # Set vim as default editor.
-  export VISUAL='vim'
-fi
-
-export LANG='POSIX'                        # Use posix encoding for console output.
-export LSCOLORS='GxFx'                     # Set colors for ls command (directory and symbolic link).
 
 # =================== General ==================
 
+export LANG='POSIX'                        # Use posix encoding for console output.
 autoload -U compinit; compinit             # Enable the zsh completion system.
 unsetopt BEEP                              # Disable terminal bell.
 setopt AUTO_CD                             # Change directory without using cd command.
 setopt PROMPT_SUBST                        # Enable parameter expansion, command substitution and arithmetic expansion in the prompt.
 
+# =================== Prompt ===================
+
+if (which git &>/dev/null); then           # Git branch.
+  parse_git_branch() { git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1) /'; }
+else
+  parse_git_branch() { :; }
+fi
+
+if [[ "$TERM" == "xterm"* ]]               # If terminal is xterm, set prompt with colors.
+then
+  PS1="%f[%F{green}%n%f@%f%m %F{cyan}%2~ %F{yellow}${parse_git_branch}%f]%f%(!.#.$) "
+else
+  PS1="[%n@%m %2~ ${parse_git_branch}]%(!.#.$) "
+fi
+
 # =================== Aliases ==================
 
+if [[ -n "$(tput colors)" && "$(tput colors)" -ge 8 ]]
+then                                       # Add colors to various commands if colors are supported.
+  export LSCOLORS='GxFx'                   # Export colors for ls command (directory, symbolic link and leave the rest to default values).
+  alias ls='ls --color' 
+  alias grep='grep --color'
+  if (which tree &>/dev/null); then
+    alias tree='tree -C'
+  fi
+fi
+
+alias ll='ls -l'                           # Long format.
+alias la='ls -laF'                         # Long format, include dot ('.') directories and display ('/'),('*'),('%'),('@'),('='),('|').
 alias c='clear'
 
-alias ls='ls --color'                      # Add colors to list directory contents command. Colors are based on LSCOLORS.
-alias ll='ls -l'                           # List files in the long format.
-alias l='ls -la'                           # List files in the long format and include directory entries whose names begin with a dot (‘.’). 
-
-if (which tree &>/dev/null); then          # Add colors to tree command.
-  alias tree='tree -C'
+if (which vim &>/dev/null); then
+  alias vi='vim'
+  export VISUAL='vim'                      # Set vim as default visual editor.
 fi
 
 if (which git &>/dev/null); then
   alias s='git status'
 fi
 
-if (which vim &>/dev/null); then
-  alias vi='vim'
+if [ -r "$HOME/.aliases" ]; then           # Source additional aliases.
+  source "$HOME/.aliases"
 fi
-
-if (which htop &>/dev/null); then
-  alias top='htop'
-fi
-
-if (test -r ~/.aliases); then              # Source additional aliases.
-  source ~/.aliases
-fi
-
-# =================== Git branch ===============
-
-if (which git &>/dev/null); then
-  parse_git_branch() { git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1) /'; }
-else
-  parse_git_branch() { :; }
-fi
-
-# =================== Prompt ===================
-
-nocolor='%f'                               # All attributes off.
-green='%F{green}'                          # Green frontground color.
-yellow='%F{yellow}'                        # Yellow frontground color.
-cyan='%F{cyan}'                            # Cyan frontground color.
-
-open_brk='${nocolor}['                     # The '[' bracket.
-closed_brk='${nocolor}]'                   # The ']' bracket.
-username='${green}%n'                      # The username of the current user.
-at='${nocolor}@'                           # The '@' sign.
-hostname='${nocolor}%m'                    # The hostname up to the first `.'
-working_dir='${cyan}%2~'                   # The current working directory, with $HOME abbreviated with a tilde (2 trailing components of current dir).
-git_branch='${yellow}$(parse_git_branch)'  # The current git branch.
-prompt_indicator='${nocolor}%(!.#.$)'      # A '#' if the shell is running with privileges, a '$' if not.
-
-PS1="${open_brk}${username}${at}${hostname} ${working_dir} ${git_branch}${closed_brk}${prompt_indicator} "
