@@ -1,8 +1,6 @@
 #!/bin/zsh
 
-if (test -z "$PS1" ); then
-  return                                   # If not running interactively, don't do anything.
-fi
+[ -z "$PS1" ] && return                    # If not running interactively, don't do anything.
 
 # =================== PATH =====================
 
@@ -26,10 +24,12 @@ fi
 
 if (which pyenv &>/dev/null); then
   if [[ "$PATH" != *"$HOME/.pyenv/bin:"* ]]; then
-    export PATH="$HOME/.pyenv/bin:$PATH"   # Add pyenv's bin to PATH and export PATH.
+    PATH="$HOME/.pyenv/bin:$PATH"          # Add pyenv's bin to PATH.
   fi
   eval "$(pyenv init -)"                   # Install pyenv as shell function, enable shims and autocompletion.
 fi
+
+export PATH
 
 # =================== General ==================
 
