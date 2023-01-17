@@ -36,7 +36,7 @@ else
   parse_git_branch() { :; }
 fi
 
-nocolor="\[\e[0m\]"                        # All attributes off. ANSI color codes: black=30,red=31,green=32,brown=33,blue=34,purple=35,cyan=36.
+nocolor="\[\e[0m\]"                        # All attributes off. Color codes: red=31,green=32,yellow=33,blue=34,purple=35,cyan=36.
 green="\[\e[0;32m\]"                       # Regular green frontground color.
 yellow="\[\e[0;33m\]"                      # Regular yellow frontground color.
 cyan="\[\e[0;36m\]"                        # Regular cyan frontground color.
