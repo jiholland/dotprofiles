@@ -55,7 +55,7 @@ else
 fi
 
 if [[ "$TERM" == "xterm"*||"vte"* ]]
-then                                       # If colors are supported, Set prompt with colors.
+then                                       # If colors are "supported", set prompt with colors.
   PS1="%f[%F{green}%n%f@%f%m %F{cyan}%2~ %F{yellow}${parse_git_branch}%f]%f%(!.#.$) "
 else                                       # Set prompt without colors.
   PS1="[%n@%m %2~ ${parse_git_branch}]%(!.#.$) "
@@ -66,7 +66,7 @@ unset -f parse_git_branch                  # Remove the parse_git_branch functio
 # =================== Aliases ==================
 
 if [[ "$TERM" == "xterm"*||"vte"* ]]
-then                                       # If colors are supported, add colors to various commands.
+then                                       # If colors are "supported", add colors to various commands.
   export LSCOLORS='GxFx'                   # Export colors for ls command (directory, symbolic link and leave the rest to default values).
   alias ls='ls --color' 
   alias grep='grep --color'
