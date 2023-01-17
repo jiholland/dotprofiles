@@ -17,8 +17,8 @@ setopt PROMPT_SUBST                        # Enable parameter expansion, command
 # =================== History ==================
 
 export HISTFILE="$HOME/.zsh_history"       # The file to save the history.
+export SAVEHIST="2000"                     # Maximum number of history events to save in history file.
 export HISTSIZE="2000"                     # Maximum number of events stored in the internal history list.
-export SAVEHIST="1000"                     # Maximum number of history events to save in history file.
 setopt APPEND_HISTORY                      # Append history list to history file.
 
 # =================== PATH =====================
@@ -61,10 +61,10 @@ else
   parse_git_branch() { :; }
 fi
 
-if [[ "$TERM" == "xterm"*||"vte"* ]]
-then                                       # If colors are "supported", set prompt with colors.
+if [[ "$TERM" == "xterm"*||"vte"* ]]       # If colors are "supported", set prompt with colors.
+then                                       # [ username@hostname working-dir git-branch ]prompt-indicator
   PS1="%f[%F{green}%n%f@%f%m %F{cyan}%2~ %F{yellow}${parse_git_branch}%f]%f%(!.#.$) "
-else                                       # Set prompt without colors.
+else
   PS1="[%n@%m %2~ ${parse_git_branch}]%(!.#.$) "
 fi
 

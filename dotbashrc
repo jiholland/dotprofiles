@@ -1,71 +1,85 @@
 #!/bin/bash
 
-# =================== Export =====================
-
-if (which vim &>/dev/null); then           # Set vim as default editor.
-  export VISUAL='vim'
-fi
-
-export LANG='POSIX'                        # Use posix encoding for console output.
-export LS_COLORS='di=0;36:ln=1;35'         # Set colors for ls command (directory and symbolic link).
-
 # =================== General ==================
+
+[ -z "$PS1" ] && return                    # If not running interactively, don't do anything.
+
+if [ -z "$BASHRC_SOURCED" ]; then          # Prevent doublesourcing by adding the following to ~/.bash_profile:
+  BASHRC_SOURCED="yes"                     # [[ "$BASHRC_SOURCED" != "yes" && -r "$HOME/.bashrc" ]] && source "$HOME/.bashrc"
+fi
 
 bind 'set bell-style none'                 # Disable terminal bell.
 shopt -s autocd                            # Change directory without using cd command.
+shopt -s checkwinsize                      # Update window size after each command.
+
+# =================== History ==================
+
+export HISTFILESIZE="2000"                 # Maximum number of history events to save in history file.
+export HISTSIZE="2000"                     # Maximum number of events stored in the internal history list.
+shopt -s histappend                        # Append history list to history file.
+
+# =================== Path =====================
+
+if [[ -d "$HOME/.local/bin" && "$PATH" != *"$HOME/.local/bin:"* ]]
+then
+  PATH="$HOME/.local/bin:$PATH"
+fi
+export PATH
+
+# =================== Prompt ===================
+
+PROMPT_DIRTRIM=2                           # Number of trailing directories to retian when expanding the 'w' and 'W' prompt string escapes.
+
+if (which git &>/dev/null); then           # Git branch.
+  parse_git_branch() { git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1) /'; }
+else
+  parse_git_branch() { :; }
+fi
+
+nocolor="\[\e[0m\]"                        # All attributes off. ANSI color codes: black=30,red=31,green=32,brown=33,blue=34,purple=35,cyan=36.
+green="\[\e[0;32m\]"                       # Regular green frontground color.
+yellow="\[\e[0;33m\]"                      # Regular yellow frontground color.
+cyan="\[\e[0;36m\]"                        # Regular cyan frontground color.
+
+if [[ "$TERM" == "xterm"*||"vte"* ]]       # If colors are "supported", set prompt with colors.
+then                                       # [ username@hostname working-dir git-branch ]prompt-indicator
+  #PS1="\[\e[0m\][\[\e[0;32m\]\u\[\e[0m\]@\[\e[0m\]\h \[\e[0;36m\]\w \[\e[0;33m\]${parse_git_branch}\[\e[0m\]]\[\e[0m\]\$ "
+  PS1="${nocolor}[${green}\u${nocolor}@\h ${cyan}\w ${yellow}${parse_git_branch} ${nocolor}]\$ "
+else
+  PS1="[\u@\h \w ${parse_git_branch}]\$ "
+fi
+
+unset -f parse_git_branch                  # Remove the parse_git_branch function.
+unset -v nocolor                           # Remove variable.
+unset -v green
+unset -v yellow
+unset -v cyan
 
 # =================== Aliases ==================
 
+if [[ "$TERM" == "xterm"*||"vte"* ]]
+then                                       # Add colors to various commands if colors are supported.
+  export LS_COLORS='di=0;36:ln=1;35'       # Export colors for ls command (directory, symbolic link and leave the rest to default values).
+  alias ls='ls --color'                    # Colors are based on LSCOLORS.
+  alias grep='grep --color'
+  if (which tree &>/dev/null); then
+    alias tree='tree -C'
+  fi
+fi
+
+alias ll='ls -l'                           # List files in the long format.
+alias la='ls -laF'                         # List files in the long format and include directory entries whose names begin with a dot (‘.’).
 alias c='clear'
 
-alias ls='ls --color'                      # Add colors to list directory contents command (colors are based on LS_COLORS).
-alias ll='ls -l'                           # List files in the long format.
-alias l='ls -la'                           # List files in the long format and include directory entries whose names begin with a dot (‘.’).
-
-if (which tree &>/dev/null); then          # Add colors to tree command.
-  alias tree='tree -C'
+if (which vim &>/dev/null); then
+  alias vi='vim'
+  export VISUAL='vim'                      # Set vim as default visual editor.
 fi
 
 if (which git &>/dev/null); then
   alias s='git status'
 fi
 
-if (which vim &>/dev/null); then
-  alias vi='vim'
+if [ -r "$HOME/.aliases" ]; then           # Source additional aliases.
+  source "$HOME/.aliases"
 fi
-
-if (which htop &>/dev/null); then
-  alias top='htop'
-fi
-
-if (test -r ~/.aliases); then              # Source additional aliases.
-  source ~/.aliases
-fi
-
-# =================== Git branch ===============
-
-if (which git &>/dev/null); then
-  parse_git_branch() { git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1) /'; }
-else
-  parse_git_branch() { :; }
-fi
-
-# =================== Prompt ===================
-
-PROMPT_DIRTRIM=2                           # Number of trailing directories to retian when expanding the 'w' and 'W' prompt string escapes.
-
-nocolor="\[\e[0m\]"                        # All attributes off.
-green="\[\e[0;32m\]"                       # Regular green frontground color.
-yellow="\[\e[0;33m\]"                      # Regular yellow frontground color.
-cyan="\[\e[0;36m\]"                        # Regular cyan frontground color.
-
-open_brk="${nocolor}["                     # The '[' bracket.
-closed_brk="${nocolor}]"                   # The ']' bracket.
-username="${green}\u"                      # The username of the current user.
-at="${nocolor}@"                           # The '@' sign.
-hostname="${nocolor}\h"                    # The hostname up to the first `.'
-working_dir="${cyan}\w"                    # The current working directory, with $HOME abbreviated with a tilde (uses the value of the PROMPT_DIRTRIM variable).
-git_branch="${yellow}\$(parse_git_branch)" # The current git branch.
-prompt_indicator="${nocolor}\$"            # A '#' if the shell is running with privileges, a '$' if not.
-
-PS1="${open_brk}${username}${at}${hostname} ${working_dir} ${git_branch}${closed_brk}${prompt_indicator}${nocolor} "
