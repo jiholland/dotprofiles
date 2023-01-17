@@ -1,25 +1,27 @@
-# =================== General ==================
+if [ -z "$PS1" ]; then
+  return                                   # If not running interactively, don't do anything.
+fi
 
-[ -z "$PS1" ] && return                    # If not running interactively, don't do anything.
+# ==================== General ====================
 
 if [ -z "$ZSHRC_SOURCED" ]; then           # Prevent doublesourcing by adding the following to ~/.zprofile:
   ZSHRC_SOURCED="yes"                      # [[ "$ZSHRC_SOURCED" != "yes" && -r "$HOME/.zshrc" ]] && source "$HOME/.zshrc"
 fi
 
-export LANG='POSIX'                        # Use posix encoding for console output.
+export LANG=POSIX                          # Use posix encoding for console output.
 autoload -U compinit; compinit             # Enable the zsh completion system.
 unsetopt BEEP                              # Disable terminal bell.
 setopt AUTO_CD                             # Change directory without using cd command.
 setopt PROMPT_SUBST                        # Enable parameter expansion, command substitution and arithmetic expansion in the prompt.
 
-# =================== History ==================
+# ==================== History ====================
 
 export HISTFILE="$HOME/.zsh_history"       # The file to save the history.
 export SAVEHIST="2000"                     # Maximum number of history events to save in history file.
 export HISTSIZE="2000"                     # Maximum number of events stored in the internal history list.
 setopt APPEND_HISTORY                      # Append history list to history file.
 
-# =================== PATH =====================
+# ==================== PATH =======================
 
 BREW_PREFIX="/opt/homebrew"                # Default brew prefix for macOS with ARM chip. Change as needed.
 
@@ -51,7 +53,7 @@ fi
 export PATH
 export FPATH
 
-# =================== Prompt ===================
+# ==================== Prompt =====================
 
 if (which git &>/dev/null); then           # Git branch function for prompt.
   git_branch() { git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1) /'; }
@@ -68,7 +70,7 @@ fi
 
 unset -f git_branch                        # Remove the parse_git_branch function.
 
-# =================== Aliases ==================
+# ==================== Aliases ====================
 
 if [[ "$TERM" == "xterm"*||"vte"* ]]
 then                                       # If colors are "supported", add colors to various commands.
@@ -82,7 +84,7 @@ fi
 
 alias ll='ls -l'                           # Long format.
 alias la='ls -laF'                         # Long format, include dot ('.') directories and display ('/'),('*'),('%'),('@'),('='),('|').
-alias c='clear'
+alias c=clear
 
 if (which vim &>/dev/null); then
   alias vi='vim'
