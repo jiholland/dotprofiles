@@ -55,20 +55,20 @@ export FPATH
 
 # =================== Prompt ===================
 
-if (which git &>/dev/null); then           # Git branch.
-  parse_git_branch() { git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1) /'; }
+if (which git &>/dev/null); then           # Git branch function for prompt.
+  git_branch() { git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1) /'; }
 else
-  parse_git_branch() { :; }
+  git_branch() { :; }
 fi
 
 if [[ "$TERM" == "xterm"*||"vte"* ]]       # If colors are "supported", set prompt with colors.
-then                                       # [ username@hostname working-dir git-branch ]prompt-indicator
-  PS1="%f[%F{green}%n%f@%f%m %F{cyan}%2~ %F{yellow}${parse_git_branch}%f]%f%(!.#.$) "
+then
+  PS1="%f[%F{green}%n%f@%f%m %F{cyan}%2~ %F{yellow}${git_branch}%f]%f%(!.#.$) "
 else
-  PS1="[%n@%m %2~ ${parse_git_branch}]%(!.#.$) "
+  PS1="[%n@%m %2~ ${git_branch}]%(!.#.$) " # [ username@hostname working-dir git-branch ]prompt-indicator
 fi
 
-unset -f parse_git_branch                  # Remove the parse_git_branch function.
+unset -f git_branch                        # Remove the parse_git_branch function.
 
 # =================== Aliases ==================
 

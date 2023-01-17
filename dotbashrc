@@ -31,10 +31,10 @@ export PATH
 
 PROMPT_DIRTRIM=2                           # Number of trailing directories to retian when expanding the 'w' and 'W' prompt string escapes.
 
-if (which git &>/dev/null); then           # Git branch.
-  parse_git_branch() { git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1) /'; }
+if (which git &>/dev/null); then           # Git branch function for prompt.
+  git_branch() { git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1) /'; }
 else
-  parse_git_branch() { :; }
+  git_branch() { :; }
 fi
 
 nocolor="\[\e[0m\]"                        # All attributes off. Color codes: red=31,green=32,yellow=33,blue=34,purple=35,cyan=36.
@@ -43,11 +43,10 @@ yellow="\[\e[0;33m\]"                      # Regular yellow frontground color.
 cyan="\[\e[0;36m\]"                        # Regular cyan frontground color.
 
 if [[ "$TERM" == "xterm"*||"vte"* ]]       # If colors are "supported", set prompt with colors.
-then                                       # [ username@hostname working-dir git-branch ]prompt-indicator
-  #PS1="\[\e[0m\][\[\e[0;32m\]\u\[\e[0m\]@\[\e[0m\]\h \[\e[0;36m\]\w \[\e[0;33m\]${parse_git_branch}\[\e[0m\]]\[\e[0m\]\$ "
-  PS1="${nocolor}[${green}\u${nocolor}@\h ${cyan}\w ${yellow}${parse_git_branch} ${nocolor}]\$ "
+then
+  PS1="${nocolor}[${green}\u${nocolor}@\h ${cyan}\w ${yellow}${git_branch}${nocolor}]\$ "
 else
-  PS1="[\u@\h \w ${parse_git_branch}]\$ "
+  PS1="[\u@\h \w ${git_branch}]\$ "        # # [ username@hostname working-dir git-branch ]prompt-indicator
 fi
 
 unset -f parse_git_branch                  # Remove the parse_git_branch function.
