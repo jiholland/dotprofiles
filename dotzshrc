@@ -14,6 +14,13 @@ unsetopt BEEP                              # Disable terminal bell.
 setopt AUTO_CD                             # Change directory without using cd command.
 setopt PROMPT_SUBST                        # Enable parameter expansion, command substitution and arithmetic expansion in the prompt.
 
+# =================== History ==================
+
+export HISTFILE="$HOME/.zsh_history"       # The file to save the history.
+export HISTSIZE="2000"                     # Maximum number of events stored in the internal history list.
+export SAVEHIST="1000"                     # Maximum number of history events to save in history file.
+setopt APPEND_HISTORY                      # Append history list to history file.
+
 # =================== PATH =====================
 
 BREW_PREFIX="/opt/homebrew"                # Default brew prefix for macOS with ARM chip. Change as needed.
