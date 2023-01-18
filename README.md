@@ -2,17 +2,15 @@
 
 Clean, safe and minimalistic dotprofiles for:
 
-    ~/.zshrc     # MacOS.
-    ~/.bashrc    # Red Hat Enterprise Linux, Ubuntu etc.
-    ~/.vimrc     # Python programming.
+    ~/.zshrc     # For MacOS.
+    ~/.bashrc    # For Red Hat Enterprise Linux, Ubuntu etc.
+    ~/.vimrc     # For python programming.
 
 #### Note-to-self
-To always source bashrc, add something like this to ~/.bash\_profile:
+To source bashrc, add something like this to bash\_profile (use zprofile for zshrc):
 
     if [[ "$BASHRC_SOURCED" != "yes" && -r "$HOME/.bashrc" ]]; then
         source "$HOME/.bashrc"
     fi
-
-Use ~/.zprofile for zshrc.<br>
 
 🧘
