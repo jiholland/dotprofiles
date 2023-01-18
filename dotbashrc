@@ -51,12 +51,11 @@ cyan="\[\e[0;36m\]"                        # Regular cyan frontground color.
 
 if [[ "$TERM" == "xterm"*||"vte"* ]]       # If colors are "supported", set prompt with colors.
 then
-  PS1="${nocolor}[${green}\u${nocolor}@\h ${cyan}\w ${yellow}${git_branch}${nocolor}]\\$ "
+  PS1="${nocolor}[${green}\u${nocolor}@\h ${cyan}\w ${yellow}\$(git_branch)${nocolor}]\\$ "
 else
-  PS1="[\u@\h \w ${git_branch}]\\$ "       # # [ username@hostname working-dir git-branch ]prompt-indicator
+  PS1="[\u@\h \w \$(git_branch)]\\$ "      # [ username@hostname working-dir git-branch ]prompt-indicator
 fi
 
-unset -f git_branch                        # Remove the git_branch function.
 unset -v nocolor                           # Remove variable.
 unset -v green
 unset -v yellow
