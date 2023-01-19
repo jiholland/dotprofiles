@@ -1,25 +1,19 @@
 # ~/.zshrc
 
-# ==================== General ====================
+[ -z "$PS1" ] && return                    # If not running interactively, don't do anything.
 
 if [ -z "$ZSHRC_SOURCED" ]; then           # Prevent doublesourcing.
   ZSHRC_SOURCED="yes"
 fi
 
-[ -z "$PS1" ] && return                    # If not running interactively, don't do anything.
-
-autoload -Uz compinit; compinit            # Enable the zsh completion system.
-export LANG=POSIX                          # Use posix encoding for console output (locale).
-export HISTFILE="$HOME/.zsh_history"       # The file to save the history.
-export SAVEHIST=2000                       # Maximum number of history events to save in history file.
-export HISTSIZE=2000                       # Maximum number of events stored in the internal history list.
-setopt APPEND_HISTORY                      # Append history list to history file.
-unsetopt BEEP                              # Disable terminal bell.
-setopt AUTO_CD                             # Change directory without using cd command.
-
 if (which pyenv &>/dev/null); then         # Install pyenv as shell function, enable shims and autocompletion.
   eval "$(pyenv init -)"
 fi
+
+autoload -Uz compinit; compinit            # Enable the zsh completion system.
+setopt APPEND_HISTORY                      # Append history list to history file.
+unsetopt BEEP                              # Disable terminal bell.
+setopt PROMPT_SUBST                        # Enable parameter expansion, command substitution and arithmetic expansion in the prompt.
 
 # ==================== Prompt =====================
 
@@ -28,8 +22,6 @@ if (which git &>/dev/null); then           # Git branch function for prompt.
 else
   git_branch() { :; }
 fi
-
-setopt PROMPT_SUBST                        # Enable parameter expansion, command substitution and arithmetic expansion in the prompt.
 
 if [[ "$TERM" == "xterm"*||"vte"* ]]       # If colors are "supported", set prompt with colors: [username@hostname working-dir (git-branch) ]prompt-indicator
 then
@@ -42,7 +34,6 @@ fi
 
 if [[ "$TERM" == "xterm"*||"vte"* ]]       # If colors are "supported", add colors to various commands.
 then
-  export LSCOLORS='GxFx'                   # Colors for ls command (directory, symbolic link and leave the rest to default values).
   alias ls='ls --color' 
   alias grep='grep --color'
   if (which tree &>/dev/null); then

@@ -1,7 +1,5 @@
 # ~/.zprofile
 
-# ==================== Path =======================
-
 BREW_PREFIX="/opt/homebrew"                # Default brew prefix for macOS with ARM chip. Change as needed.
 
 pathadd() {                                # Function for adding entries to path.
@@ -14,17 +12,20 @@ pathadd "$BREW_PREFIX/sbin"                # Add homebrew's sbin to path.
 pathadd "$BREW_PREFIX/bin"                 # Add homebrew's bin to path.
 pathadd "$HOME/.pyenv/bin"                 # Add pyenv's bin to path.
 
-unset -f pathadd                           # Remove pathadd function.
+export PATH
+export LANG='POSIX'                        # Use posix encoding for console output (locale).
+export LSCOLORS='GxFx'                     # Colors for ls command (directory, symbolic link and leave the rest to default values).
+export HISTFILE="$HOME/.zsh_history"       # The file to save the history.
+export SAVEHIST=2000                       # Maximum number of history events to save in history file.
+export HISTSIZE=2000                       # Maximum number of events stored in the internal history list.
 
-# ==================== Completion =================
-
+                                           # Completion -->
 if [ -d "$BREW_PREFIX/share/zsh/site-functions" ] && [[ ":$FPATH:" != *":$BREW_PREFIX/share/zsh/site-functions:"* ]]; then
-  FPATH="$BREW_PREFIX/share/zsh/site-functions:$FPATH"
+  export FPATH="$BREW_PREFIX/share/zsh/site-functions:$FPATH"
 fi
 
+unset -f pathadd                           # Remove pathadd function.
 unset -v BREW_PREFIX                       # Remove variable.
-
-# ==================== Source zshrc ===============
 
 if [ "$ZSHRC_SOURCED" != "yes" ] && [ -r "$HOME/.zshrc" ]; then
   source "$HOME/.zshrc"
