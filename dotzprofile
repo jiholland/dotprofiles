@@ -18,8 +18,10 @@ export LSCOLORS='GxFx'                     # Colors for ls command (directory, s
 export HISTFILE="$HOME/.zsh_history"       # The file to save the history.
 export SAVEHIST=2000                       # Maximum number of history events to save in history file.
 export HISTSIZE=2000                       # Maximum number of events stored in the internal history list.
-export VISUAL='vi'                         # Set vi as default visual editor.
 
+if (which vim &>/dev/null); then
+  export VISUAL='vim'                      # Set vim as default visual editor.
+fi
                                            # Completion -->
 if [ -d "$BREW_PREFIX/share/zsh/site-functions" ] && [[ ":$FPATH:" != *":$BREW_PREFIX/share/zsh/site-functions:"* ]]; then
   export FPATH="$BREW_PREFIX/share/zsh/site-functions:$FPATH"
