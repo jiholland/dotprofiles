@@ -1,56 +1,25 @@
-if [ -z "$PS1" ]; then
-  return                                   # If not running interactively, don't do anything.
-fi
+# ~/.zshrc
 
 # ==================== General ====================
 
-if [ -z "$ZSHRC_SOURCED" ]; then           # Prevent doublesourcing by adding the following to ~/.zprofile:
-  ZSHRC_SOURCED="yes"                      # [[ "$ZSHRC_SOURCED" != "yes" && -r "$HOME/.zshrc" ]] && source "$HOME/.zshrc"
+if [ -z "$ZSHRC_SOURCED" ]; then           # Prevent doublesourcing.
+  ZSHRC_SOURCED="yes"
 fi
 
-export LANG=POSIX                          # Use posix encoding for console output.
-autoload -U compinit; compinit             # Enable the zsh completion system.
+[ -z "$PS1" ] && return                    # If not running interactively, don't do anything.
+
+autoload -Uz compinit; compinit            # Enable the zsh completion system.
+export LANG=POSIX                          # Use posix encoding for console output (locale).
+export HISTFILE="$HOME/.zsh_history"       # The file to save the history.
+export SAVEHIST=2000                       # Maximum number of history events to save in history file.
+export HISTSIZE=2000                       # Maximum number of events stored in the internal history list.
+setopt APPEND_HISTORY                      # Append history list to history file.
 unsetopt BEEP                              # Disable terminal bell.
 setopt AUTO_CD                             # Change directory without using cd command.
-setopt PROMPT_SUBST                        # Enable parameter expansion, command substitution and arithmetic expansion in the prompt.
 
-# ==================== History ====================
-
-export HISTFILE="$HOME/.zsh_history"       # The file to save the history.
-export SAVEHIST="2000"                     # Maximum number of history events to save in history file.
-export HISTSIZE="2000"                     # Maximum number of events stored in the internal history list.
-setopt APPEND_HISTORY                      # Append history list to history file.
-
-# ==================== PATH =======================
-
-BREW_PREFIX="/opt/homebrew"                # Default brew prefix for macOS with ARM chip. Change as needed.
-
-if [ -d "$BREW_PREFIX/bin" ]
-then
-  if [[ "$PATH" != *"$BREW_PREFIX/sbin:"* ]]
-  then
-    PATH="$BREW_PREFIX/sbin:$PATH"         # Add homebrew's sbin to PATH
-  fi
-  if [[ "$PATH" != *"$BREW_PREFIX/bin:"* ]]
-  then
-    PATH="$BREW_PREFIX/bin:$PATH"          # Add homebrew's bin to PATH   
-  fi
-  if [[ "$FPATH" != *"$BREW_PREFIX/share/zsh/site-functions:"* ]]
-  then                                     # Make homebrew's completions available in zsh.
-    FPATH="$BREW_PREFIX/share/zsh/site-functions:$FPATH"
-  fi
+if (which pyenv &>/dev/null); then         # Install pyenv as shell function, enable shims and autocompletion.
+  eval "$(pyenv init -)"
 fi
-
-unset -v BREW_PREFIX                       # Remove the BREW_PREFIX variable.
-
-if (which pyenv &>/dev/null); then
-  if [[ "$PATH" != *"$HOME/.pyenv/bin:"* ]]; then
-    PATH="$HOME/.pyenv/bin:$PATH"          # Add pyenv's bin to PATH.
-  fi
-  eval "$(pyenv init -)"                   # Install pyenv as shell function, enable shims and autocompletion.
-fi
-
-export PATH FPATH
 
 # ==================== Prompt =====================
 
@@ -60,8 +29,10 @@ else
   git_branch() { :; }
 fi
 
-if [[ "$TERM" == "xterm"*||"vte"* ]]       # If colors are "supported", set prompt with colors.
-then                                       # [ username@hostname working-dir git-branch ]prompt-indicator
+setopt PROMPT_SUBST                        # Enable parameter expansion, command substitution and arithmetic expansion in the prompt.
+
+if [[ "$TERM" == "xterm"*||"vte"* ]]       # If colors are "supported", set prompt with colors: [username@hostname working-dir (git-branch) ]prompt-indicator
+then
   PS1="%f[%F{green}%n%f@%f%m %F{cyan}%2~ %F{yellow}\$(git_branch)%f]%f%(!.#.$) "
 else
   PS1="[%n@%m %2~ \$(git_branch)]%(!.#.$) "
@@ -69,9 +40,9 @@ fi
 
 # ==================== Aliases ====================
 
-if [[ "$TERM" == "xterm"*||"vte"* ]]
-then                                       # If colors are "supported", add colors to various commands.
-  export LSCOLORS='GxFx'                   # Export colors for ls command (directory, symbolic link and leave the rest to default values).
+if [[ "$TERM" == "xterm"*||"vte"* ]]       # If colors are "supported", add colors to various commands.
+then
+  export LSCOLORS='GxFx'                   # Colors for ls command (directory, symbolic link and leave the rest to default values).
   alias ls='ls --color' 
   alias grep='grep --color'
   if (which tree &>/dev/null); then
@@ -79,8 +50,8 @@ then                                       # If colors are "supported", add colo
   fi
 fi
 
-alias ll='ls -l'                           # Long format.
-alias la='ls -laF'                         # Long format, include dot ('.') directories and display ('/'),('*'),('%'),('@'),('='),('|').
+alias ll='ls -l'                           # List files in the long format.
+alias la='ls -laF'                         # Long format, include dot ('.') directories and display prefix.
 alias c=clear
 
 if (which vim &>/dev/null); then

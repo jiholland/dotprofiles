@@ -1,8 +1,10 @@
+" ~/.vimrc
+
+" ==================== General ====================
+
 if &compatible
   set nocompatible                  "Disable compatability with Vi.
 endif
-
-" ==================== General ====================
 
 if &t_Co > 2 || has("gui_running")  "If terminal has colors or when GUI (always colors) then...
   syntax on                           "Switch syntax highlighting on.

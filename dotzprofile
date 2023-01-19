@@ -1,0 +1,31 @@
+# ~/.zprofile
+
+# ==================== Path =======================
+
+BREW_PREFIX="/opt/homebrew"                # Default brew prefix for macOS with ARM chip. Change as needed.
+
+pathadd() {                                # Function for adding entries to path.
+    if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
+      PATH="$1:$PATH"
+    fi
+}
+
+pathadd "$BREW_PREFIX/sbin"                # Add homebrew's sbin to path.
+pathadd "$BREW_PREFIX/bin"                 # Add homebrew's bin to path.
+pathadd "$HOME/.pyenv/bin"                 # Add pyenv's bin to path.
+
+unset -f pathadd                           # Remove pathadd function.
+
+# ==================== Completion =================
+
+if [ -d "$BREW_PREFIX/share/zsh/site-functions" ] && [[ ":$FPATH:" != *":$BREW_PREFIX/share/zsh/site-functions:"* ]]; then
+  FPATH="$BREW_PREFIX/share/zsh/site-functions:$FPATH"
+fi
+
+unset -v BREW_PREFIX                       # Remove variable.
+
+# ==================== Source zshrc ===============
+
+if [ "$ZSHRC_SOURCED" != "yes" ] && [ -r "$HOME/.zshrc" ]; then
+  source "$HOME/.zshrc"
+fi

@@ -1,0 +1,30 @@
+# ~/.bash_profile
+
+# ==================== Path =======================
+
+pathadd() {                                # Function for adding entries to path.
+    if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
+        PATH="$1:$PATH"
+    fi  
+}
+
+pathadd "$HOME/.local/bin"                 # Add to path.
+
+unset -f pathadd                           # Remove pathadd function.
+
+# ==================== Completion =================
+
+if [ -f /usr/share/bash-completion/bash_completion ]; then
+  source /usr/share/bash-completion/bash_completion
+elif [ -d /etc/bash_completion.d ]; then
+  for COMPLETION in /etc/bash_completion.d/*
+  do
+    [ -r "$COMPLETION" ] && source "$COMPLETION"
+  done
+fi
+
+# ==================== Source bashrc ==============
+
+if [ "$BASHRC_SOURCED" != "yes" ] && [ -r "$HOME/.bashrc" ]; then
+  source "$HOME/.bashrc"
+fi

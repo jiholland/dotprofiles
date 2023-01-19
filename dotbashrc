@@ -1,42 +1,22 @@
-if [ -z "$PS1" ]; then
-  return                                   # If not running interactively, don't do anything.
-fi
+# ~/.bashrc
 
 # ==================== General ====================
 
-if [ -z "$BASHRC_SOURCED" ]; then          # Prevent doublesourcing by adding the following to ~/.bash_profile:
-  BASHRC_SOURCED="yes"                     # [[ "$BASHRC_SOURCED" != "yes" && -r "$HOME/.bashrc" ]] && source "$HOME/.bashrc"
+if [ -z "$BASHRC_SOURCED" ]; then          # Prevent doublesourcing.
+  BASHRC_SOURCED="yes"
 fi
+
+if [ -z "$PS1" ]; then return; fi          # If not running interactively, don't do anything.
 
 bind 'set bell-style none'                 # Disable terminal bell.
 shopt -s autocd                            # Change directory without using cd command.
 shopt -s checkwinsize                      # Update window size after each command.
-
-if [ -f /etc/bash_completion ]; then       # Enable bash completion.
-  source /etc/bash_completion
-elif [ -f /usr/share/bash-completion/bash_completion ]; then
-  source /usr/share/bash-completion/bash_completion
-fi
-
-# ==================== History ====================
-
 export HISTFILE="$HOME/.bash_history"      # The file to save the history (default).
-export HISTFILESIZE="2000"                 # Maximum number of history events to save in history file.
-export HISTSIZE="2000"                     # Maximum number of events stored in the internal history list.
+export HISTFILESIZE=2000                   # Maximum number of history events to save in history file.
+export HISTSIZE=2000                       # Maximum number of events stored in the internal history list.
 shopt -s histappend                        # Append history list to history file.
 
-# ==================== Path =======================
-
-if [[ -d "$HOME/.local/bin" && "$PATH" != *"$HOME/.local/bin:"* ]]
-then
-  PATH="$HOME/.local/bin:$PATH"
-fi
-
-export PATH
-
 # ==================== Prompt =====================
-
-PROMPT_DIRTRIM=2                           # Number of trailing directories to retian when expanding the 'w' and 'W' prompt string escapes.
 
 if (which git &>/dev/null); then           # Git branch function for prompt.
   git_branch() { git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1) /'; }
@@ -44,6 +24,7 @@ else
   git_branch() { :; }
 fi
 
+PROMPT_DIRTRIM=2                           # Number of trailing directories to retian when expanding the 'w' and 'W' prompt string escapes.
 nocolor="\[\e[0m\]"                        # All attributes off. Color codes: red=31,green=32,yellow=33,blue=34,purple=35,cyan=36.
 green="\[\e[0;32m\]"                       # Regular green frontground color.
 yellow="\[\e[0;33m\]"                      # Regular yellow frontground color.
@@ -53,18 +34,14 @@ if [[ "$TERM" == "xterm"*||"vte"* ]]       # If colors are "supported", set prom
 then
   PS1="${nocolor}[${green}\u${nocolor}@\h ${cyan}\w ${yellow}\$(git_branch)${nocolor}]\\$ "
 else
-  PS1="[\u@\h \w \$(git_branch)]\\$ "      # [ username@hostname working-dir git-branch ]prompt-indicator
+  PS1="[\u@\h \w \$(git_branch)]\\$ "      # [username@hostname working-dir (git-branch) ]prompt-indicator
 fi
 
-unset -v nocolor                           # Remove variable.
-unset -v green
-unset -v yellow
-unset -v cyan
+unset -v {nocolor,green,yellow,cyan}       # Remove variable.
 
 # ==================== Aliases ====================
 
-if [[ "$TERM" == "xterm"*||"vte"* ]]
-then                                       # Add colors to various commands if colors are supported.
+if [[ "$TERM" == "xterm"*||"vte"* ]]; then # Add colors to various commands if colors are supported.
   export LS_COLORS='di=0;36:ln=1;35'       # Export colors for ls command (directory, symbolic link and leave the rest to default values).
   alias ls='ls --color'                    # Colors are based on LSCOLORS.
   alias grep='grep --color'
