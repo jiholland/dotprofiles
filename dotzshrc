@@ -47,7 +47,6 @@ alias c=clear
 
 if (which vim &>/dev/null); then
   alias vi='vim'
-  export VISUAL='vim'                      # Set vim as default visual editor.
 fi
 
 if (which git &>/dev/null); then
