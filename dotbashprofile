@@ -1,23 +1,23 @@
 # ~/.bash_profile
 
-pathadd() {                                # Function for adding entries to path.
+pathadd() {                                 # Function for adding entries to path:
     if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
         PATH="$1:$PATH"
     fi  
 }
 
-pathadd "$HOME/.local/bin"                 # Add to path.
+pathadd "$HOME/.local/bin"                  # Add to path.
 
 export PATH
-export LS_COLORS='di=0;36:ln=1;35'         # Export colors for ls command (directory, symbolic link and leave the rest to default values).
-export HISTFILE="$HOME/.bash_history"      # The file to save the history (default).
-export HISTFILESIZE=2000                   # Maximum number of history events to save in history file.
-export HISTSIZE=2000                       # Maximum number of events stored in the internal history list.
+export LS_COLORS='di=0;36:ln=1;35'          # Export colors for ls command (directory, symbolic link and leave the rest to default values).
+export HISTFILE="$HOME/.bash_history"       # The file to save the history (default).
+export HISTFILESIZE=2000                    # Maximum number of history events to save in history file.
+export HISTSIZE=2000                        # Maximum number of events stored in the internal history list.
 
-if (which vim &>/dev/null); then
-  export VISUAL='vim'                      # Set vim as default visual editor.
+if (which vim &>/dev/null); then            # Set vim as default visual editor.
+  export VISUAL='vim'
 fi
-                                           # Completion -->
+                                            # Enable completion for bash:
 if [ -f /usr/share/bash-completion/bash_completion ]; then
   source /usr/share/bash-completion/bash_completion
 elif [ -d /etc/bash_completion.d ]; then
@@ -27,9 +27,9 @@ elif [ -d /etc/bash_completion.d ]; then
   done
 fi
 
-unset -v COMPLETION                        # Remove variable.
-unset -f pathadd                           # Remove function.
-
+unset -v COMPLETION                         # Remove variable.
+unset -f pathadd                            # Remove function.
+                                            # Source ~/.bashrc:
 if [ "$BASHRC_SOURCED" != "yes" ] && [ -r "$HOME/.bashrc" ]; then
   source "$HOME/.bashrc"
 fi

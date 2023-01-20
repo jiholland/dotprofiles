@@ -1,51 +1,51 @@
 # ~/.bashrc
 
-if [ -z "$PS1" ]; then return; fi          # If not running interactively, don't do anything.
+if [ -z "$PS1" ]; then return; fi           # If not running interactively, don't do anything.
 
-if [ -z "$BASHRC_SOURCED" ]; then          # Prevent doublesourcing.
+if [ -z "$BASHRC_SOURCED" ]; then           # Prevent doublesourcing.
   BASHRC_SOURCED="yes"
 fi
 
-shopt -s histappend                        # Append history list to history file.
-shopt -s checkwinsize                      # Update window size after each command.
-bind 'set bell-style none'                 # Disable terminal bell.
+shopt -s histappend                         # Append history list to history file.
+shopt -s checkwinsize                       # Update window size after each command.
+bind 'set bell-style none'                  # Disable terminal bell.
 
 # ==================== Prompt =====================
 
-if (which git &>/dev/null); then           # Git branch function for prompt.
+PROMPT_DIRTRIM=2                            # Number of trailing directories to retian when expanding the 'w' and 'W' prompt string escapes.
+                                            # Function for getting the current git branch:
+if (which git &>/dev/null); then
   git_branch() { git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1) /'; }
 else
   git_branch() { :; }
 fi
 
-PROMPT_DIRTRIM=2                           # Number of trailing directories to retian when expanding the 'w' and 'W' prompt string escapes.
+nocolor="\[\e[0m\]"                         # All attributes off. Color codes: red=31,green=32,yellow=33,blue=34,purple=35,cyan=36.
+green="\[\e[0;32m\]"                        # Regular green frontground color.
+yellow="\[\e[0;33m\]"                       # Regular yellow frontground color.
+cyan="\[\e[0;36m\]"                         # Regular cyan frontground color.
 
-nocolor="\[\e[0m\]"                        # All attributes off. Color codes: red=31,green=32,yellow=33,blue=34,purple=35,cyan=36.
-green="\[\e[0;32m\]"                       # Regular green frontground color.
-yellow="\[\e[0;33m\]"                      # Regular yellow frontground color.
-cyan="\[\e[0;36m\]"                        # Regular cyan frontground color.
-
-if [[ "$TERM" == "xterm"*||"vte"* ]]       # If colors are "supported", set prompt with colors.
+if [[ "$TERM" == "xterm"*||"vte"* ]]        # If colors are "supported", set prompt with colors:
 then
   PS1="${nocolor}[${green}\u${nocolor}@\h ${cyan}\w ${yellow}\$(git_branch)${nocolor}]\\$ "
 else
-  PS1="[\u@\h \w \$(git_branch)]\\$ "      # [username@hostname working-dir (git-branch) ]prompt-indicator
+  PS1="[\u@\h \w \$(git_branch)]\\$ "       # [username@hostname working-dir (git-branch) ]prompt-indicator
 fi
 
-unset -v {nocolor,green,yellow,cyan}       # Remove variable.
+unset -v {nocolor,green,yellow,cyan}        # Remove variable.
 
 # ==================== Aliases ====================
 
-if [[ "$TERM" == "xterm"*||"vte"* ]]; then # Add colors to various commands if colors are supported.
-  alias ls='ls --color'                    # Colors are based on LSCOLORS.
-  alias grep='grep --color'
-  if (which tree &>/dev/null); then
+if [[ "$TERM" == "xterm"*||"vte"* ]]; then  # If colors are "supported":
+  alias ls='ls --color'                     # Colorize are based on LS_COLORS (bash_profile).
+  alias grep='grep --color'                 # Colorize grep command.
+  if (which tree &>/dev/null); then         # Colorize tree command:
     alias tree='tree -C'
   fi
 fi
 
-alias ll='ls -l'                           # List files in the long format.
-alias la='ls -laF'                         # List files in the long format and include directory entries whose names begin with a dot (‘.’).
+alias ll='ls -l'                            # List files in long format.
+alias la='ls -laF'                          # List files in long format, include dot ('.') directories and display prefix.
 alias c='clear'
 
 if (which vim &>/dev/null); then
@@ -56,6 +56,6 @@ if (which git &>/dev/null); then
   alias s='git status'
 fi
 
-if [ -r "$HOME/.aliases" ]; then           # Source additional aliases.
+if [ -r "$HOME/.aliases" ]; then            # Source more aliases.
   source "$HOME/.aliases"
 fi
