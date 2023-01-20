@@ -25,21 +25,21 @@ green="\[\e[0;32m\]"                        # Regular green frontground color.
 yellow="\[\e[0;33m\]"                       # Regular yellow frontground color.
 cyan="\[\e[0;36m\]"                         # Regular cyan frontground color.
 
-if [[ "$TERM" == "xterm"*||"vte"* ]]        # If colors are "supported", set prompt with colors:
+if [[ "$TERM" == "xterm"*||"vte"* ]]        # If colors are "supported" set prompt with colors.
 then
   PS1="${nocolor}[${green}\u${nocolor}@\h ${cyan}\w ${yellow}\$(git_branch)${nocolor}]\\$ "
 else
-  PS1="[\u@\h \w \$(git_branch)]\\$ "       # [username@hostname working-dir (git-branch) ]prompt-indicator
+  PS1="[\u@\h \w \$(git_branch)]\\$ "       # [username@hostname working-dir (git-branch) ]prompt-indicator 
 fi
 
-unset -v {nocolor,green,yellow,cyan}        # Remove variable.
+unset -v {nocolor,green,yellow,cyan}        # Remove variables.
 
 # ==================== Aliases ====================
 
-if [[ "$TERM" == "xterm"*||"vte"* ]]; then  # If colors are "supported":
-  alias ls='ls --color'                     # Colorize are based on LS_COLORS (bash_profile).
-  alias grep='grep --color'                 # Colorize grep command.
-  if (which tree &>/dev/null); then         # Colorize tree command:
+if [[ "$TERM" == "xterm"*||"vte"* ]]; then  # If colors are "supported" then...
+  alias ls='ls --color'                      # Colorize are based on LS_COLORS (bash_profile).
+  alias grep='grep --color'                  # Colorize grep command.
+  if (which tree &>/dev/null); then          # Colorize tree command:
     alias tree='tree -C'
   fi
 fi

@@ -24,19 +24,19 @@ else
   git_branch() { :; }
 fi
 
-if [[ "$TERM" == "xterm"*||"vte"* ]]        # If colors are "supported", set prompt with colors:
+if [[ "$TERM" == "xterm"*||"vte"* ]]        # If colors are "supported" set prompt with colors.
 then
   PS1="%f[%F{green}%n%f@%f%m %F{cyan}%2~ %F{yellow}\$(git_branch)%f]%f%(!.#.$) "
 else
-  PS1="[%n@%m %2~ \$(git_branch)]%(!.#.$) " # [username@hostname working-dir (git-branch) ]prompt-indicator
+  PS1="[%n@%m %2~ \$(git_branch)]%(!.#.$) " # [username@hostname working-dir (git-branch) ]prompt-indicator 
 fi
 
 # ==================== Aliases ====================
 
-if [[ "$TERM" == "xterm"*||"vte"* ]]; then  # If colors are "supported":
-  alias ls='ls --color'                     # Colorize ls command based on $LSCOLORS from zprofile.
-  alias grep='grep --color'                 # Colorize grep command.
-  if (which tree &>/dev/null); then         # Colorize tree command:
+if [[ "$TERM" == "xterm"*||"vte"* ]]; then  # If colors are "supported" then...
+  alias ls='ls --color'                      # Colorize ls command based on $LSCOLORS from zprofile.
+  alias grep='grep --color'                  # Colorize grep command.
+  if (which tree &>/dev/null); then          # Colorize tree command:
     alias tree='tree -C'
   fi
 fi
@@ -53,6 +53,6 @@ if (which git &>/dev/null); then
   alias s='git status'
 fi
 
-if [ -r "$HOME/.aliases" ]; then             # Source more aliases.
+if [ -r "$HOME/.aliases" ]; then            # Source more aliases.
   source "$HOME/.aliases"
 fi

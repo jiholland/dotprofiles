@@ -1,7 +1,7 @@
 # ~/.zprofile
 
 BREW_PREFIX="/opt/homebrew"                 # Default brew prefix for macOS with ARM chip. Change as needed.
-                                            # Function for adding entries to path:
+                                            # Function for adding entries to path.
 pathadd() {
     if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
       PATH="$1:$PATH"
@@ -21,14 +21,14 @@ export HISTSIZE=2000                        # Maximum number of events stored in
 if (which vim &>/dev/null); then            # Set vim as default visual editor.
   export VISUAL='vim'
 fi
-                                            # Enable completion for zsh:
+                                            # Enable completion for zsh.
 if [ -d "$BREW_PREFIX/share/zsh/site-functions" ] && [[ ":$FPATH:" != *":$BREW_PREFIX/share/zsh/site-functions:"* ]]; then
   FPATH="$BREW_PREFIX/share/zsh/site-functions:$FPATH"
 fi
 
 unset -f pathadd                            # Remove pathadd function.
 unset -v BREW_PREFIX                        # Remove variable.
-                                            # Source ~/.zshrc: 
+                                            # Source ~/.zshrc
 if [ "$ZSHRC_SOURCED" != "yes" ] && [ -r "$HOME/.zshrc" ]; then
   source "$HOME/.zshrc"
 fi
