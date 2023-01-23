@@ -12,6 +12,7 @@ export LS_COLORS='di=0;36:ln=1;35'          # Export colors for ls command (dire
 export HISTFILE="$HOME/.bash_history"       # The file to save the history (default).
 export HISTFILESIZE=2000                    # Maximum number of history events to save in history file.
 export HISTSIZE=2000                        # Maximum number of events stored in the internal history list.
+export HISTCONTROL="ignoreboth"             # Lines which begin with a space character and lines which match the previous history entry are not saved in the history list.
 
 if (which vim &>/dev/null); then            # Set vim as default visual editor.
   export VISUAL='vim'

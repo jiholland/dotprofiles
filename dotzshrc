@@ -11,6 +11,8 @@ if (which pyenv &>/dev/null); then          # Install pyenv as shell function, e
 fi
 
 autoload -Uz compinit; compinit             # Enable the zsh completion system.
+setopt HIST_IGNORE_SPACE                    # Lines which begin with a space character are not saved in the history list.
+setopt HIST_IGNORE_DUPS                     # lines which match the previous history entry are not saved in the history list. 
 setopt APPEND_HISTORY                       # Append history list to history file.
 unsetopt BEEP                               # Disable terminal bell.
 
