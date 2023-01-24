@@ -18,13 +18,6 @@ export HISTFILE="$HOME/.zsh_history"        # The file to save the history.
 export SAVEHIST=2000                        # Maximum number of history events to save in history file.
 export HISTSIZE=2000                        # Maximum number of events stored in the internal history list.
 
-export HISTCONTROL="ignoreboth"             # 
-if [ "$HISTCONTROL" = "ignorespace" ] ; then
-    export HISTCONTROL=ignoreboth
-else
-    export HISTCONTROL=ignoredups
-fi
-
 if (which vim &>/dev/null); then            # Set vim as default visual editor.
   export VISUAL='vim'
 fi
