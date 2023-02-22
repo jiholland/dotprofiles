@@ -12,7 +12,8 @@ pathadd "$BREW_PREFIX/sbin"                 # Add homebrew's sbin to path.
 pathadd "$BREW_PREFIX/bin"                  # Add homebrew's bin to path.
 pathadd "$HOME/.pyenv/bin"                  # Add pyenv's bin to path.
 
-export LANG='POSIX'                         # Use posix encoding for console output (locale).
+export LANG='en_US.UTF-8'                   # Use UTF-8 encoding as the default locale.
+export LC_ALL='en_US.UTF-8'                 # Set UTF-8 encoding for all locale settings.
 export LSCOLORS='GxFx'                      # Colors for ls command (directory, symbolic link and leave the rest to default values).
 export HISTFILE="$HOME/.zsh_history"        # The file to save the history.
 export SAVEHIST=2000                        # Maximum number of history events to save in history file.
