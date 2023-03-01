@@ -37,9 +37,9 @@ unset -v {nocolor,green,yellow,cyan}        # Remove variables.
 # ==================== Aliases ====================
 
 if [[ "$TERM" == "xterm"*||"vte"* ]]; then  # If colors are "supported" then...
-  alias ls='ls --color'                      # Colorize are based on LS_COLORS (bash_profile).
+  alias ls='ls --color'                      # Colorize ls command. Colors are based on $LS_COLORS from bash_profile.
   alias grep='grep --color'                  # Colorize grep command.
-  if (which tree &>/dev/null); then          # Colorize tree command:
+  if (which tree &>/dev/null); then          # Colorize tree command.
     alias tree='tree -C'
   fi
 fi

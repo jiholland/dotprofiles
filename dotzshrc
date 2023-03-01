@@ -36,9 +36,9 @@ fi
 # ==================== Aliases ====================
 
 if [[ "$TERM" == "xterm"*||"vte"* ]]; then  # If colors are "supported" then...
-  alias ls='ls --color'                      # Colorize ls command based on $LSCOLORS from zprofile.
+  alias ls='ls --color'                      # Colorize ls command. Colors are based on $LSCOLORS from zprofile.
   alias grep='grep --color'                  # Colorize grep command.
-  if (which tree &>/dev/null); then          # Colorize tree command:
+  if (which tree &>/dev/null); then          # Colorize tree command.
     alias tree='tree -C'
   fi
 fi
