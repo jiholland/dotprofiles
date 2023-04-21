@@ -55,3 +55,16 @@ set clipboard=                      "Disable copying to the system clipboard.
 set nobackup                        "Disable creation of backup files.
 set noswapfile                      "Disable swapfiles that acts as autosave in case of crash.
 set viminfo=                        "Disable viminfo file from copying data from current session.
+
+" ==================== Plugins ======================
+
+call plug#begin()
+  Plug 'github/copilot.vim'         "Enable github copilot plugin (PlugInstall).
+call plug#end()
+
+" ==================== Github Copilot ===============
+
+let g:copilot_filetypes = {
+      \ 'yaml': v:true,
+      \ 'markdown': v:true,
+      \ }
