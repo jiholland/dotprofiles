@@ -48,8 +48,9 @@ alias ll='ls -l'                            # List files in long format.
 alias la='ls -laF'                          # List files in long format, include dot ('.') directories and display prefix.
 alias c='clear'
 
-if (which vim &>/dev/null); then
+if (which nvim &>/dev/null); then           # Use neovim if installed.
   alias vi='vim'
+  alias vim='nvim'
 fi
 
 if (which git &>/dev/null); then

@@ -1,4 +1,4 @@
-" ~/.vimrc
+" ~/.vimrc or ~/.config/nvim/init.vim
 
 " ==================== General ====================
 
@@ -59,7 +59,7 @@ set viminfo=                        "Disable viminfo file from copying data from
 " ==================== Plugins ======================
 
 call plug#begin()
-  Plug 'github/copilot.vim'         "Enable github copilot plugin (PlugInstall).
+  Plug 'github/copilot.vim'         "Enable github copilot plugin.
 call plug#end()
 
 " ==================== Github Copilot ===============
