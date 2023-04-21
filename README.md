@@ -15,10 +15,10 @@ Shell profiles provide:
 
 vimrc should be compatible with neovim.<br>
 Add the following to ~/.config/nvim/init.vim to reuse ~/.vimrc in neovim:
-'''YAML
+```YAML
 set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath = &runtimepath
 source ~/.vimrc
-'''
+```
 
 Jørn Ivar Holland
