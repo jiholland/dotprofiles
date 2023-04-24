@@ -17,7 +17,7 @@ setopt APPEND_HISTORY                       # Append history list to history fil
 unsetopt BEEP                               # Disable terminal bell.
 
 # ==================== Prompt =====================
-#
+
 setopt PROMPT_SUBST                         # Enable parameter expansion, command substitution and arithmetic expansion in the prompt.
                                             # Function for getting the current git branch:
 if (which git &>/dev/null); then
@@ -41,19 +41,6 @@ if [[ "$TERM" == "xterm"*||"vte"* ]]; then  # If colors are "supported" then...
   if (which tree &>/dev/null); then          # Colorize tree command.
     alias tree='tree -C'
   fi
-fi
-
-alias ll='ls -l'                            # List files in long format.
-alias la='ls -laF'                          # List files in long format, include dot ('.') directories and display prefix.
-alias c=clear
-
-if (which nvim &>/dev/null); then           # Use neovim if it is installed.
-  alias vi='nvim'
-  alias vim='nvim'
-fi
-
-if (which git &>/dev/null); then
-  alias s='git status'
 fi
 
 if [ -r "$HOME/.aliases" ]; then            # Source more aliases.

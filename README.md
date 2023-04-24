@@ -1,8 +1,7 @@
 ## dotprofiles
-Minimalistic dotprofiles for zsh, bash and vim/nvim.
+Minimalistic dotprofiles for zsh, bash and nvim.
 - zprofile/zshrc is intended for macOS.
-- bash\_profile/bashrc is tested on RHEL 8.
-- vimrc should work fine for Ansible/yaml and Python coding and is compatible with neovim.
+- vimrc should work fine for Ansible/yaml and Python coding.
 
 Shell profiles provide:
 - colorization
@@ -13,4 +12,4 @@ Shell profiles provide:
 - [pyenv](https://github.com/pyenv/pyenv) (zsh)
 - aliases +++
 
-Jørn Ivar Holland
+Jørn Ivar
