@@ -1,4 +1,4 @@
-" ~/.vimrc or ~/.config/nvim/init.vim
+" ~/.config/nvim/init.vim
 
 " ==================== General ====================
 
@@ -56,14 +56,19 @@ set nobackup                        "Disable creation of backup files.
 set noswapfile                      "Disable swapfiles that acts as autosave in case of crash.
 set viminfo=                        "Disable viminfo file from copying data from current session.
 
+" ==================== Provider =====================
+
+let g:python3_host_prog = '$HOME/.pyenv/shims/python3'  " Set python3 provider.
+let g:loaded_perl_provider = 0      " Disable perl provider.
+let g:loaded_ruby_provider = 0      " Disable ruby provider.
+
 " ==================== Plugins ======================
 
-call plug#begin()
-  Plug 'github/copilot.vim'         "Enable github copilot plugin.
+call plug#begin( '$HOME/.local/share/nvim/plugged' )
+  Plug 'github/copilot.vim'         " Github Copilot.
+  Plug 'pearofducks/ansible-vim'    " Ansible syntax highlighting.
 call plug#end()
-
-" ==================== Github Copilot ===============
-
+                                    " Enable copilot for these filetypes in addition to the default ones.
 let g:copilot_filetypes = {
       \ 'yaml': v:true,
       \ 'markdown': v:true,
