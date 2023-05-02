@@ -11,6 +11,7 @@ if &t_Co > 2 || has("gui_running")  "If terminal has colors or when GUI (always 
 endif
 
 set belloff=all                     "Disable bell.
+set mouse=                          "Disable mouse support.
 set autoread                        "Reload files changed outside Vim.
 set backspace=indent,eol,start      "Allow backspacing over everything in insert mode.
 set display=truncate                "Show @@@ in the last line if it is truncated.
@@ -58,17 +59,17 @@ set viminfo=                        "Disable viminfo file from copying data from
 
 " ==================== Provider =====================
 
-let g:python3_host_prog = '$HOME/.pyenv/shims/python3'  " Set python3 provider.
-let g:loaded_perl_provider = 0      " Disable perl provider.
-let g:loaded_ruby_provider = 0      " Disable ruby provider.
+let g:python3_host_prog = '$HOME/.pyenv/shims/python3'  "Set python3 provider.
+let g:loaded_perl_provider = 0      "Disable perl provider.
+let g:loaded_ruby_provider = 0      "Disable ruby provider.
 
 " ==================== Plugins ======================
 
 call plug#begin( '$HOME/.local/share/nvim/plugged' )
-  Plug 'github/copilot.vim'         " Github Copilot.
-  Plug 'pearofducks/ansible-vim'    " Ansible syntax highlighting.
+  Plug 'github/copilot.vim'         "Github Copilot.
+  Plug 'pearofducks/ansible-vim'    "Ansible syntax highlighting.
 call plug#end()
-                                    " Enable copilot for these filetypes in addition to the default ones.
+                                    "Enable copilot for these filetypes in addition to the default ones.
 let g:copilot_filetypes = {
       \ 'yaml': v:true,
       \ 'markdown': v:true,
