@@ -12,4 +12,8 @@ Shell profiles provide:
 - [pyenv](https://github.com/pyenv/pyenv) (zsh)
 - aliases +++
 
+Install profiles with [Ansible](https://github.com/ansible/ansible):
+```YAML
+ansible-playbook .playbook_deploy_dotprofiles.yml
+```
 Jørn Ivar
