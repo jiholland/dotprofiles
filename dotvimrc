@@ -32,7 +32,7 @@ set wildmode=list:longest           "Make wildmenu behave like bash completion.
 " ==================== Search =======================
 
 if has('reltime')                   "If possible to timeout then...
-  set hlsearch                        "Hightlight search matches.
+  set hlsearch                        "Highlight search matches.
   set incsearch                       "Incrementally highlight search matches.
   set ignorecase                      "Ignore case when searching,
   set smartcase                       "except when search string contains uppercase.
