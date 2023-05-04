@@ -13,41 +13,57 @@
           - '!min'
           - user
 
-    - name: Install dotbashprofiles.
+    - name: Install dotbashprofiles if shell is bash.
       ansible.builtin.template:
         src: "{{ item['src'] }}"
         dest: "{{ item['dest'] }}"
         mode: u=rw,g=r,o=r
         backup: true
-      when: ansible_facts['user_shell'] is search('bash')
+      when: ansible_facts['user_shell'] is ansible.builtin.search('bash')
       loop:
         - src: dotbashprofile
           dest: "{{ ansible_facts['user_dir'] }}/.bash_profile"
         - src: dotbashrc
           dest: "{{ ansible_facts['user_dir'] }}/.bashrc"
 
-    - name: Install dotzshprofiles.
+    - name: Install dotzshprofiles if shell is zsh.
       ansible.builtin.template:
         src: "{{ item['src'] }}"
         dest: "{{ item['dest'] }}"
         mode: u=rw,g=r,o=r
         backup: true
-      when: ansible_facts['user_shell'] is search('zsh')
+      when: ansible_facts['user_shell'] is ansible.builtin.search('zsh')
       loop:
         - src: dotzprofile
           dest: "{{ ansible_facts['user_dir'] }}/.zprofile"
         - src: dotzshrc
           dest: "{{ ansible_facts['user_dir'] }}/.zshrc"
 
-    - name: Ensure directory for neovim is present.
-      ansible.builtin.file:
-        path: "{{ ansible_facts['user_dir'] }}/.config/nvim"
-        state: directory
-        mode: u=rwx,g=rx,o=rx
-
-    - name: Install dotvimrc.
+    - name: Install dotaliases.
       ansible.builtin.template:
-        src: dotvimrc
-        dest: "{{ ansible_facts['user_dir'] }}/.config/nvim/init.vim"
+        src: dotaliases
+        dest: "{{ ansible_facts['user_dir'] }}/.aliases"
         mode: u=rw,g=r,o=r
         backup: true
+
+    - name: Check if nvim is installed.
+      ansible.builtin.package:
+        name: nvim
+      check_mode: true
+      register: output
+
+    - name: Install dotvimrc if nvim is installed.
+      when: not output['changed']
+      block:
+        - name: Ensure directory for neovim is present.
+          ansible.builtin.file:
+            path: "{{ ansible_facts['user_dir'] }}/.config/nvim"
+            state: directory
+            mode: u=rwx,g=rx,o=rx
+
+        - name: Install dotvimrc.
+          ansible.builtin.template:
+            src: dotvimrc
+            dest: "{{ ansible_facts['user_dir'] }}/.config/nvim/init.vim"
+            mode: u=rw,g=r,o=r
+            backup: true
