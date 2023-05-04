@@ -49,12 +49,14 @@
     - name: Check if nvim is installed.
       ansible.builtin.package:
         name: nvim
+        state: present
       check_mode: true
       register: output
 
     - name: Install dotvimrc if nvim is installed.
       when: not output['changed']
       block:
+
         - name: Ensure directory for neovim is present.
           ansible.builtin.file:
             path: "{{ ansible_facts['user_dir'] }}/.config/nvim"
