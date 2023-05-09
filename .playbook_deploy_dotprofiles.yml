@@ -46,14 +46,15 @@
         mode: u=rw,g=r,o=r
         backup: true
 
-    - name: Check if nvim is installed.
+    - name: Check if neovim is installed.
       ansible.builtin.package:
-        name: nvim
+        name: neovim
         state: present
       check_mode: true
+      become: true
       register: output
 
-    - name: Install dotvimrc if nvim is installed.
+    - name: Install dotvimrc if neovim is installed.
       when: not output['changed']
       block:
 
@@ -63,7 +64,7 @@
             state: directory
             mode: u=rwx,g=rx,o=rx
 
-        - name: Install dotvimrc.
+        - name: Install dotvimrc for neovim.
           ansible.builtin.template:
             src: dotvimrc
             dest: "{{ ansible_facts['user_dir'] }}/.config/nvim/init.vim"
