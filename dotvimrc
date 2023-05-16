@@ -68,6 +68,7 @@ let g:loaded_ruby_provider = 0      "Disable ruby provider.
 call plug#begin( '$HOME/.local/share/nvim/plugged' )
   Plug 'github/copilot.vim'         "Github Copilot.
   Plug 'pearofducks/ansible-vim'    "Ansible syntax highlighting.
+  Plug 'hashivim/vim-terraform'     "Terraform syntax highlighting.
 call plug#end()
                                     "Enable copilot for these filetypes in addition to the default ones.
 let g:copilot_filetypes = {
