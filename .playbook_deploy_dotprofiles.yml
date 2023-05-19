@@ -9,9 +9,7 @@
     - name: Gather facts.
       ansible.builtin.setup:
         gather_subset:
-          - '!all'
-          - '!min'
-          - user
+          - min
 
     - name: Install dotbashprofiles if shell is bash.
       ansible.builtin.template:
@@ -21,9 +19,9 @@
         backup: true
       when: ansible_facts['user_shell'] is ansible.builtin.search('bash')
       loop:
-        - src: dotbashprofile
+        - src: bash_profile
           dest: "{{ ansible_facts['user_dir'] }}/.bash_profile"
-        - src: dotbashrc
+        - src: bashrc
           dest: "{{ ansible_facts['user_dir'] }}/.bashrc"
 
     - name: Install dotzshprofiles if shell is zsh.
@@ -34,39 +32,27 @@
         backup: true
       when: ansible_facts['user_shell'] is ansible.builtin.search('zsh')
       loop:
-        - src: dotzprofile
+        - src: zprofile
           dest: "{{ ansible_facts['user_dir'] }}/.zprofile"
-        - src: dotzshrc
+        - src: zshrc
           dest: "{{ ansible_facts['user_dir'] }}/.zshrc"
 
     - name: Install dotaliases.
       ansible.builtin.template:
-        src: dotaliases
+        src: aliases
         dest: "{{ ansible_facts['user_dir'] }}/.aliases"
         mode: u=rw,g=r,o=r
         backup: true
 
-    - name: Check if neovim is installed.
-      ansible.builtin.package:
-        name: neovim
-        state: present
-      check_mode: true
-      become: true
-      register: output
+    - name: Ensure directory for neovim is present.
+      ansible.builtin.file:
+        path: "{{ ansible_facts['user_dir'] }}/.config/nvim"
+        state: directory
+        mode: u=rwx,g=rx,o=rx
 
-    - name: Install dotvimrc if neovim is installed.
-      when: not output['changed']
-      block:
-
-        - name: Ensure directory for neovim is present.
-          ansible.builtin.file:
-            path: "{{ ansible_facts['user_dir'] }}/.config/nvim"
-            state: directory
-            mode: u=rwx,g=rx,o=rx
-
-        - name: Install dotvimrc for neovim.
-          ansible.builtin.template:
-            src: dotvimrc
-            dest: "{{ ansible_facts['user_dir'] }}/.config/nvim/init.vim"
-            mode: u=rw,g=r,o=r
-            backup: true
+    - name: Install init.lua for neovim.
+      ansible.builtin.template:
+        src: init.lua
+        dest: "{{ ansible_facts['user_dir'] }}/.config/nvim/init.lua"
+        mode: u=rw,g=r,o=r
+        backup: true
