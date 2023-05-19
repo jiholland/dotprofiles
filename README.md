@@ -1,7 +1,7 @@
 ## dotprofiles
 Minimalistic dotprofiles for zsh, bash and nvim.
 - zprofile/zshrc is intended for macOS.
-- vimrc should work fine for Ansible/yaml and Python coding.
+- init.lua should work fine for Ansible/yaml, Terraform and Python coding.
 
 Shell profiles provide:
 - colorization
