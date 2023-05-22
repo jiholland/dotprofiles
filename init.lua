@@ -1,12 +1,16 @@
--- Key remap.
-vim.g.mapleader = ' '                          -- Set <Space> as leader key.
-vim.g.maplocalleader = ' '                     -- Set <Space> as local leader key.
+-- ~/.config/nvim/init.lua
 
--- Set options.
-vim.opt.mouse = ''                             -- Disable mouse.
+-- ==================== Key remap ====================
+
+vim.g.mapleader = " "                          -- Set <Space> as leader key.
+vim.g.maplocalleader = " "                     -- Set <Space> as local leader key.
+
+-- ==================== Options ======================
+
+vim.opt.mouse = ""                             -- Disable mouse.
 vim.opt.number = true                          -- Show line numbers.
 vim.opt.wrap = false                           -- Disable line wrapping.
-vim.opt.signcolumn = 'yes'                     -- Always show sign column.
+vim.opt.signcolumn = "yes"                     -- Always show sign column.
 vim.opt.scrolloff = 5                          -- Minimal number of screen lines to keep above and below the cursor.
 
 vim.opt.expandtab = true                       -- Use spaces instead of tabs.
@@ -15,63 +19,79 @@ vim.opt.softtabstop = 2                        -- Number of spaces that a <Tab> 
 vim.opt.tabstop = 2                            -- Number of spaces that a <Tab> in the file counts for.
 
 vim.opt.ignorecase = true                      -- Ignore case when searching.
-vim.opt.smartcase = true                       -- Override 'ignorecase' if the search pattern contains upper case characters.
+vim.opt.smartcase = true                       -- Override "ignorecase" if the search pattern contains upper case characters.
 
 vim.opt.swapfile = false                       -- Disable creation of swap files.
-vim.opt.clipboard = 'unnamedplus'              -- Sync clipboard between OS and Neovim.
 vim.opt.undofile = true                        -- Enable persistent undo.
 
--- Install lazy package manager.
+-- ==================== Package Manager ==============
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system {
     "git",
     "clone",
     "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git2",
+    "https://github.com/folke/lazy.nvim.git",
     "--branch=stable",
     lazypath,
   }
 end
 vim.opt.rtp:prepend(lazypath)                  -- Add lazy.nvim to runtime path.
 
---  Install plugins.
+-- ==================== Plugins ======================
+
 require("lazy").setup({
   "pearofducks/ansible-vim",                   -- Ansible syntax highlighting.
   "hashivim/vim-terraform",                    -- Terraform syntax highlighting.
   "tpope/vim-fugitive",                        -- Git wrapper.
   "lukas-reineke/indent-blankline.nvim",       -- Indentation guides.
-  "github/copilot.vim",                        -- Github Copilot integration.
   { "folke/which-key.nvim", opts = {} },       -- Keybindings helper.
-  {                                            -- Lualine statusline.
-    "nvim-lualine/lualine.nvim",
+  {
+    "github/copilot.vim",                      -- Github Copilot integration.
+    config = function ()
+      vim.g.copilot_filetypes = {
+        ["yaml"] = true,                       -- Enable Copilot for YAML files.
+      }
+      vim.api.nvim_set_keymap("i", "<Tab><Tab>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
+    end
+  },
+  {
+    "nvim-lualine/lualine.nvim",               -- Lualine statusline.
     opts = {
       options = {
         icons_enabled = false,
         theme = "onedark",
-        component_separators = '|',
-        section_separators = '',
+        component_separators = "|",
+        section_separators = "",
       },
     },
   },
-  {                                            -- Telescope fuzzy finder.
-    "nvim-telescope/telescope.nvim",
+  {
+    "nvim-telescope/telescope.nvim",           -- Telescope fuzzy finder.
     branch = "0.1.x",
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function ()
       local builtin = require("telescope.builtin")
-      vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+      vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
     end
   },
-  {                                            -- Treesitter syntax highlighting.
-    "nvim-treesitter/nvim-treesitter",
+  {
+    "nvim-treesitter/nvim-treesitter",         -- Treesitter syntax highlighting.
     dependencies = { "nvim-treesitter/nvim-treesitter-textobjects", },
-    build = ':TSUpdate',
+    build = ":TSUpdate",
+    config = function()
+      require("nvim-treesitter.configs").setup {
+        ensure_installed = { "bash", "python", "yaml" },
+        highlight = { enable = true, }
+      }
+    end
   },
-  {                                            -- Language Server Protocol (LSP) setup.
-  "VonHeikemen/lsp-zero.nvim",
+  {
+  "VonHeikemen/lsp-zero.nvim",                 -- LSP wrapper.
   branch = "v1.x",
   dependencies = {
+    -- LSP Support.
     {"neovim/nvim-lspconfig"},
     {
       "williamboman/mason.nvim",
@@ -80,14 +100,17 @@ require("lazy").setup({
       end,
     },
     {"williamboman/mason-lspconfig.nvim"},
-    {"hrsh7th/nvim-cmp"},
-    {"hrsh7th/cmp-nvim-lsp"},
-    {"L3MON4D3/LuaSnip"},
+    -- Autocompletion.
+    {"hrsh7th/nvim-cmp"},                      -- Required.
+    {"hrsh7th/cmp-nvim-lsp"},                  -- Required.
+    -- Snippets.
+    {"L3MON4D3/LuaSnip"},                      -- Required.
   },
 },
 }, {})
 
--- LSP configuration.
+-- ==================== LSP ==========================
+
 local lsp = require("lsp-zero").preset({
   name = "minimal",
   set_lsp_keymaps = true,
@@ -95,13 +118,16 @@ local lsp = require("lsp-zero").preset({
   suggest_lsp_servers = false,
 })
 lsp.ensure_installed({
-  "ansiblels",
+  "ansiblels",                                 -- Add LSP servers here.
   "bashls",
   "terraformls",
   "pyright",
 })
 lsp.setup()
 
--- Copilot configuration.
-vim.g.copilot_filetypes = { ["yaml"] = true, } -- Enable Copilot for YAML files.
-vim.api.nvim_set_keymap("i", "<Tab><Tab>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
+-- ==================== OTHER ========================
+
+vim.api.nvim_create_autocmd("TextYankPost", {
+  callback = function() vim.highlight.on_yank() end,
+  desc = "Briefly highlight yanked text"
+})
