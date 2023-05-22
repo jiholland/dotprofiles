@@ -5,6 +5,10 @@
 vim.g.mapleader = " "                          -- Set <Space> as leader key.
 vim.g.maplocalleader = " "                     -- Set <Space> as local leader key.
 
+vim.keymap.set("n", "<leader>o", vim.diagnostic.open_float, { desc = "Open floating diagnostic message." })
+vim.keymap.set("n", "<leader>d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic message." })
+vim.keymap.set("n", "<leader>D", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message." })
+
 -- ==================== Options ======================
 
 vim.opt.mouse = ""                             -- Disable mouse.
@@ -73,7 +77,8 @@ require("lazy").setup({
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function ()
       local builtin = require("telescope.builtin")
-      vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
+      vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Find files with Telescope."})
+      vim.keymap.set('n', '<leader>fd', builtin.diagnostics, { desc = "Find diagnostics with Telescope."})
     end
   },
   {
