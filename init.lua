@@ -5,9 +5,9 @@
 vim.g.mapleader = " "                          -- Set <Space> as leader key.
 vim.g.maplocalleader = " "                     -- Set <Space> as local leader key.
 
-vim.keymap.set("n", "<leader>o", vim.diagnostic.open_float, { desc = "Open floating diagnostic message." })
-vim.keymap.set("n", "<leader>d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic message." })
-vim.keymap.set("n", "<leader>D", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message." })
+vim.keymap.set("n", "<leader>do", vim.diagnostic.open_float, { desc = "Open floating diagnostic message." })
+vim.keymap.set("n", "<leader>dd", vim.diagnostic.goto_next, { desc = "Go to next diagnostic message." })
+vim.keymap.set("n", "<leader>dD", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message." })
 
 -- ==================== Options ======================
 
@@ -16,6 +16,7 @@ vim.opt.number = true                          -- Show line numbers.
 vim.opt.wrap = false                           -- Disable line wrapping.
 vim.opt.signcolumn = "yes"                     -- Always show sign column.
 vim.opt.scrolloff = 5                          -- Minimal number of screen lines to keep above and below the cursor.
+vim.opt.pumheight = 10                         -- Maximum number of items to show in popup menu.
 
 vim.opt.expandtab = true                       -- Use spaces instead of tabs.
 vim.opt.shiftwidth = 2                         -- Number of spaces to use for each step of (auto)indent.
@@ -52,34 +53,24 @@ require("lazy").setup({
   "lukas-reineke/indent-blankline.nvim",       -- Indentation guides.
   { "folke/which-key.nvim", opts = {} },       -- Keybindings helper.
   {
-    "github/copilot.vim",                      -- Github Copilot integration.
-    config = function ()
-      vim.g.copilot_filetypes = {
-        ["yaml"] = true,                       -- Enable Copilot for YAML files.
-      }
-      vim.api.nvim_set_keymap("i", "<Tab><Tab>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
-    end
+  "folke/tokyonight.nvim",                      -- Tokyonight theme.
+  lazy = false,
+  priority = 1000,
+  opts = {},
+  config = function()
+	  vim.cmd[[colorscheme tokyonight-night]]
+  end
   },
   {
     "nvim-lualine/lualine.nvim",               -- Lualine statusline.
     opts = {
       options = {
         icons_enabled = false,
-        theme = "onedark",
+        theme = "tokyonight",
         component_separators = "|",
         section_separators = "",
       },
     },
-  },
-  {
-    "nvim-telescope/telescope.nvim",           -- Telescope fuzzy finder.
-    branch = "0.1.x",
-    dependencies = { "nvim-lua/plenary.nvim" },
-    config = function ()
-      local builtin = require("telescope.builtin")
-      vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Find files with Telescope."})
-      vim.keymap.set('n', '<leader>fd', builtin.diagnostics, { desc = "Find diagnostics with Telescope."})
-    end
   },
   {
     "nvim-treesitter/nvim-treesitter",         -- Treesitter syntax highlighting.
@@ -90,6 +81,41 @@ require("lazy").setup({
         ensure_installed = { "bash", "python", "yaml" },
         highlight = { enable = true, }
       }
+    end
+  },
+  {
+    "mbbill/undotree",                         -- Undo history visualizer.
+    config = function ()
+      vim.keymap.set("n", "<leader>u", ":UndotreeToggle<CR>", { desc = "Toggle undo tree." })
+    end
+  },
+  {
+    "zbirenbaum/copilot.lua",
+    lazy = false,
+    config = function()
+      require("copilot").setup({
+        suggestion = {
+          auto_trigger = true,
+          keymap = {
+            accept = "<leader><Tab>",
+          },
+        },
+        filetypes = {
+          ["yaml"] = true,
+        },
+      })
+    end
+  },
+  {
+    "nvim-telescope/telescope.nvim",           -- Telescope fuzzy finder.
+    branch = "0.1.x",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    config = function ()
+      local builtin = require("telescope.builtin")
+      vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Find files with Telescope."})
+      vim.keymap.set("n", "<leader>fg", builtin.git_files, { desc = "Find git files with Telescope."})
+      vim.keymap.set('n', '<leader>fd', builtin.diagnostics, { desc = "Find diagnostics with Telescope."})
+      vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = "Find help tags with Telescope."})
     end
   },
   {
@@ -106,10 +132,10 @@ require("lazy").setup({
     },
     {"williamboman/mason-lspconfig.nvim"},
     -- Autocompletion.
-    {"hrsh7th/nvim-cmp"},                      -- Required.
-    {"hrsh7th/cmp-nvim-lsp"},                  -- Required.
+    {"hrsh7th/nvim-cmp"},
+    {"hrsh7th/cmp-nvim-lsp"},
     -- Snippets.
-    {"L3MON4D3/LuaSnip"},                      -- Required.
+    {"L3MON4D3/LuaSnip"},
   },
 },
 }, {})
