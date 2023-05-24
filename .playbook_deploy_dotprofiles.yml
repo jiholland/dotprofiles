@@ -59,12 +59,9 @@
 
     - name: Ensure directory for tmux is present.
       ansible.builtin.file:
-        path: "{{ ansible_facts['user_dir'] }}/.{{ item }}"
+        path: "{{ ansible_facts['user_dir'] }}/.config/tmux/plugins"
         state: directory
         mode: u=rwx,g=rx,o=rx
-      loop:
-        - config/tmux
-        - tmux/plugins/tpm
 
     - name: Install tmux.conf for tmux.
       ansible.builtin.template:
@@ -76,4 +73,4 @@
     - name: Install tmux plugin manager.
       ansible.builtin.git:
         repo: https://github.com/tmux-plugins/tpm
-        dest: "{{ ansible_facts['user_dir'] }}/./tmux/plugins/tpm"
+        dest: "{{ ansible_facts['user_dir'] }}/.config/tmux/plugins/tpm"
