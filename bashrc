@@ -8,6 +8,7 @@ fi
 
 shopt -s histappend                         # Append history list to history file.
 shopt -s checkwinsize                       # Update window size after each command.
+set -o emacs                                # Use emacs keybindings.
 bind 'set bell-style none'                  # Disable terminal bell.
 
 # ==================== Prompt =====================

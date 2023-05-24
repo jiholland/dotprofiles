@@ -42,7 +42,8 @@ if not vim.loop.fs_stat(lazypath) then
     lazypath,
   }
 end
-vim.opt.rtp:prepend(lazypath)                  -- Add lazy.nvim to runtime path.
+
+vim.opt.rtp:prepend(lazypath)
 
 -- ==================== Plugins ======================
 
@@ -53,7 +54,7 @@ require("lazy").setup({
   "lukas-reineke/indent-blankline.nvim",       -- Indentation guides.
   { "folke/which-key.nvim", opts = {} },       -- Keybindings helper.
   {
-  "folke/tokyonight.nvim",                      -- Tokyonight theme.
+  "folke/tokyonight.nvim",                     -- Tokyonight theme.
   lazy = false,
   priority = 1000,
   opts = {},
@@ -90,14 +91,14 @@ require("lazy").setup({
     end
   },
   {
-    "zbirenbaum/copilot.lua",
+    "zbirenbaum/copilot.lua",                  -- Github Copilot integration.
     lazy = false,
     config = function()
       require("copilot").setup({
         suggestion = {
           auto_trigger = true,
           keymap = {
-            accept = "<leader><Tab>",
+            accept = "<c-space>",
           },
         },
         filetypes = {
@@ -128,7 +129,7 @@ require("lazy").setup({
       "williamboman/mason.nvim",
       build = function()
         pcall(vim.cmd, "MasonUpdate")
-      end,
+      end
     },
     {"williamboman/mason-lspconfig.nvim"},
     -- Autocompletion.
