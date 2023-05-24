@@ -56,3 +56,21 @@
         dest: "{{ ansible_facts['user_dir'] }}/.config/nvim/init.lua"
         mode: u=rw,g=r,o=r
         backup: true
+
+    - name: Ensure directory for tmux is present.
+      ansible.builtin.file:
+        path: "{{ ansible_facts['user_dir'] }}/.config/tmux/plugins"
+        state: directory
+        mode: u=rwx,g=rx,o=rx
+
+    - name: Install tmux.conf for tmux.
+      ansible.builtin.template:
+        src: tmux.conf
+        dest: "{{ ansible_facts['user_dir'] }}/.config/tmux/tmux.conf"
+        mode: u=rw,g=r,o=r
+        backup: true
+
+    - name: Install tmux plugin manager.
+      ansible.builtin.git:
+        repo: https://github.com/tmux-plugins/tpm
+        dest: "{{ ansible_facts['user_dir'] }}/.config/tmux/plugins/tpm"
