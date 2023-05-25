@@ -42,7 +42,6 @@ if not vim.loop.fs_stat(lazypath) then
     lazypath,
   }
 end
-
 vim.opt.rtp:prepend(lazypath)
 
 -- ==================== Plugins ======================
@@ -54,13 +53,15 @@ require("lazy").setup({
   "lukas-reineke/indent-blankline.nvim",       -- Indentation guides.
   { "folke/which-key.nvim", opts = {} },       -- Keybindings helper.
   {
-  "folke/tokyonight.nvim",                     -- Tokyonight theme.
+  "folke/tokyonight.nvim",                     -- Colorscheme.
   lazy = false,
   priority = 1000,
-  opts = {},
   config = function()
-	  vim.cmd[[colorscheme tokyonight-night]]
-  end
+    require("tokyonight").setup({
+      style = "night",
+    })
+	  vim.cmd[[colorscheme tokyonight]]
+  end,
   },
   {
     "nvim-lualine/lualine.nvim",               -- Lualine statusline.
@@ -82,13 +83,13 @@ require("lazy").setup({
         ensure_installed = { "bash", "python", "yaml" },
         highlight = { enable = true, }
       }
-    end
+    end,
   },
   {
     "mbbill/undotree",                         -- Undo history visualizer.
     config = function ()
       vim.keymap.set("n", "<leader>u", ":UndotreeToggle<CR>", { desc = "Toggle undo tree." })
-    end
+    end,
   },
   {
     "zbirenbaum/copilot.lua",                  -- Github Copilot integration.
@@ -105,7 +106,7 @@ require("lazy").setup({
           ["yaml"] = true,
         },
       })
-    end
+    end,
   },
   {
     "nvim-telescope/telescope.nvim",           -- Telescope fuzzy finder.
@@ -117,7 +118,7 @@ require("lazy").setup({
       vim.keymap.set("n", "<leader>fg", builtin.git_files, { desc = "Find git files with Telescope."})
       vim.keymap.set('n', '<leader>fd', builtin.diagnostics, { desc = "Find diagnostics with Telescope."})
       vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = "Find help tags with Telescope."})
-    end
+    end,
   },
   {
   "VonHeikemen/lsp-zero.nvim",                 -- LSP wrapper.
@@ -129,7 +130,7 @@ require("lazy").setup({
       "williamboman/mason.nvim",
       build = function()
         pcall(vim.cmd, "MasonUpdate")
-      end
+      end,
     },
     {"williamboman/mason-lspconfig.nvim"},
     -- Autocompletion.
