@@ -13,6 +13,7 @@ vim.keymap.set("n", "<leader>dD", vim.diagnostic.goto_prev, { desc = "Go to prev
 
 vim.opt.mouse = ""                             -- Disable mouse.
 vim.opt.number = true                          -- Show line numbers.
+vim.opt.relativenumber = true                  -- Show relative line numbers.
 vim.opt.wrap = false                           -- Disable line wrapping.
 vim.opt.signcolumn = "yes"                     -- Always show sign column.
 vim.opt.scrolloff = 5                          -- Minimal number of screen lines to keep above and below the cursor.

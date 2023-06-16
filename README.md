@@ -8,7 +8,7 @@ Shell profiles provide:
 - prompt with git branch
 - history
 - completions
-- [homebrew](https://github.com/Homebrew) (zsh)
+- [homebrew](https://github.com/homebrew/homebrew) (zsh)
 - [pyenv](https://github.com/pyenv/pyenv) (zsh)
 - aliases +++
 

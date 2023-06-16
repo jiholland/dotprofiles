@@ -8,3 +8,5 @@ alias mkdir='mkdir -p'              # Create parent directories if they don't ex
 if (which git &>/dev/null); then
   alias s='git status'              # Show the working tree status.
 fi
+
+ansible-lint --offline              # Lint Ansible playbooks.
