@@ -112,14 +112,18 @@ require("lazy").setup({
   {
     "nvim-telescope/telescope.nvim",           -- Telescope fuzzy finder.
     branch = "0.1.x",
-    dependencies = { "nvim-lua/plenary.nvim" },
+    dependencies = {
+      {"nvim-lua/plenary.nvim"},
+      {"BurntSushi/ripgrep"},
+      {"nvim-telescope/telescope-fzf-native.nvim" },
+    },
     config = function ()
       local builtin = require("telescope.builtin")
       vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Find files with Telescope."})
-      vim.keymap.set("n", "<leader>fg", builtin.git_files, { desc = "Find git files with Telescope."})
+      vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Grep files with Telescope."})
       vim.keymap.set('n', '<leader>fd', builtin.diagnostics, { desc = "Find diagnostics with Telescope."})
       vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = "Find help tags with Telescope."})
-    end,
+    end
   },
   {
   "VonHeikemen/lsp-zero.nvim",                 -- LSP wrapper.
