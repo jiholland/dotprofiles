@@ -55,7 +55,7 @@ require("lazy").setup({
   {
     "folke/which-key.nvim",                        -- Keybindings helper.
     config = function()
-      if not (pcall(require, "which-key")) then return end
+      if not pcall(require, "which-key") then return end
       require("which-key").setup({
       })
     end,
@@ -65,7 +65,7 @@ require("lazy").setup({
   lazy = false,
   priority = 1000,
   config = function()
-    if not (pcall(require, "tokyonight")) then return end
+    if not pcall(require, "tokyonight") then return end
     require("tokyonight").setup({
       style = "night",
     })
@@ -75,7 +75,7 @@ require("lazy").setup({
   {
     "nvim-lualine/lualine.nvim",                   -- Lualine statusline.
     config = function()
-      if not (pcall(require, "lualine")) then return end
+      if not pcall(require, "lualine") then return end
       require("lualine").setup({
         options = {
           icons_enabled = false,
@@ -91,7 +91,7 @@ require("lazy").setup({
     dependencies = { "nvim-treesitter/nvim-treesitter-textobjects", },
     build = ":TSUpdate",
     config = function()
-      if not (pcall(require, "nvim-treesitter")) then return end
+      if not pcall(require, "nvim-treesitter") then return end
       require("nvim-treesitter.configs").setup {
         ensure_installed = { "bash", "python", "yaml" },
         highlight = { enable = true, }
@@ -101,7 +101,7 @@ require("lazy").setup({
   {
     "mbbill/undotree",                             -- Undo history visualizer.
     config = function()
-      if not (pcall(require, "undotree")) then return end
+      if not pcall(require, "undotree") then return end
       vim.keymap.set("n", "<leader>u", ":UndotreeToggle<CR>", { desc = "Toggle undo tree." })
     end,
   },
@@ -109,7 +109,7 @@ require("lazy").setup({
     "zbirenbaum/copilot.lua",                      -- Github Copilot integration.
     lazy = false,
     config = function()
-      if not (pcall(require, "copilot")) then return end
+      if not pcall(require, "copilot") then return end
       require("copilot").setup({
         suggestion = {
           auto_trigger = true,
@@ -132,7 +132,7 @@ require("lazy").setup({
       {"nvim-telescope/telescope-file-browser.nvim"},
     },
     config = function()
-      if not (pcall(require, "telescope")) then return end
+      if not pcall(require, "telescope") then return end
       local builtin = require("telescope.builtin")
       vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Find files with Telescope." })
       vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Grep files with Telescope." })
@@ -151,7 +151,7 @@ require("lazy").setup({
     {
       "williamboman/mason.nvim",
       build = function()
-        if not (pcall(require, "mason")) then return end
+        if not pcall(require, "mason") then return end
         pcall(vim.cmd, "MasonUpdate")
       end,
     },
