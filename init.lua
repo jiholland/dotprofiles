@@ -115,7 +115,6 @@ require("lazy").setup({
     dependencies = {
       {"nvim-lua/plenary.nvim"},
       {"BurntSushi/ripgrep"},
-      {"nvim-telescope/telescope-fzf-native.nvim" },
     },
     config = function ()
       local builtin = require("telescope.builtin")
@@ -123,6 +122,17 @@ require("lazy").setup({
       vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Grep files with Telescope."})
       vim.keymap.set('n', '<leader>fd', builtin.diagnostics, { desc = "Find diagnostics with Telescope."})
       vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = "Find help tags with Telescope."})
+    end
+  },
+  {
+    "nvim-telescope/telescope-file-browser.nvim",
+    dependencies = {
+      {"nvim-telescope/telescope.nvim"},
+      {"nvim-lua/plenary.nvim"},
+    },
+    config = function ()
+      require("telescope").load_extension("file_browser")
+      vim.api.nvim_set_keymap("n", "<leader>fb", "<cmd>Telescope file_browser<cr>", { noremap = true, desc = "Browse files with Telescope file_browser." })
     end
   },
   {
