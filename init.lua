@@ -30,7 +30,7 @@ vim.opt.smartcase = true                           -- Override "ignorecase" if t
 vim.opt.swapfile = false                           -- Disable creation of swap files.
 vim.opt.undofile = true                            -- Enable persistent undo.
 
--- ==================== Package Manager ==============
+-- ==================== Plugin Manager ===============
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -124,7 +124,7 @@ require("lazy").setup({
     end,
   },
   {
-    "nvim-telescope/telescope.nvim",               -- Telescope fuzzy finder.
+    "nvim-telescope/telescope.nvim",               -- Telescope fuzzy finder with file_browser extension.
     branch = "0.1.x",
     dependencies = {
       {"nvim-lua/plenary.nvim"},
@@ -143,26 +143,26 @@ require("lazy").setup({
     end
   },
   {
-  "VonHeikemen/lsp-zero.nvim",                     -- LSP wrapper.
-  branch = "v1.x",
-  dependencies = {
-    -- LSP Support.
-    {"neovim/nvim-lspconfig"},
-    {
-      "williamboman/mason.nvim",
-      build = function()
-        if not pcall(require, "mason") then return end
-        pcall(vim.cmd, "MasonUpdate")
-      end,
+    "VonHeikemen/lsp-zero.nvim",                   -- LSP wrapper.
+    branch = "v1.x",
+    dependencies = {
+      -- LSP Support.
+      {"neovim/nvim-lspconfig"},
+      {
+        "williamboman/mason.nvim",
+        build = function()
+          if not pcall(require, "mason") then return end
+          pcall(vim.cmd, "MasonUpdate")
+        end,
+      },
+      {"williamboman/mason-lspconfig.nvim"},
+      -- Autocompletion.
+      {"hrsh7th/nvim-cmp"},
+      {"hrsh7th/cmp-nvim-lsp"},
+      -- Snippets.
+      {"L3MON4D3/LuaSnip"},
     },
-    {"williamboman/mason-lspconfig.nvim"},
-    -- Autocompletion.
-    {"hrsh7th/nvim-cmp"},
-    {"hrsh7th/cmp-nvim-lsp"},
-    -- Snippets.
-    {"L3MON4D3/LuaSnip"},
   },
-},
 }, {})
 
 -- ==================== LSP ==========================
@@ -175,7 +175,8 @@ if pcall(require, "lsp-zero") then
     suggest_lsp_servers = false,
   })
   lsp.ensure_installed({
-    "ansiblels",                                   -- Add LSP servers here.
+    -- Add your LSP servers here.
+    "ansiblels",
     "bashls",
     "terraformls",
     "pyright",
@@ -187,5 +188,5 @@ end
 
 vim.api.nvim_create_autocmd("TextYankPost", {
   callback = function() vim.highlight.on_yank() end,
-  desc = "Briefly highlight yanked text"
+  desc = "Briefly highlight yanked text."
 })
