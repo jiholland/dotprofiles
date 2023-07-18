@@ -19,4 +19,4 @@ Install profiles with [Ansible](https://github.com/ansible/ansible):
 ```YAML
 ansible-playbook playbook_deploy_dotfiles.yml
 ```
-Jørn Ivar
+☕️ Jørn Ivar
