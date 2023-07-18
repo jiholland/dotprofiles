@@ -1,7 +1,5 @@
 ## dotprofiles
-Minimalistic dotprofiles for zsh, bash and nvim.
-- zprofile/zshrc is intended for macOS.
-- init.lua should work fine for Ansible/yaml, Terraform and Python coding.
+Minimalistic dotfiles for zsh, bash and nvim.
 
 Shell profiles provide:
 - colorization
@@ -12,8 +10,13 @@ Shell profiles provide:
 - [pyenv](https://github.com/pyenv/pyenv) (zsh)
 - aliases +++
 
+Neovim is loaded with:
+- [telescope](https://github.com/nvim-telescope/telescope.nvim)🔭
+- [copilot](https://github.com/zbirenbaum/copilot.lua)🤖
+- [lsp](https://github.com/VonHeikemen/lsp-zero.nvim) ++
+
 Install profiles with [Ansible](https://github.com/ansible/ansible):
 ```YAML
-ansible-playbook .playbook_deploy_dotprofiles.yml
+ansible-playbook playbook_deploy_dotfiles.yml
 ```
 Jørn Ivar

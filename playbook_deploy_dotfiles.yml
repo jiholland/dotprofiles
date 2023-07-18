@@ -19,9 +19,9 @@
         backup: true
       when: ansible_facts['user_shell'] is ansible.builtin.search('bash')
       loop:
-        - src: bash_profile
+        - src: .bash_profile
           dest: "{{ ansible_facts['user_dir'] }}/.bash_profile"
-        - src: bashrc
+        - src: .bashrc
           dest: "{{ ansible_facts['user_dir'] }}/.bashrc"
 
     - name: Install dotzshprofiles if shell is zsh.
@@ -32,28 +32,15 @@
         backup: true
       when: ansible_facts['user_shell'] is ansible.builtin.search('zsh')
       loop:
-        - src: zprofile
+        - src: .zprofile
           dest: "{{ ansible_facts['user_dir'] }}/.zprofile"
-        - src: zshrc
+        - src: .zshrc
           dest: "{{ ansible_facts['user_dir'] }}/.zshrc"
 
     - name: Install dotaliases.
       ansible.builtin.template:
-        src: aliases
+        src: .aliases
         dest: "{{ ansible_facts['user_dir'] }}/.aliases"
-        mode: u=rw,g=r,o=r
-        backup: true
-
-    - name: Ensure directory for neovim is present.
-      ansible.builtin.file:
-        path: "{{ ansible_facts['user_dir'] }}/.config/nvim"
-        state: directory
-        mode: u=rwx,g=rx,o=rx
-
-    - name: Install init.lua for neovim.
-      ansible.builtin.template:
-        src: init.lua
-        dest: "{{ ansible_facts['user_dir'] }}/.config/nvim/init.lua"
         mode: u=rw,g=r,o=r
         backup: true
 
@@ -65,7 +52,7 @@
 
     - name: Install tmux.conf for tmux.
       ansible.builtin.template:
-        src: tmux.conf
+        src: .config/tmux/tmux.conf
         dest: "{{ ansible_facts['user_dir'] }}/.config/tmux/tmux.conf"
         mode: u=rw,g=r,o=r
         backup: true
@@ -74,3 +61,32 @@
       ansible.builtin.git:
         repo: https://github.com/tmux-plugins/tpm
         dest: "{{ ansible_facts['user_dir'] }}/.config/tmux/plugins/tpm"
+
+    - name: Find all directories in .config/nvim
+      ansible.builtin.find:
+        paths: "{{ playbook_dir }}/.config/nvim"
+        recurse: true
+        file_type: directory
+      register: neovim_directories
+
+    - name: Ensure directories for neovim is present.
+      ansible.builtin.file:
+        path: "{{ ansible_facts['user_dir'] }}/.config/nvim/{{ item.split('nvim')[-1] }}"
+        state: directory
+        mode: u=rwx,g=rx,o=rx
+      loop: "{{ neovim_directories['files'] | map(attribute='path') }}"
+
+    - name: Find all files in .config/neovim
+      ansible.builtin.find:
+        paths: "{{ playbook_dir }}/.config/nvim"
+        recurse: true
+        file_type: file
+      register: neovim_files
+
+    - name: Install dotfiles for neovim.
+      ansible.builtin.template:
+        src: "{{ item }}"
+        dest: "{{ ansible_facts['user_dir'] }}/.config/nvim{{ item.split('nvim')[-1] }}"
+        mode: u=rw,g=r,o=r
+        backup: true
+      loop: "{{ neovim_files['files'] | map(attribute='path') }}"
