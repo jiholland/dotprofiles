@@ -21,8 +21,9 @@ Neovim is loaded with:
 - [undotree](https://github.com/mbbill/undotree)
 - [lsp-zero](https://github.com/VonHeikemen/lsp-zero.nvim) +++
 
-Install profiles with [Ansible](https://github.com/ansible/ansible)
--------------------------------------------------------------------
+Installation 
+------------
+Install with [Ansible](https://github.com/ansible/ansible):
 ```YAML
 ansible-playbook playbook_deploy_dotfiles.yml
 ```
