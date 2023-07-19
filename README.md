@@ -17,10 +17,10 @@ Shell profiles provide:
 
 Neovim is loaded with:
 - [lazy](https://github.com/folke/lazy.nvim)
-- [telescope](https://github.com/nvim-telescope/telescope.nvim)🔭
-- [telescope](https://github.com/nvim-telescope/telescope-file-browser.nvim)
-- [copilot](https://github.com/zbirenbaum/copilot.lua)🤖
-- [colorscheme](https://github.com/folke/tokyonight.nvim) and [lualine](https://github.com/nvim-lualine/lualine.nvim)🏙 
+- [telescope](https://github.com/nvim-telescope/telescope.nvim)
+- [telescope-file-browser](https://github.com/nvim-telescope/telescope-file-browser.nvim)
+- [copilot](https://github.com/zbirenbaum/copilot.lua)
+- [colorscheme](https://github.com/folke/tokyonight.nvim) and [lualine](https://github.com/nvim-lualine/lualine.nvim)
 - [git](https://github.com/tpope/vim-fugitive)
 - [highlighting](https://github.com/nvim-treesitter/nvim-treesitter)
 - [undotree](https://github.com/mbbill/undotree)
@@ -35,8 +35,8 @@ space+ff = Grep with Telescope.
 space+fd = Find diagnostics with Telescope.
 space+fh = Find help tags with Telescope.
 
-space+fb = Manage files with Telescope file browser.
-While in normal Telescope file browser mode (press esc after pressing space+fb).
+space+fb = Manage files with Telescope-file-browser.
+While in normal Telescope-file-browser mode (press esc after pressing space+fb).
   c = Create file.
   r = Rename file.
   m = Move file.
