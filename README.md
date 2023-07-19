@@ -1,10 +1,5 @@
 ## dotfiles
-Minimalistic dotfiles for zsh, bash and nvim.<br>
-
-Install profiles with [Ansible](https://github.com/ansible/ansible):
-```YAML
-ansible-playbook playbook_deploy_dotfiles.yml
-```
+Minimalistic dotfiles for zsh, bash, tmux and nvim.<br>
 
 Shell profiles provide:
 - colorization
@@ -26,7 +21,14 @@ Neovim is loaded with:
 - [undotree](https://github.com/mbbill/undotree)
 - [lsp-zero](https://github.com/VonHeikemen/lsp-zero.nvim) +++
 
-Neovim how-to:
+Install profiles with [Ansible](https://github.com/ansible/ansible)
+-------------------------------------------------------------------
+```YAML
+ansible-playbook playbook_deploy_dotfiles.yml
+```
+
+Neovim how-to
+-------------
 ```YAML
 ctrl+space = Accept Copilot suggestions.
 
