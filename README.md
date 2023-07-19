@@ -49,7 +49,7 @@ Using git while in normal mode.
 :Git push origin fix
 
 Language servers for ansible, bash, terraform and python is enabled.
-Add you required lsp's to ~/.config/nvim/lua/config/lsp.lua
+Add additional lsp's to ~/.config/nvim/lua/config/lsp.lua
 ```
 
 ☕️ Jørn Ivar
