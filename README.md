@@ -37,7 +37,7 @@ Neovim cheat-cheat:
 ctrl+space = Accept Copilot suggestions.
 
 space ff = Find files with Telescope.
-space fg = Grep with Telescope (requires [ripgrep](https://github.com/BurntSushi/ripgrep)).
+space fg = Grep with Telescope (requires https://github.com/BurntSushi/ripgrep).
 space fd = Find diagnostics with Telescope.
 space fh = Find help tags with Telescope.
 
