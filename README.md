@@ -60,6 +60,9 @@ Add additional lsp's to ~/.config/nvim/lua/config/lsp.lua
 
 Tmux
 ----
+Tmux uses [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm).<br>
+Press "ctrl+a I" (capital i, as in Install) to fetch plugins after tmux.conf is sourced and you have entered a tmux session.<br>
+
 Tmux cheat-cheat: 
 ```YAML
 tmux new -s mysession
@@ -71,6 +74,7 @@ ctrl+a d = Detach from session.
 ctrl+a % = Split pane horizontal.
 ctrl+a " = Split pane vertical.
 ctrl+a x = Close current panel.
+ctrl+a l = Switch pane (hjkl or arrows).
 
 ctrl+a c = Create window.
 ctrl+a n = Switch window.
