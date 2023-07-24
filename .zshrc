@@ -17,8 +17,6 @@ setopt APPEND_HISTORY                       # Append history list to history fil
 setopt EMACS                                # Emacs keybindings.
 unsetopt BEEP                               # Disable terminal bell.
 
-# ==================== Prompt =====================
-
 setopt PROMPT_SUBST                         # Enable parameter expansion, command substitution and arithmetic expansion in the prompt.
                                             # Function for getting the current git branch:
 if (which git &>/dev/null); then
@@ -34,16 +32,6 @@ else
   PS1="[%n@%m %2~ \$(git_branch)]%(!.#.$) " # [username@hostname working-dir (git-branch) ]prompt-indicator 
 fi
 
-# ==================== Aliases ====================
-
-if [[ "$TERM" == "xterm"*||"vte"* ]]; then  # If colors are "supported" then...
-  alias ls='ls --color'                      # Colorize ls command. Colors are based on $LSCOLORS from zprofile.
-  alias grep='grep --color'                  # Colorize grep command.
-  if (which tree &>/dev/null); then          # Colorize tree command.
-    alias tree='tree -C'
-  fi
-fi
-
-if [ -r "$HOME/.aliases" ]; then            # Source more aliases.
+if [ -r "$HOME/.aliases" ]; then            # Source aliases.
   source "$HOME/.aliases"
 fi
