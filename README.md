@@ -58,6 +58,9 @@ Using git while in normal mode.
 :Git commit -am fix
 :Git push origin fix
 
+space u  = Toggle undo-tree panel.
+ctrl+w h = Switch to undo-tree panel/window. 
+
 Language servers for ansible, bash, terraform and python is enabled.
 Add additional lsp's to ~/.config/nvim/lua/config/lsp.lua
 ```
