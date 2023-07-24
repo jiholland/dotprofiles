@@ -1,5 +1,5 @@
 ## Dotfiles
-Minimalistic dotfiles for zsh, bash, tmux and nvim.<br>
+Minimalistic dotfiles for zsh, bash, tmux and neovim.<br>
 
 Installation 
 ------------
@@ -15,7 +15,7 @@ Shell profiles provide:
 - prompt with git branch
 - history
 - completions
-- [homebrew](https://github.com/homebrew/homebrew) (zsh)
+- [homebrew](https://github.com/Homebrew/brew) (zsh)
 - [pyenv](https://github.com/pyenv/pyenv) (zsh)
 - aliases +++
 
@@ -23,14 +23,18 @@ Neovim
 ------
 Neovim is loaded the following plugins:
 - [lazy](https://github.com/folke/lazy.nvim)
+- [copilot](https://github.com/zbirenbaum/copilot.lua)
 - [telescope](https://github.com/nvim-telescope/telescope.nvim)
 - [telescope-file-browser](https://github.com/nvim-telescope/telescope-file-browser.nvim)
-- [copilot](https://github.com/zbirenbaum/copilot.lua)
-- [colorscheme](https://github.com/folke/tokyonight.nvim) and [lualine](https://github.com/nvim-lualine/lualine.nvim)
-- [git](https://github.com/tpope/vim-fugitive)
-- [highlighting](https://github.com/nvim-treesitter/nvim-treesitter)
+- [tokyonight colorscheme](https://github.com/folke/tokyonight.nvim)
+- [lualine](https://github.com/nvim-lualine/lualine.nvim)
+- [treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
+- [indent-blankline](https://github.com/lukas-reineke/indent-blankline.nvim)
+- [vim-fugitive](https://github.com/tpope/vim-fugitive)
 - [undotree](https://github.com/mbbill/undotree)
-- [lsp-zero](https://github.com/VonHeikemen/lsp-zero.nvim) +++
+- [lsp-zero](https://github.com/VonHeikemen/lsp-zero.nvim)
+- [ansible-vim](https://github.com/pearofducks/ansible-vim)
+- [vim-terrafrom](https://github.com/hashivim/vim-terraform)
 
 Neovim cheat-cheat:
 ```YAML
