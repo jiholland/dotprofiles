@@ -1,5 +1,5 @@
 ## Dotfiles
-Minimalistic dotfiles for zsh, bash, tmux and neovim.<br>
+Minimalistic dotfiles for zsh, bash, tmux and nvim.<br>
 
 Installation 
 ------------

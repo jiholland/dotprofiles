@@ -11,8 +11,6 @@ shopt -s checkwinsize                       # Update window size after each comm
 set -o emacs                                # Use emacs keybindings.
 bind 'set bell-style none'                  # Disable terminal bell.
 
-# ==================== Prompt =====================
-
 PROMPT_DIRTRIM=2                            # Number of trailing directories to retian when expanding the 'w' and 'W' prompt string escapes.
                                             # Function for getting the current git branch:
 if (which git &>/dev/null); then
@@ -35,16 +33,6 @@ fi
 
 unset -v {nocolor,green,yellow,cyan}        # Remove variables.
 
-# ==================== Aliases ====================
-
-if [[ "$TERM" == "xterm"*||"vte"* ]]; then  # If colors are "supported" then...
-  alias ls='ls --color'                      # Colorize ls command. Colors are based on $LS_COLORS from bash_profile.
-  alias grep='grep --color'                  # Colorize grep command.
-  if (which tree &>/dev/null); then          # Colorize tree command.
-    alias tree='tree -C'
-  fi
-fi
-
-if [ -r "$HOME/.aliases" ]; then            # Source more aliases.
+if [ -r "$HOME/.aliases" ]; then            # Source aliases.
   source "$HOME/.aliases"
 fi
