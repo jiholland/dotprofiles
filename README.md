@@ -73,7 +73,7 @@ ctrl+a d = Detach from session.
 
 ctrl+a % = Split pane horizontal.
 ctrl+a " = Split pane vertical.
-ctrl+a x = Close current panel.
+ctrl+a x = Close current pane.
 ctrl+a l = Switch pane (hjkl or arrows).
 
 ctrl+a c = Create window.
