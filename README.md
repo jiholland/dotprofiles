@@ -1,4 +1,4 @@
-## dotfiles
+## Dotfiles
 Minimalistic dotfiles for zsh, bash, tmux and nvim.<br>
 
 Installation 
@@ -21,7 +21,7 @@ Shell profiles provide:
 
 Neovim
 ------
-Neovim is loaded with:
+Neovim is loaded the following plugins:
 - [lazy](https://github.com/folke/lazy.nvim)
 - [telescope](https://github.com/nvim-telescope/telescope.nvim)
 - [telescope-file-browser](https://github.com/nvim-telescope/telescope-file-browser.nvim)
@@ -36,13 +36,13 @@ Neovim cheat-cheat:
 ```YAML
 ctrl+space = Accept Copilot suggestions.
 
-space+ff = Find files with Telescope.
-space+ff = Grep with Telescope.
-space+fd = Find diagnostics with Telescope.
-space+fh = Find help tags with Telescope.
+space ff = Find files with Telescope.
+space fg = Grep with Telescope (requires [ripgrep](https://github.com/BurntSushi/ripgrep)).
+space fd = Find diagnostics with Telescope.
+space fh = Find help tags with Telescope.
 
-space+fb = Manage files with Telescope-file-browser.
-While in normal Telescope-file-browser mode (press esc after pressing space+fb).
+space fb = Manage files with Telescope-file-browser.
+While in normal Telescope-file-browser mode (press esc after pressing space fb).
   c = Create file.
   r = Rename file.
   m = Move file.
@@ -56,6 +56,28 @@ Using git while in normal mode.
 
 Language servers for ansible, bash, terraform and python is enabled.
 Add additional lsp's to ~/.config/nvim/lua/config/lsp.lua
+```
+
+Tmux
+----
+Tmux cheat-cheat: 
+```YAML
+tmux new -s mysession
+tmux attach -t mysession
+tmux kill-session -t mysession
+
+ctrl+a d = Detach from session.
+
+ctrl+a % = Split pane horizontal.
+ctrl+a " = Split pane vertical.
+ctrl+a x = Close current panel.
+
+ctrl+a c = Create window.
+ctrl+a n = Switch window.
+ctrl+a & = Close window.
+
+ctrl+a [ = Enter copy mode. 
+Navigate like in nvim (scroll PgUp, PgDn, V or v to copy ++).
 ```
 
 ☕️ Jørn Ivar
