@@ -36,13 +36,6 @@ Neovim is loaded the following plugins:
 - [ansible-vim](https://github.com/pearofducks/ansible-vim)
 - [vim-terrafrom](https://github.com/hashivim/vim-terraform)
 
-Dependencies:
-- [nerd-font](https://github.com/ryanoasis/nerd-fonts)
-- [ripgrep](https://github.com/BurntSushi/ripgrep)
-- [fzf](https://github.com/junegunn/fzf)
-- [fd](https://github.com/sharkdp/fd)
-- [bat](https://github.com/sharkdp/bat)
-
 Cheat-cheat:
 ```YAML
 ctrl+space = Accept Copilot suggestions.
@@ -64,6 +57,7 @@ ctrl+w h = Switch to undo-tree panel/window.
 Language servers for ansible, bash, terraform and python is enabled.
 Add additional lsp's to ~/.config/nvim/lua/config/lsp.lua
 ```
+Dependencies: [nerd-font](https://github.com/ryanoasis/nerd-fonts), [ripgrep](https://github.com/BurntSushi/ripgrep), [fzf](https://github.com/junegunn/fzf), [fd](https://github.com/sharkdp/fd), [bat](https://github.com/sharkdp/bat)
 
 Tmux
 ----
