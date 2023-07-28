@@ -1,4 +1,4 @@
--- Colorscheme: tokyonight
+-- Colorscheme.
 
 return {
   {

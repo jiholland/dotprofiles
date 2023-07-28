@@ -16,5 +16,6 @@ vim.opt.tabstop = 2                                -- Number of spaces that a <T
 vim.opt.ignorecase = true                          -- Ignore case when searching.
 vim.opt.smartcase = true                           -- Override "ignorecase" if the search pattern contains upper case characters.
 
+vim.opt.timeoutlen = 350                           -- Time in milliseconds to wait for a mapped sequence to complete.
 vim.opt.swapfile = false                           -- Disable creation of swap files.
 vim.opt.undofile = true                            -- Enable persistent undo.
