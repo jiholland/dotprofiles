@@ -6,7 +6,7 @@ return {
     branch = "v1.x",
     dependencies = {
       -- LSP Support.
-      {"neovim/nvim-lspconfig"},
+      { "neovim/nvim-lspconfig" },
       {
         "williamboman/mason.nvim",
         build = function()
@@ -14,12 +14,12 @@ return {
           pcall(vim.cmd, "MasonUpdate")
         end,
       },
-      {"williamboman/mason-lspconfig.nvim"},
+      { "williamboman/mason-lspconfig.nvim" },
       -- Autocompletion.
-      {"hrsh7th/nvim-cmp"},
-      {"hrsh7th/cmp-nvim-lsp"},
+      { "hrsh7th/nvim-cmp" },
+      { "hrsh7th/cmp-nvim-lsp" },
       -- Snippets.
-      {"L3MON4D3/LuaSnip"},
+      { "L3MON4D3/LuaSnip" },
     },
   },
 }

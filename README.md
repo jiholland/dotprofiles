@@ -1,5 +1,5 @@
 ## Dotfiles
-Minimalistic dotfiles for zsh, bash, tmux and nvim.<br>
+Minimalistic dotfiles for zsh, bash, neovim and tmux.<br>
 
 Installation 
 ------------
@@ -24,8 +24,7 @@ Neovim
 Neovim is loaded the following plugins:
 - [lazy](https://github.com/folke/lazy.nvim)
 - [copilot](https://github.com/zbirenbaum/copilot.lua)
-- [telescope](https://github.com/nvim-telescope/telescope.nvim)
-- [telescope-file-browser](https://github.com/nvim-telescope/telescope-file-browser.nvim)
+- [fzf](https://github.com/ibhagwan/fzf-lua)
 - [tokyonight colorscheme](https://github.com/folke/tokyonight.nvim)
 - [lualine](https://github.com/nvim-lualine/lualine.nvim)
 - [treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
@@ -36,22 +35,20 @@ Neovim is loaded the following plugins:
 - [ansible-vim](https://github.com/pearofducks/ansible-vim)
 - [vim-terrafrom](https://github.com/hashivim/vim-terraform)
 
-Neovim cheat-cheat:
+Dependencies:
+- [nerd-font](https://github.com/ryanoasis/nerd-fonts)
+- [ripgrep](https://github.com/BurntSushi/ripgrep)
+- [fzf](https://github.com/junegunn/fzf)
+- [fd](https://github.com/sharkdp/fd)
+- [bat](https://github.com/sharkdp/bat)
+
+Cheat-cheat:
 ```YAML
 ctrl+space = Accept Copilot suggestions.
 
-space ff = Find files with Telescope.
-space fg = Grep with Telescope (requires https://github.com/BurntSushi/ripgrep).
-space fd = Find diagnostics with Telescope.
-space fh = Find help tags with Telescope.
-
-space fb = Manage files with Telescope-file-browser.
-While in normal Telescope-file-browser mode (press esc after pressing space fb).
-  c = Create file.
-  r = Rename file.
-  m = Move file.
-  d = Remove file.
-  y = Copy file.
+space ff = Find files with fzf.
+space fg = Live grep with fzf.
+space fk = List all fzf commands.
 
 Using git while in normal mode.
 :Git checkout -b fix
@@ -70,7 +67,7 @@ Tmux
 Tmux uses [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm).<br>
 Press "ctrl+a I" (capital i, as in Install) to fetch plugins after tmux.conf is sourced and you have entered a tmux session.<br>
 
-Tmux cheat-cheat: 
+Cheat-cheat: 
 ```YAML
 tmux new -s mysession
 tmux attach -t mysession
