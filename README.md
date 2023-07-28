@@ -46,7 +46,7 @@ space fk = List all fzf commands.
 
 space c c = Comment current line ('space c' in Visual mode).
 
-Using git (normal mode):
+Using git (normal mode)
 :Git checkout -b fix
 :Git commit -am fix
 :Git push origin fix
