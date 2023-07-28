@@ -1,4 +1,4 @@
--- Treesitter syntax highlighting.
+-- Syntax highlighting.
 
 return {
   {

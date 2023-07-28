@@ -25,12 +25,13 @@ Neovim is loaded the following plugins:
 - [lazy](https://github.com/folke/lazy.nvim)
 - [copilot](https://github.com/zbirenbaum/copilot.lua)
 - [fzf](https://github.com/ibhagwan/fzf-lua)
+- [vim-fugitive](https://github.com/tpope/vim-fugitive)
+- [undotree](https://github.com/mbbill/undotree)
+- [comment](https://github.com/numToStr/Comment.nvim)
 - [tokyonight colorscheme](https://github.com/folke/tokyonight.nvim)
 - [lualine](https://github.com/nvim-lualine/lualine.nvim)
 - [treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
 - [indent-blankline](https://github.com/lukas-reineke/indent-blankline.nvim)
-- [vim-fugitive](https://github.com/tpope/vim-fugitive)
-- [undotree](https://github.com/mbbill/undotree)
 - [lsp-zero](https://github.com/VonHeikemen/lsp-zero.nvim)
 - [ansible-vim](https://github.com/pearofducks/ansible-vim)
 - [vim-terrafrom](https://github.com/hashivim/vim-terraform)
@@ -50,7 +51,9 @@ space ff = Find files with fzf.
 space fg = Live grep with fzf.
 space fk = List all fzf commands.
 
-Using git while in normal mode.
+space c c = Comment current line ('space c' in Visual mode).
+
+Using git (normal mode):
 :Git checkout -b fix
 :Git commit -am fix
 :Git push origin fix

@@ -1,4 +1,4 @@
--- Lualine statusline.
+-- Statusline.
 
 return {
   {
