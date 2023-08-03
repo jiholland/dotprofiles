@@ -43,8 +43,8 @@ Cheat-cheat:
 ctrl+space = Accept Copilot suggestions.
 
 space ff = Find files with telescope.
-space fg = Live grep with telescop.
-space fb = Manage files with Telescope-file-browser:
+space fg = Live grep with telescope.
+space fb = Manage files with Telescope-file-browser
 - c = Create file.
 - r = Rename file.
 - m = Move file.
