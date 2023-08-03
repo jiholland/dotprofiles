@@ -24,7 +24,7 @@ Neovim
 Neovim is loaded the following plugins:
 - [lazy](https://github.com/folke/lazy.nvim)
 - [copilot](https://github.com/zbirenbaum/copilot.lua)
-- [telescope](https://github.com/nvim-telescope/telescope.nvim)
+- [fzf-lua](https://github.com/ibhagwan/fzf-lua)
 - [vim-fugitive](https://github.com/tpope/vim-fugitive)
 - [undotree](https://github.com/mbbill/undotree)
 - [comment](https://github.com/numToStr/Comment.nvim)
@@ -38,14 +38,11 @@ Neovim is loaded the following plugins:
 
 Cheat-cheat:
 ```YAML
-:checkhealth
-
 ctrl+space = Accept Copilot suggestions.
 
-space ff = Find files with telescope.
-space fg = Live grep with telescope.
-space fb = Manage files with Telescope-file-browser
-c = Create file. r = Rename file. m = Move file. d = Remove file. y = Copy file.
+space ff = Find files with fzf.
+space fg = Live grep with fzf.
+space fk = List all fzf commands.
 
 space c c = Comment current line ('space c' in Visual mode).
 
