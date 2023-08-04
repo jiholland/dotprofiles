@@ -26,11 +26,12 @@ Neovim is loaded the following plugins:
 - [copilot](https://github.com/zbirenbaum/copilot.lua)
 - [fzf-lua](https://github.com/ibhagwan/fzf-lua)
 - [vim-fugitive](https://github.com/tpope/vim-fugitive)
+- [vim-surround](https://github.com/tpope/vim-surround)
 - [undotree](https://github.com/mbbill/undotree)
 - [comment](https://github.com/numToStr/Comment.nvim)
-- [tokyonight colorscheme](https://github.com/folke/tokyonight.nvim)
+- [colorscheme](https://github.com/folke/tokyonight.nvim)
 - [lualine](https://github.com/nvim-lualine/lualine.nvim)
-- [treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
+- [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
 - [indent-blankline](https://github.com/lukas-reineke/indent-blankline.nvim)
 - [lsp-zero](https://github.com/VonHeikemen/lsp-zero.nvim)
 - [ansible-vim](https://github.com/pearofducks/ansible-vim)
@@ -38,24 +39,24 @@ Neovim is loaded the following plugins:
 
 Cheat-cheat:
 ```YAML
-ctrl+space = Accept Copilot suggestions.
+ctrl+space = Accept Copilot suggestions in insert-mode.
 
 space ff = Find files with fzf.
 space fg = Live grep with fzf.
 space fk = List all fzf commands.
 
-space c c = Comment current line ('space c' in Visual mode).
+g c c = Comment current line ('g c' in Visual mode).
 
-Using git (normal mode)
+cs"'  = Change surrounding " to '.
+
+Using git
 :Git checkout -b fix
-:Git commit -am fix
-:Git push origin fix
 
 space u  = Toggle undo-tree panel.
 ctrl+w h = Switch to undo-tree panel/window. 
 
-Language servers for ansible, bash, terraform and python is enabled.
-Add additional lsp's to ~/.config/nvim/lua/config/lsp.lua
+lsp-zero
+:LspInstall
 ```
 Dependencies: [nerd-font](https://github.com/ryanoasis/nerd-fonts), [ripgrep](https://github.com/BurntSushi/ripgrep), [fzf](https://github.com/junegunn/fzf), [fd](https://github.com/sharkdp/fd), [bat](https://github.com/sharkdp/bat)
 
