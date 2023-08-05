@@ -7,7 +7,10 @@ return {
       if not pcall(require, "lualine") then return end
       require("lualine").setup({
         options = {
-          theme = "tokyonight",
+          icons_enabled = true, -- Requires nerd-font.
+          theme = "auto",
+          section_separators = "",
+          component_separators = "",
         }
       })
     end,
