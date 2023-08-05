@@ -26,7 +26,8 @@ Neovim is loaded the following plugins:
 - [copilot](https://github.com/zbirenbaum/copilot.lua)
 - [fzf-lua](https://github.com/ibhagwan/fzf-lua)
 - [vim-fugitive](https://github.com/tpope/vim-fugitive)
-- [vim-surround](https://github.com/tpope/vim-surround)
+- [gitsigns](https://github.com/lewis6991/gitsigns.nvim)
+- [nvim-surround](https://github.com/kylechui/nvim-surround)
 - [undotree](https://github.com/mbbill/undotree)
 - [comment](https://github.com/numToStr/Comment.nvim)
 - [colorscheme](https://github.com/folke/tokyonight.nvim)
@@ -45,9 +46,12 @@ space ff = Find files with fzf.
 space fg = Live grep with fzf.
 space fk = List all fzf commands.
 
-g c c = Comment current line ('g c' in Visual mode).
+space s c "' = change surround " to '.
 
-cs"'  = Change surrounding " to '.
+space g d = View deleted change in git.
+space g b = View last commit in git.
+
+space c c = Comment current line ('space c' in Visual mode).
 
 Using git
 :Git checkout -b fix
