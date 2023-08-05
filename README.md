@@ -67,7 +67,7 @@ Dependencies: [nerd-font](https://github.com/ryanoasis/nerd-fonts), [ripgrep](ht
 Tmux
 ----
 Tmux uses [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm).<br>
-Press "ctrl+a I" (capital i, as in Install) to fetch plugins after tmux.conf is sourced and you have entered a tmux session.<br>
+Press "prefix I" (capital i, as in Install) to fetch plugins after tmux.conf is sourced and you have entered a tmux session.<br>
 
 Cheat-cheat: 
 ```YAML
@@ -75,19 +75,25 @@ tmux new -s mysession
 tmux attach -t mysession
 tmux kill-session -t mysession
 
-ctrl+a d = Detach from session.
+prefix = Ctrl+a
 
-ctrl+a % = Split pane horizontal.
-ctrl+a " = Split pane vertical.
-ctrl+a x = Close current pane.
-ctrl+a l = Switch pane (hjkl or arrows).
+prefix d = Detach from session.
 
-ctrl+a c = Create window.
-ctrl+a n = Switch window.
-ctrl+a & = Close window.
+prefix % = Split pane horizontal.
+prefix " = Split pane vertical.
+prefix x = Close current pane.
+prefix l = Switch pane (hjkl or arrows).
 
-ctrl+a [ = Enter copy mode. 
+prefix c = Create window.
+prefix n = Switch window.
+prefix & = Close window.
+
+prefix [ = Enter copy mode. 
 Navigate like in nvim (scroll PgUp, PgDn, V or v to copy ++).
+
+
+prefix Ctrl-s - Save session.
+prefix Ctrl-r - Restore session.
 ```
 
 ☕️ Jørn Ivar
