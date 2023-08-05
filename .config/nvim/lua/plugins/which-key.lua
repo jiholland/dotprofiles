@@ -3,10 +3,11 @@
 return {
   {
     "folke/which-key.nvim",
-    config = function()
-      if not pcall(require, "which-key") then return end
-      require("which-key").setup({
-      })
+    event = "VeryLazy",
+    init = function()
+      vim.opt.timeout = true
+      vim.opt.timeoutlen = 300
     end,
+    opts = {}
   },
 }
