@@ -95,5 +95,9 @@ Navigate like in nvim (scroll PgUp, PgDn, V or v to copy ++).
 prefix Ctrl-s - Save session.
 prefix Ctrl-r - Restore session.
 ```
+Copy-past might require xclip or xcopy.
+```YAML
+sudo dnf install xclip
+```
 
 ☕️ Jørn Ivar
