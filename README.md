@@ -21,7 +21,7 @@ Shell profiles provide:
 
 Neovim
 ------
-Neovim is loaded the following plugins:
+Neovim is loaded with the following plugins:
 - [lazy](https://github.com/folke/lazy.nvim)
 - [copilot](https://github.com/zbirenbaum/copilot.lua)
 - [fzf-lua](https://github.com/ibhagwan/fzf-lua)
@@ -58,11 +58,14 @@ Using git
 
 space u  = Toggle undo-tree panel.
 ctrl+w h = Switch to undo-tree panel/window. 
-
-lsp-zero
-:LspInstall
 ```
-Dependencies: [nerd-font](https://github.com/ryanoasis/nerd-fonts), [ripgrep](https://github.com/BurntSushi/ripgrep), [fzf](https://github.com/junegunn/fzf), [fd](https://github.com/sharkdp/fd), [bat](https://github.com/sharkdp/bat)
+Dependencies:
+- [nodejs](https://github.com/nodejs)
+- [nerd-font](https://github.com/ryanoasis/nerd-fonts)
+- [ripgrep](https://github.com/BurntSushi/ripgrep)
+- [fzf](https://github.com/junegunn/fzf)
+- [fd](https://github.com/sharkdp/fd)
+- [bat](https://github.com/sharkdp/bat)
 
 Tmux
 ----
@@ -90,7 +93,6 @@ prefix & = Close window.
 
 prefix [ = Enter copy mode. 
 Navigate like in nvim (scroll PgUp, PgDn, V or v to copy ++).
-
 
 prefix Ctrl-s - Save session.
 prefix Ctrl-r - Restore session.
