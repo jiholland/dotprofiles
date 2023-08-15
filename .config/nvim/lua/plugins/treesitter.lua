@@ -8,7 +8,6 @@ return {
     },
     build = ":TSUpdate",
     config = function()
-      if not pcall(require, "nvim-treesitter") then return end
       require("nvim-treesitter.configs").setup({
         ensure_installed = {
           "c",
