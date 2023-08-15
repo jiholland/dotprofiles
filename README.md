@@ -61,8 +61,12 @@ ctrl+w h = Switch to undo-tree panel/window.
 ```
 Dependencies:
 - [nodejs](https://github.com/nodejs)
-- [nerd-font](https://github.com/ryanoasis/nerd-fonts)
+- [fzf](https://github.com/junegunn/fzf)
 - [ripgrep](https://github.com/BurntSushi/ripgrep)
+- [nerd-font](https://github.com/ryanoasis/nerd-fonts)
+```YAML
+brew install fzf ripgrep nodejs
+```
 
 ## Tmux
 Tmux uses [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm).<br>
@@ -95,7 +99,7 @@ prefix Ctrl-r - Restore session.
 ```
 Copy-past might require xclip or xcopy.
 ```YAML
-sudo dnf install xclip
+dnf install xclip
 ```
 
 ☕️ Jørn Ivar
