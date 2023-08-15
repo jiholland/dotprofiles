@@ -1,15 +1,13 @@
-## Dotfiles
-Minimalistic dotfiles for zsh, bash, neovim and tmux.<br>
+# Dotfiles
+Dotfiles for zsh, bash, neovim and tmux.
 
-Installation 
-------------
+## Installation 
 Install dotfiles with [Ansible](https://github.com/ansible/ansible):
 ```YAML
 ansible-playbook playbook_deploy_dotfiles.yml
 ```
 
-Shell profiles
---------------
+## Shell profiles
 Shell profiles provide:
 - colorization
 - prompt with git branch
@@ -17,10 +15,12 @@ Shell profiles provide:
 - completions
 - [homebrew](https://github.com/Homebrew/brew) (zsh)
 - [pyenv](https://github.com/pyenv/pyenv) (zsh)
-- aliases +++
+- aliases
 
-Neovim
-------
+MacOS dependencies:
+- [iterm2](https://github.com/gnachman/iTerm2)
+
+## Neovim
 Neovim is loaded with the following plugins:
 - [lazy](https://github.com/folke/lazy.nvim)
 - [copilot](https://github.com/zbirenbaum/copilot.lua)
@@ -38,7 +38,7 @@ Neovim is loaded with the following plugins:
 - [ansible-vim](https://github.com/pearofducks/ansible-vim)
 - [vim-terrafrom](https://github.com/hashivim/vim-terraform)
 
-Cheat-cheat:
+Note-to-self:
 ```YAML
 ctrl+space = Accept Copilot suggestions in insert-mode.
 
@@ -63,16 +63,12 @@ Dependencies:
 - [nodejs](https://github.com/nodejs)
 - [nerd-font](https://github.com/ryanoasis/nerd-fonts)
 - [ripgrep](https://github.com/BurntSushi/ripgrep)
-- [fzf](https://github.com/junegunn/fzf)
-- [fd](https://github.com/sharkdp/fd)
-- [bat](https://github.com/sharkdp/bat)
 
-Tmux
-----
+## Tmux
 Tmux uses [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm).<br>
 Press "prefix I" (capital i, as in Install) to fetch plugins after tmux.conf is sourced and you have entered a tmux session.<br>
 
-Cheat-cheat: 
+Note-to-self:
 ```YAML
 tmux new -s mysession
 tmux attach -t mysession
