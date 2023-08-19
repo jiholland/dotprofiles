@@ -18,8 +18,8 @@ export HISTFILE="$HOME/.zsh_history"        # The file to save the history.
 export SAVEHIST=2000                        # Maximum number of history events to save in history file.
 export HISTSIZE=2000                        # Maximum number of events stored in the internal history list.
 
-if (which vim &>/dev/null); then            # Set vim as default visual editor.
-  export VISUAL='vim'
+if (which nvim &>/dev/null); then           # Set neovim as default visual editor.
+  export VISUAL='nvim'
 fi
                                             # Enable completion for zsh.
 if [ -d "$BREW_PREFIX/share/zsh/site-functions" ] && [[ ":$FPATH:" != *":$BREW_PREFIX/share/zsh/site-functions:"* ]]; then
