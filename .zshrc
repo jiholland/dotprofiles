@@ -14,7 +14,7 @@ autoload -Uz compinit; compinit             # Enable the zsh completion system.
 setopt HIST_IGNORE_SPACE                    # Lines which begin with a space character are not saved in the history list.
 setopt HIST_IGNORE_DUPS                     # lines which match the previous history entry are not saved in the history list. 
 setopt APPEND_HISTORY                       # Append history list to history file.
-setopt EMACS                                # Emacs keybindings.
+setopt VI                                   # Enable vi mode.
 unsetopt BEEP                               # Disable terminal bell.
 
 setopt PROMPT_SUBST                         # Enable parameter expansion, command substitution and arithmetic expansion in the prompt.
