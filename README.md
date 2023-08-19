@@ -10,15 +10,15 @@ ansible-playbook playbook_deploy_dotfiles.yml
 ## Shell profiles
 Shell profiles provide:
 - colorization
-- prompt with git branch
+- prompt with [git](https://github/com/git/git) branch
 - history
 - completions
 - [homebrew](https://github.com/Homebrew/brew) (zsh)
 - [pyenv](https://github.com/pyenv/pyenv) (zsh)
 - aliases
 
-MacOS dependencies:
-- [iterm2](https://github.com/gnachman/iTerm2)
+macOS dependencies:
+- [iterm2](https://github.com/gnachman/iTerm2) (true colors).
 
 ## Neovim
 Neovim is loaded with the following plugins:
@@ -60,12 +60,13 @@ space u  = Toggle undo-tree panel.
 ctrl+w h = Switch to undo-tree panel/window. 
 ```
 Dependencies:
+- [git](https://github.com/git/git)
 - [nodejs](https://github.com/nodejs)
 - [fzf](https://github.com/junegunn/fzf)
 - [ripgrep](https://github.com/BurntSushi/ripgrep)
 - [nerd-font](https://github.com/ryanoasis/nerd-fonts)
 ```YAML
-brew install fzf ripgrep nodejs
+brew install git nodejs fzf ripgrep
 ```
 
 ## Tmux
