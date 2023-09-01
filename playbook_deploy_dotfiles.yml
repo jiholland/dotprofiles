@@ -87,7 +87,7 @@
     - name: Install dotfiles for neovim.
       ansible.builtin.template:
         src: "{{ item }}"
-        dest: "{{ ansible_facts['user_dir'] }}/.config/nvim{{ item.split('nvim')[-1] }}"
+        dest: "{{ ansible_facts['user_dir'] }}/.config/nvim{{ item.split('.config/nvim')[-1] }}"
         mode: u=rw,g=r,o=r
         backup: true
       loop: "{{ neovim_files['files'] | map(attribute='path') }}"
