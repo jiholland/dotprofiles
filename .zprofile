@@ -2,7 +2,8 @@
 
 BREW_PREFIX="/opt/homebrew"                 # Default brew prefix for macOS with ARM chip. Change as needed.
 
-pathadd() {                                 # Function for adding entries to path.
+# Function for adding entries to path.
+pathadd() {
     if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
       PATH="$1:$PATH"
     fi
@@ -18,10 +19,12 @@ export HISTFILE="$HOME/.zsh_history"        # The file to save the history.
 export SAVEHIST=2000                        # Maximum number of history events to save in history file.
 export HISTSIZE=2000                        # Maximum number of events stored in the internal history list.
 
-if (which nvim &>/dev/null); then           # Set neovim as default visual editor.
+# Set neovim as default visual editor.
+if (which nvim &>/dev/null); then
   export VISUAL='nvim'
 fi
-                                            # Enable completion for zsh.
+
+# Enable completion for zsh.
 if [ -d "$BREW_PREFIX/share/zsh/site-functions" ] && [[ ":$FPATH:" != *":$BREW_PREFIX/share/zsh/site-functions:"* ]]; then
   FPATH="$BREW_PREFIX/share/zsh/site-functions:$FPATH"
 fi
@@ -29,7 +32,7 @@ fi
 unset -f pathadd                            # Remove pathadd function.
 unset -v BREW_PREFIX                        # Remove variable.
 
-                                            # Source ~/.zshrc
+# Source ~/.zshrc
 if [ "$ZSHRC_SOURCED" != "yes" ] && [ -r "$HOME/.zshrc" ]; then
   source "$HOME/.zshrc"
 fi
