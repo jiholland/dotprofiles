@@ -62,11 +62,10 @@ ctrl+w h = Switch to undo-tree panel/window.
 Dependencies:
 - [git](https://github.com/git/git)
 - [nodejs](https://github.com/nodejs)
-- [fzf](https://github.com/junegunn/fzf)
 - [ripgrep](https://github.com/BurntSushi/ripgrep)
 - [nerd-font](https://github.com/ryanoasis/nerd-fonts)
 ```YAML
-brew install git nodejs fzf ripgrep
+brew install git nodejs ripgrep
 ```
 
 ## Tmux
@@ -80,6 +79,9 @@ tmux attach -t mysession
 tmux kill-session -t mysession
 
 prefix = Ctrl+a
+
+prefix I = Install plugins.
+prefix U = Upgrade plugins.
 
 prefix d = Detach from session.
 
