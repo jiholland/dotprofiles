@@ -1,9 +1,10 @@
 # ~/.bash_profile
 
-pathadd() {                                 # Function for adding entries to path.
+# Function for adding entries to path.
+pathadd() {
     if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
         PATH="$1:$PATH"
-    fi  
+    fi
 }
 
 pathadd "$HOME/.local/bin"                  # Add ~/.local/bin to path.
@@ -15,10 +16,12 @@ export HISTFILESIZE=2000                    # Maximum number of history events t
 export HISTSIZE=2000                        # Maximum number of events stored in the internal history list.
 export HISTCONTROL="ignoreboth"             # Lines which begin with a space character and lines which match the previous history entry are not saved in the history list.
 
-if (which nvim &>/dev/null); then           # Set neovim as default visual editor.
+# Set neovim as default visual editor.
+if (which nvim &>/dev/null); then
   export VISUAL='nvim'
 fi
-                                            # Enable completion for bash.
+
+# Enable completion for bash.
 if [ -f /usr/share/bash-completion/bash_completion ]; then
   source /usr/share/bash-completion/bash_completion
 elif [ -d /etc/bash_completion.d ]; then
@@ -31,7 +34,7 @@ fi
 unset -v COMPLETION                         # Remove variable.
 unset -f pathadd                            # Remove function.
 
-                                            # Source ~/.bashrc
+# Source ~/.bashrc
 if [ "$BASHRC_SOURCED" != "yes" ] && [ -r "$HOME/.bashrc" ]; then
   source "$HOME/.bashrc"
 fi
