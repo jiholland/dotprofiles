@@ -92,11 +92,8 @@ prefix c = Create window.
 prefix n = Switch window.
 prefix & = Close window.
 
-prefix [ = Enter copy mode. 
-Navigate like in nvim (scroll PgUp, PgDn, V or v to copy ++).
-
-prefix Ctrl-s - Save session.
-prefix Ctrl-r - Restore session.
+prefix esc = Enter copy mode. 
+Navigate like in vim (scroll PgUp, PgDn, V or v to copy ++).
 ```
 Copy-past might require xclip or xcopy.
 ```YAML
