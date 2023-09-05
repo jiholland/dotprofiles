@@ -57,12 +57,6 @@
         mode: u=rw,g=r,o=r
         backup: true
 
-    - name: Install tmux plugin manager.
-      ansible.builtin.git:
-        repo: https://github.com/tmux-plugins/tpm
-        dest: "{{ ansible_facts['user_dir'] }}/.config/tmux/plugins/tpm"
-        version: master
-
     - name: Find all directories in .config/nvim
       ansible.builtin.find:
         paths: "{{ playbook_dir }}/.config/nvim"
