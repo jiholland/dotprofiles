@@ -78,6 +78,8 @@ tmux new -s mysession
 tmux attach -t mysession
 tmux kill-session -t mysession
 
+prefix = Ctrl+a
+
 prefix esc = Enter copy mode. 
 
 prefix I = Install plugins.
