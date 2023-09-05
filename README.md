@@ -78,7 +78,7 @@ tmux new -s mysession
 tmux attach -t mysession
 tmux kill-session -t mysession
 
-prefix = Ctrl+a
+prefix esc = Enter copy mode. 
 
 prefix I = Install plugins.
 prefix U = Upgrade plugins.
@@ -94,7 +94,6 @@ prefix c = Create window.
 prefix n = Switch window.
 prefix & = Close window.
 
-prefix esc = Enter copy mode. 
 Navigate like in vim (scroll PgUp, PgDn, V or v to copy ++).
 ```
 Copy-past might require xclip or xcopy.
