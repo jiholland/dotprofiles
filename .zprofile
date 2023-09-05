@@ -16,8 +16,8 @@ pathadd "$HOME/.pyenv/bin"                  # Add pyenv's bin to path.
 export LC_ALL='en_US.UTF-8'                 # Use en_US.UTF-8 encoding for all locale settings.
 export LSCOLORS='GxFx'                      # Colors for ls command (directory, symbolic link and leave the rest to default values).
 export HISTFILE="$HOME/.zsh_history"        # The file to save the history.
-export SAVEHIST=2000                        # Maximum number of history events to save in history file.
-export HISTSIZE=2000                        # Maximum number of events stored in the internal history list.
+export SAVEHIST=10000                       # Maximum number of history events to save in history file.
+export HISTSIZE=10000                       # Maximum number of events stored in the internal history list.
 
 # Set neovim as default visual editor.
 if (which nvim &>/dev/null); then
