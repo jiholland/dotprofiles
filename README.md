@@ -69,8 +69,6 @@ brew install git nodejs ripgrep
 ```
 
 ## Tmux
-Tmux uses [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm).<br>
-Press "prefix I" (capital i, as in Install) to fetch plugins after tmux.conf is sourced and you have entered a tmux session.<br>
 
 Note-to-self:
 ```YAML
@@ -82,9 +80,6 @@ prefix = Ctrl+a
 
 prefix esc = Enter copy mode. 
 
-prefix I = Install plugins.
-prefix U = Upgrade plugins.
-
 prefix d = Detach from session.
 
 prefix % = Split pane horizontal.
@@ -95,8 +90,6 @@ prefix l = Switch pane (hjkl or arrows).
 prefix c = Create window.
 prefix n = Switch window.
 prefix & = Close window.
-
-Navigate like in vim (scroll PgUp, PgDn, V or v to copy ++).
 ```
 Copy-past might require xclip or xcopy.
 ```YAML
