@@ -11,7 +11,7 @@ fi
 shopt -s histappend                         # Append history list to history file.
 shopt -s checkwinsize                       # Update window size after each command.
 set -o vi                                   # Use vi keybindings.
-bind 'set bell-style none'                  # Disable terminal bell.
+bind "set bell-style none"                  # Disable terminal bell.
 
 PROMPT_DIRTRIM=2                            # Number of trailing directories to retian when expanding the 'w' and 'W' prompt string escapes.
 
