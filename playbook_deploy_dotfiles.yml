@@ -24,19 +24,6 @@
         - src: .bashrc
           dest: "{{ ansible_facts['user_dir'] }}/.bashrc"
 
-    - name: Install dotzshprofiles if shell is zsh.
-      ansible.builtin.template:
-        src: "{{ item['src'] }}"
-        dest: "{{ item['dest'] }}"
-        mode: u=rw,g=r,o=r
-        backup: true
-      when: ansible_facts['user_shell'] is ansible.builtin.search('zsh')
-      loop:
-        - src: .zprofile
-          dest: "{{ ansible_facts['user_dir'] }}/.zprofile"
-        - src: .zshrc
-          dest: "{{ ansible_facts['user_dir'] }}/.zshrc"
-
     - name: Install dotaliases.
       ansible.builtin.template:
         src: .aliases
@@ -46,7 +33,7 @@
 
     - name: Ensure directory for tmux is present.
       ansible.builtin.file:
-        path: "{{ ansible_facts['user_dir'] }}/.config/tmux/plugins"
+        path: "{{ ansible_facts['user_dir'] }}/.config/tmux"
         state: directory
         mode: u=rwx,g=rx,o=rx
 

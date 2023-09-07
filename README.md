@@ -1,5 +1,5 @@
 # Dotfiles
-Dotfiles for zsh, bash, neovim and tmux.
+Dotfiles for bash, neovim and tmux.
 
 ## Installation 
 Install dotfiles with [Ansible](https://github.com/ansible/ansible):
@@ -14,7 +14,6 @@ Shell profiles provide:
 - history
 - completions
 - [homebrew](https://github.com/Homebrew/brew) (zsh)
-- [pyenv](https://github.com/pyenv/pyenv) (zsh)
 - aliases
 
 macOS dependencies:
