@@ -13,7 +13,6 @@ Shell profiles provide:
 - prompt with [git](https://github/com/git/git) branch
 - history
 - completions
-- [homebrew](https://github.com/Homebrew/brew) (zsh)
 - aliases
 
 macOS dependencies:
