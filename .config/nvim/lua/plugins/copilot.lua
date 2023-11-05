@@ -3,17 +3,22 @@
 return {
   {
     "zbirenbaum/copilot.lua",
-    lazy = false,
+    cmd = "Copilot",
+    event = "InsertEnter",
     config = function()
       require("copilot").setup({
         suggestion = {
-          auto_trigger = true,
+          auto_trigger = false,
           keymap = {
+            next = "<c-c>",
+            prev = "<c-p>",
             accept = "<c-space>",
+            dismiss = "<c-q>"
           },
         },
         filetypes = {
-          ["yaml"] = true,
+          yaml = true,
+          markdown = true,
         },
       })
     end,
