@@ -32,6 +32,7 @@ Neovim is loaded with the following plugins:
 - [lualine](https://github.com/nvim-lualine/lualine.nvim)
 - [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
 - [indent-blankline](https://github.com/lukas-reineke/indent-blankline.nvim)
+- [leap](https://github.com/ggandor/leap.nvim)
 - [lsp-zero](https://github.com/VonHeikemen/lsp-zero.nvim)
 - [ansible-vim](https://github.com/pearofducks/ansible-vim)
 - [vim-terrafrom](https://github.com/hashivim/vim-terraform)
@@ -39,6 +40,8 @@ Neovim is loaded with the following plugins:
 Note-to-self:
 ```YAML
 ctrl+space = Accept Copilot suggestions in insert-mode.
+
+ctrl+y = Confirm highlighted lsp.
 
 space ff = Find files with fzf.
 space fg = Live grep with fzf.
