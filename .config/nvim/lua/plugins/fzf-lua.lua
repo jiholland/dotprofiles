@@ -10,9 +10,9 @@ return {
     },
     config = function()
       require("fzf-lua").setup({})
-      vim.keymap.set("n", "<leader>ff", "<cmd>lua require('fzf-lua').files()<CR>", { desc = "Find files." }, { silent = true })
-      vim.keymap.set("n", "<leader>fg", "<cmd>lua require('fzf-lua').live_grep()<CR>", { desc = "Live grep." }, { silent = true })
-      vim.keymap.set("n", "<leader>fk", "<cmd>lua require('fzf-lua').builtin()<CR>", { desc = "List all fzf commands." }, { silent = true })
+      vim.keymap.set("n", "<leader>ff", function() require('fzf-lua').files() end, { desc = "Find files." })
+      vim.keymap.set("n", "<leader>fg", function() require('fzf-lua').live_grep() end, { desc = "Live grep." })
+      vim.keymap.set("n", "<leader>fk", function() require('fzf-lua').builtin() end, { desc = "List all fzf commands." })
     end,
   },
 }
