@@ -39,7 +39,7 @@ Neovim is loaded with the following plugins:
 
 Note-to-self:
 ```YAML
-Run install, clean and update on all plugins:
+Run install, clean and update on all plugins.
 :Lazy sync
 
 ctrl+c = Show Copilot suggestions in insert-mode.
@@ -67,6 +67,9 @@ ctrl+w h = Switch to undo-tree panel/window.
 space x x = Toggle trouble panel.
 
 s te = Leap to word starting with "te" (press enter, S for upwards).
+
+ctrl+u = Move up.
+ctrl+d = Move down.
 ```
 Dependencies:
 - [git](https://github.com/git/git)
@@ -107,7 +110,7 @@ Copy-past might require xclip or xcopy.
 ```YAML
 dnf install xclip
 ```
-If MacOS you might need to add something like this to ~/.config/tmux/tmux.conf (path issues).
+If path issues in MacOS - add something like this to ~/.config/tmux/tmux.conf
 ```YAML
 set-option -g default-command "/opt/homebrew/bin/bash"
 ```
