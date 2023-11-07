@@ -21,25 +21,28 @@ macOS dependencies:
 ## Neovim
 Neovim is loaded with the following plugins:
 - [lazy](https://github.com/folke/lazy.nvim)
-- [copilot](https://github.com/zbirenbaum/copilot.lua)
 - [fzf-lua](https://github.com/ibhagwan/fzf-lua)
+- [leap](https://github.com/ggandor/leap.nvim)
 - [vim-fugitive](https://github.com/tpope/vim-fugitive)
 - [gitsigns](https://github.com/lewis6991/gitsigns.nvim)
 - [nvim-surround](https://github.com/kylechui/nvim-surround)
 - [undotree](https://github.com/mbbill/undotree)
 - [comment](https://github.com/numToStr/Comment.nvim)
-- [leap](https://github.com/ggandor/leap.nvim)
 - [trouble](https://github.com/folke/trouble.nvim)
-- [colorscheme](https://github.com/folke/tokyonight.nvim)
+- [copilot](https://github.com/zbirenbaum/copilot.lua)
+- [lsp-zero](https://github.com/VonHeikemen/lsp-zero.nvim)
 - [lualine](https://github.com/nvim-lualine/lualine.nvim)
+- [colorscheme](https://github.com/folke/tokyonight.nvim)
 - [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
 - [indent-blankline](https://github.com/lukas-reineke/indent-blankline.nvim)
-- [lsp-zero](https://github.com/VonHeikemen/lsp-zero.nvim)
 - [ansible-vim](https://github.com/pearofducks/ansible-vim)
-- [vim-terrafrom](https://github.com/hashivim/vim-terraform)
 
 Note-to-self:
 ```YAML
+Run install, clean and update on all plugins:
+:Lazy sync
+
+ctrl+c = Show Copilot suggestions in insert-mode.
 ctrl+space = Accept Copilot suggestions in insert-mode.
 
 ctrl+y = Confirm highlighted lsp.
@@ -50,16 +53,20 @@ space fk = List all fzf commands.
 
 space s c "' = change surround " to '.
 
-space g d = View deleted change in git.
-space g b = View last commit in git.
+space g h = Preview git hunk.
+space g c = View last commit in git.
 
 space c c = Comment current line ('space c' in Visual mode).
 
-Using git
+Using git (fugitive).
 :Git checkout -b fix
 
 space u  = Toggle undo-tree panel.
 ctrl+w h = Switch to undo-tree panel/window. 
+
+space x x = Toggle trouble panel.
+
+s te = Leap to word starting with "te" (press enter, S for upwards).
 ```
 Dependencies:
 - [git](https://github.com/git/git)
@@ -92,10 +99,17 @@ prefix l = Switch pane (hjkl or arrows).
 prefix c = Create window.
 prefix n = Switch window.
 prefix & = Close window.
+prefix , = Rename window.
+prefix - = Move window.
+
 ```
 Copy-past might require xclip or xcopy.
 ```YAML
 dnf install xclip
+```
+If MacOS you might need to add something like this to ~/.config/tmux/tmux.conf (path issues).
+```YAML
+set-option -g default-command "/opt/homebrew/bin/bash"
 ```
 
 ☕️ Jørn Ivar
