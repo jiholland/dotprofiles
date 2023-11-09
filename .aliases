@@ -15,7 +15,7 @@ if [[ "$TERM" == *"color"* ]]; then       # If colors are "supported" then...
 fi
 
 alias mkdir="mkdir -pv"                   # Create parent directories if they don't exist. Print a message for each created directory.
-alias cp="cp -ur"                         # Copy only when the source file is newer or missing. Copy directories recursivley.
+alias cp="cp -r"                          # Copy directories recursivley.
 alias ping="ping -c 5"                    # Stop ping after 5 echo_request packets.
 
 alias ll="ls -l"                          # List files in long format.
