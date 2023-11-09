@@ -22,7 +22,6 @@ return {
       lsp.ensure_installed({
         "ansiblels",
         "bashls",
-        "html",
         "lua_ls",
         "marksman",
         "pyright",

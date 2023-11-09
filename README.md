@@ -1,5 +1,5 @@
 # Dotfiles
-Dotfiles for bash, neovim and tmux.
+Dotfiles for bash, neovim, tmux and ansible.
 
 ## Installation 
 Install dotfiles with [Ansible](https://github.com/ansible/ansible):
@@ -24,7 +24,6 @@ Neovim is loaded with the following plugins:
 - [fzf-lua](https://github.com/ibhagwan/fzf-lua)
 - [leap](https://github.com/ggandor/leap.nvim)
 - [vim-fugitive](https://github.com/tpope/vim-fugitive)
-- [gitsigns](https://github.com/lewis6991/gitsigns.nvim)
 - [nvim-surround](https://github.com/kylechui/nvim-surround)
 - [undotree](https://github.com/mbbill/undotree)
 - [comment](https://github.com/numToStr/Comment.nvim)
@@ -52,9 +51,6 @@ space fg = Live grep with fzf.
 space fk = List all fzf commands.
 
 space s c "' = change surround " to '.
-
-space g h = Preview git hunk.
-space g c = View last commit in git.
 
 space c c = Comment current line ('space c' in Visual mode).
 
