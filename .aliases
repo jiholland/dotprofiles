@@ -18,6 +18,15 @@ alias mkdir="mkdir -pv"                   # Create parent directories if they do
 alias cp="cp -r"                          # Copy directories recursivley.
 alias ping="ping -c 5"                    # Stop ping after 5 echo_request packets.
 
+if (which python3 &>/dev/null); then      # Manage Python virtual environments.
+  if [ -z $VIRTUAL_ENV ]; then
+    alias pv="python3 -m venv .venv"
+    alias pa="source .venv/bin/activate"
+  else
+    alias pd="deactivate"
+  fi
+fi
+
 alias ll="ls -l"                          # List files in long format.
 alias la="ls -laF"                        # List files in long format, include dot ('.') directories and display prefix.
 alias c="clear -x"                        # Clear the terminal, but do not attempt to clear the terminal´s scrollback buffer.

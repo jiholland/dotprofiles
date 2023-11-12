@@ -1,5 +1,5 @@
 # Dotfiles
-Dotfiles for bash, neovim, tmux and ansible.
+Dotfiles for bash, neovim and tmux.
 
 ## Installation 
 Install dotfiles with [Ansible](https://github.com/ansible/ansible):

@@ -26,23 +26,6 @@
         - src: .bashrc
           dest: "{{ ansible_facts['user_dir'] }}/.bashrc"
 
-    - name: Ensure directory for ansible log is present.
-      tags: ansible
-      ansible.builtin.file:
-        path: "{{ ansible_facts['user_dir'] }}/.ansible/log/hosts"
-        mode: u=rwx,g=wrx,o=rx
-        owner: "{{ ansible_facts['user_uid'] }}"
-        group: "{{ ansible_facts['user_gid'] }}"
-        state: directory
-
-    - name: Install ansible.cfg
-      tags: ansible
-      ansible.builtin.template:
-        src: .ansible.cfg
-        dest: "{{ ansible_facts['user_dir'] }}/.ansible.cfg"
-        mode: u=rw,g=r,o=r
-        backup: true
-
     - name: Install dotaliases.
       tags: alias
       ansible.builtin.template:
