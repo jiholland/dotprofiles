@@ -24,7 +24,6 @@ Neovim is loaded with the following plugins:
 - [fzf-lua](https://github.com/ibhagwan/fzf-lua)
 - [leap](https://github.com/ggandor/leap.nvim)
 - [vim-fugitive](https://github.com/tpope/vim-fugitive)
-- [nvim-surround](https://github.com/kylechui/nvim-surround)
 - [undotree](https://github.com/mbbill/undotree)
 - [comment](https://github.com/numToStr/Comment.nvim)
 - [trouble](https://github.com/folke/trouble.nvim)
