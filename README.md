@@ -38,8 +38,7 @@ Neovim is loaded with the following plugins:
 
 Note-to-self:
 ```YAML
-Run install, clean and update on all plugins.
-:Lazy sync
+space l = Run install, clean and update on all plugins.
 
 ctrl+c = Show Copilot suggestions in insert-mode.
 ctrl+space = Accept Copilot suggestions in insert-mode.
@@ -50,8 +49,6 @@ space ff = Find files with fzf.
 space fg = Live grep with fzf.
 space fk = List all fzf commands.
 
-space s c "' = change surround " to '.
-
 space c c = Comment current line ('space c' in Visual mode).
 
 Using git (fugitive).
@@ -60,7 +57,7 @@ Using git (fugitive).
 space u  = Toggle undo-tree panel.
 ctrl+w h = Switch to undo-tree panel/window. 
 
-space x x = Toggle trouble panel.
+space x = Toggle trouble panel.
 
 s te = Leap to word starting with "te" (press enter, S for upwards).
 
