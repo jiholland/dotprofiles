@@ -32,6 +32,9 @@ alias ..="cd .."                          # Fast cd.
 alias ...="cd ../.."
 alias ....="cd ../../.."
 
-if (which git &>/dev/null); then          # Show git working tree status.
-  alias s="git status"
+if (which git &>/dev/null); then          # Show git aliases.
+  alias gs="git status"
+  alias ga="git add ."
+  alias gc="git commit -m"
+  alias gp="git push"
 fi
