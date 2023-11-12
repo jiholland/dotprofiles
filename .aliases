@@ -19,12 +19,9 @@ alias cp="cp -r"                          # Copy directories recursivley.
 alias ping="ping -c 5"                    # Stop ping after 5 echo_request packets.
 
 if (which python3 &>/dev/null); then      # Manage Python virtual environments.
-  if [ -z $VIRTUAL_ENV ]; then
-    alias pv="python3 -m venv .venv"
-    alias pa="source .venv/bin/activate"
-  else
-    alias pd="deactivate"
-  fi
+  alias pv="python3 -m venv .venv"
+  alias pa="source .venv/bin/activate"
+  alias pd="deactivate"
 fi
 
 alias ll="ls -l"                          # List files in long format.
