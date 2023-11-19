@@ -33,6 +33,5 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 
 if (which git &>/dev/null); then          # Git aliases.
-  alias b="git branch"
   alias s="git status"
 fi
