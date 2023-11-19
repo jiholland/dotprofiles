@@ -1,10 +1,10 @@
--- Toggleterm
+-- Toggleterm.
 
 return {
-  {
-  'akinsho/toggleterm.nvim',
+  "akinsho/toggleterm.nvim",
   version = "*",
-  opts = {},
-  vim.keymap.set("n", "<leader>t", vim.cmd.ToggleTerm, { desc = "Toggle terminal." })
+  opts = {
+    open_mapping = "<c-t>",
+    insert_mappings = false
   },
 }
