@@ -10,6 +10,5 @@ return {
         component_separators = "",
       }
     })
-  vim.opt.showmode = false  -- Hide mode indicator.
   end,
 }
