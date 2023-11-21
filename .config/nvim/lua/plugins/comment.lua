@@ -5,10 +5,10 @@ return {
   config = function()
     require("Comment").setup({
       toggler = {
-        line = "<leader>cc",
+        line = "<leader>cc"
       },
       opleader = {
-        line = "<leader>c",
+        line = "<leader>c"
       },
     })
   end,

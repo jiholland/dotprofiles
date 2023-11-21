@@ -4,10 +4,13 @@ return {
   "ibhagwan/fzf-lua",
   dependencies = {
     { "junegunn/fzf", build = "./install --bin" },
-    -- Optional for icon support (requires nerd-fonts or font-icons).
-    { "nvim-tree/nvim-web-devicons" },
+    { "nvim-tree/nvim-web-devicons" },  -- Optional for icon support.
   },
   config = function()
-    require("fzf-lua").setup({})
+    require("fzf-lua").setup({
+      defaults = {
+        file_icons = true  -- Requires nerd-font.
+      },
+    })
   end,
 }

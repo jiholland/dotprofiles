@@ -37,7 +37,7 @@ Neovim is loaded with the following plugins:
 
 Note-to-self:
 ```YAML
-space l = Run install, clean and update on all plugins.
+space s = Run install, clean and update on all plugins.
 
 ctrl+c = Show Copilot suggestions in insert-mode.
 ctrl+space = Accept Copilot suggestions in insert-mode.
@@ -55,6 +55,8 @@ Using git (fugitive).
 
 space u  = Toggle undo-tree panel.
 ctrl+w h = Switch to undo-tree panel/window. 
+
+ctrl+t = Toggle terminal.
 
 space x = Toggle trouble panel.
 

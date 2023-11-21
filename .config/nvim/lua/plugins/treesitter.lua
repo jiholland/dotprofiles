@@ -16,7 +16,7 @@ return {
         "json",
       },
       highlight = {
-        enable = true,
+        enable = true
       },
     })
   end,
