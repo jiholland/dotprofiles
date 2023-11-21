@@ -3,8 +3,9 @@
 return {
   "folke/trouble.nvim",
   dependencies = {
-    -- Optional for icon support (requires nerd-fonts or font-icons).
-    "nvim-tree/nvim-web-devicons",
+    "nvim-tree/nvim-web-devicons"  -- Optional for icon support.
   },
-  opts = {}
+  opts = {
+    icons = true  -- Requires nerd-font.
+  },
 }

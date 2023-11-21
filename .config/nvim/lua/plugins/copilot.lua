@@ -12,7 +12,7 @@ return {
           next = "<c-c>",
           prev = "<c-p>",
           accept = "<c-space>",
-          dismiss = "<c-q>"
+          dismiss = "<c-q>",
         },
       },
       filetypes = {
