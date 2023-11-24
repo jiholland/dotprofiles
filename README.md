@@ -10,7 +10,7 @@ ansible-playbook playbook_deploy_dotfiles.yml
 ## Shell profiles
 Shell profiles provide:
 - colorization
-- prompt with [git](https://github/com/git/git) branch
+- prompt with [git](https://github.com/git/git) branch
 - history
 - completions
 - aliases
@@ -20,27 +20,25 @@ macOS dependencies:
 
 ## Neovim
 Neovim is loaded with the following plugins:
-- [lazy](https://github.com/folke/lazy.nvim)
-- [fzf-lua](https://github.com/ibhagwan/fzf-lua)
-- [leap](https://github.com/ggandor/leap.nvim)
-- [vim-fugitive](https://github.com/tpope/vim-fugitive)
-- [undotree](https://github.com/mbbill/undotree)
+- [ansible-vim](https://github.com/pearofducks/ansible-vim)
+- [bufferlin](https://github.com/akinsho/bufferline.nvim)
+- [colorscheme](https://github.com/folke/tokyonight.nvim)
 - [comment](https://github.com/numToStr/Comment.nvim)
-- [trouble](https://github.com/folke/trouble.nvim)
-- [copilot](https://github.com/zbirenbaum/copilot.lua)
+- [fzf-lua](https://github.com/ibhagwan/fzf-lua)
+- [indent-blankline](https://github.com/lukas-reineke/indent-blankline.nvim)
+- [lazy](https://github.com/folke/lazy.nvim)
+- [leap](https://github.com/ggandor/leap.nvim)
 - [lsp-zero](https://github.com/VonHeikemen/lsp-zero.nvim)
 - [lualine](https://github.com/nvim-lualine/lualine.nvim)
-- [colorscheme](https://github.com/folke/tokyonight.nvim)
 - [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
-- [indent-blankline](https://github.com/lukas-reineke/indent-blankline.nvim)
-- [ansible-vim](https://github.com/pearofducks/ansible-vim)
+- [trouble](https://github.com/folke/trouble.nvim)
+- [undotree](https://github.com/mbbill/undotree)
+- [vim-fugitive](https://github.com/tpope/vim-fugitive)
+- [which-key](https://github.com/folke/which-key.nvim)
 
 Note-to-self:
 ```YAML
 space s = Run install, clean and update on all plugins.
-
-ctrl+c = Show Copilot suggestions in insert-mode.
-ctrl+space = Accept Copilot suggestions in insert-mode.
 
 ctrl+y = Confirm highlighted lsp.
 
@@ -56,8 +54,6 @@ Using git (fugitive).
 space u  = Toggle undo-tree panel.
 ctrl+w h = Switch to undo-tree panel/window. 
 
-ctrl+t = Toggle terminal.
-
 space x = Toggle trouble panel.
 
 s te = Leap to word starting with "te" (press enter, S for upwards).
@@ -67,11 +63,10 @@ ctrl+d = Move down.
 ```
 Dependencies:
 - [git](https://github.com/git/git)
-- [nodejs](https://github.com/nodejs)
 - [ripgrep](https://github.com/BurntSushi/ripgrep)
 - [nerd-font](https://github.com/ryanoasis/nerd-fonts)
 ```YAML
-brew install git nodejs ripgrep
+brew install git ripgrep
 ```
 
 ## Tmux
