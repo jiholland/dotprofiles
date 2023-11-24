@@ -15,7 +15,8 @@ if [[ "$TERM" == *"color"* ]]; then       # If colors are "supported" then...
 fi
 
 alias mkdir="mkdir -pv"                   # Create parent directories if they don't exist. Print a message for each created directory.
-alias cp="cp -r"                          # Copy directories recursivley.
+alias cp="cp -rv"                         # Copy directories recursivley. Showing files as they are copied.
+alias rm="rm -v"                          # Showing files as they are removed.
 alias ping="ping -c 5"                    # Stop ping after 5 echo_request packets.
 
 if (which python3 &>/dev/null); then      # Manage Python virtual environments.
@@ -33,5 +34,6 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 
 if (which git &>/dev/null); then          # Git aliases.
+  alias b="git branch"
   alias s="git status"
 fi
