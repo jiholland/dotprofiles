@@ -2,5 +2,5 @@
 
 require("config.api")
 require("config.keymap")
-require("config.lazy")
 require("config.opt")
+require("config.plugin")
