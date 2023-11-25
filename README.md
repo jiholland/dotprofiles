@@ -4,7 +4,7 @@ Dotfiles for bash, neovim and tmux.
 ## Installation 
 Install dotfiles with [Ansible](https://github.com/ansible/ansible):
 ```YAML
-ansible-playbook playbook_deploy_dotfiles.yml
+ansible-playbook playbook.yml
 ```
 
 ## Shell profiles
