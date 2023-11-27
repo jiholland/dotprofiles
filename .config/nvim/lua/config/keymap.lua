@@ -1,4 +1,4 @@
--- Remap keys.Keymap configuration.
+-- Remap keys.
 
 vim.g.mapleader = " "       -- Set <Space> as leader key.
 vim.g.maplocalleader = " "  -- Set <Space> as local leader key.
