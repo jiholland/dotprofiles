@@ -20,6 +20,7 @@ macOS dependencies:
 
 ## Neovim
 Neovim is loaded with the following plugins:
+- [ansible-vim](https://github.com/pearofducks/ansible-vim)
 - [bufferline](https://github.com/akinsho/bufferline.nvim)
 - [colorscheme](https://github.com/folke/tokyonight.nvim)
 - [comment](https://github.com/numToStr/Comment.nvim)
@@ -31,32 +32,24 @@ Neovim is loaded with the following plugins:
 - [lualine](https://github.com/nvim-lualine/lualine.nvim)
 - [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
 - [trouble](https://github.com/folke/trouble.nvim)
-- [undotree](https://github.com/jiaoshijie/undotree)
+- [undotree](https://github.com/mbbill/undotree)
 - [which-key](https://github.com/folke/which-key.nvim)
 
 Note-to-self:
 ```YAML
-space s = Run install, clean and update on all plugins.
-
-ctrl+y = Confirm highlighted lsp.
-
+:sort u  = Sort lines.
+ctrl+d   = Move down.
+ctrl+u   = Move up.
+ctrl+w h = Switch to undo-tree panel/window. 
+ctrl+y   = Confirm highlighted lsp.
+s te     = Leap to word starting with "te" (press enter, S for upwards).
+space cc = Comment current line ('space c' in Visual mode).
 space ff = Find files with fzf.
 space fg = Live grep with fzf.
 space fk = List all fzf commands.
-
-space c c = Comment current line ('space c' in Visual mode).
-
+space s  = Run install, clean and update on all plugins.
 space u  = Toggle undo-tree panel.
-ctrl+w h = Switch to undo-tree panel/window. 
-
-space x = Toggle trouble panel.
-
-s te = Leap to word starting with "te" (press enter, S for upwards).
-
-ctrl+u = Move up.
-ctrl+d = Move down.
-
-:sort u = Sort lines.
+space x  = Toggle trouble panel.
 ```
 Dependencies:
 - [git](https://github.com/git/git)
@@ -70,27 +63,25 @@ brew install git ripgrep
 
 Note-to-self:
 ```YAML
-tmux new -s mysession
 tmux attach -t mysession
 tmux kill-session -t mysession
+tmux new -s mysession
 
-prefix = Ctrl+a
-
+prefix     = Ctrl+a
+prefix d   = Detach from session.
 prefix esc = Enter copy mode. 
 
-prefix d = Detach from session.
-
-prefix % = Split pane horizontal.
 prefix " = Split pane vertical.
-prefix x = Close current pane.
+prefix % = Split pane horizontal.
 prefix l = Switch pane (hjkl or arrows).
+prefix x = Close current pane.
 
-prefix c = Create window.
-prefix n = Switch window.
 prefix & = Close window.
 prefix , = Rename window.
 prefix - = Move window.
-
+prefix c = Create window.
+prefix n = Next window.
+prefix p = Previous window.
 ```
 Copy-past might require xclip or xcopy.
 ```YAML
