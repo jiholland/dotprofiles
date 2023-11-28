@@ -49,8 +49,32 @@
         mode: u=rw,g=r,o=r
         backup: true
 
-    - name: Find all directories in .config/nvim
+    - name: Backup nvim.
       tags: nvim
+      block:
+
+        - name: Backup nvim.
+          ansible.builtin.copy:
+            src: "{{ ansible_facts['user_dir'] }}/.config/nvim/"
+            dest: "{{ ansible_facts['user_dir'] }}/.config/nvim.{{ ansible_facts['date_time']['epoch'] }}"
+            mode: u=rwx,g=rx,o=rx
+            remote_src: false
+
+        - name: Delete nvim directory.
+          ansible.builtin.file:
+            path: "{{ ansible_facts['user_dir'] }}/.config/nvim/"
+            state: absent
+
+      rescue:
+
+        - name: Ensure directories for neovim is present.
+          ansible.builtin.file:
+            path: "{{ ansible_facts['user_dir'] }}/.config/nvim"
+            state: directory
+            mode: u=rwx,g=rx,o=rx
+
+
+    - name: Find all directories in .config/nvim
       ansible.builtin.find:
         paths: "{{ playbook_dir }}/.config/nvim"
         recurse: true
@@ -58,7 +82,6 @@
       register: neovim_directories
 
     - name: Ensure directories for neovim is present.
-      tags: nvim
       ansible.builtin.file:
         path: "{{ ansible_facts['user_dir'] }}/.config/nvim/{{ item.split('nvim')[-1] }}"
         state: directory
@@ -66,7 +89,6 @@
       loop: "{{ neovim_directories['files'] | map(attribute='path') }}"
 
     - name: Find all files in .config/neovim
-      tags: nvim
       ansible.builtin.find:
         paths: "{{ playbook_dir }}/.config/nvim"
         recurse: true
@@ -74,7 +96,6 @@
       register: neovim_files
 
     - name: Install dotfiles for neovim.
-      tags: nvim
       ansible.builtin.template:
         src: "{{ item }}"
         dest: "{{ ansible_facts['user_dir'] }}/.config/nvim{{ item.split('.config/nvim')[-1] }}"
