@@ -33,6 +33,7 @@ Neovim is loaded with the following plugins:
 - [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
 - [trouble](https://github.com/folke/trouble.nvim)
 - [undotree](https://github.com/mbbill/undotree)
+- [vim-fugitive](https://github.com/tpope/vim-fugitive)
 - [which-key](https://github.com/folke/which-key.nvim)
 
 Note-to-self:
