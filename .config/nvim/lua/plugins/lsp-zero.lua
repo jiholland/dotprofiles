@@ -14,6 +14,7 @@ return {
     -- Snippets.
     { "L3MON4D3/LuaSnip" },
   },
+  event = "VeryLazy",
   config = function()
     local lsp = require("lsp-zero").preset({
       manage_nvim_cmp = true,
