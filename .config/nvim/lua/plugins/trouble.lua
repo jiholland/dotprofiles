@@ -6,6 +6,7 @@ return {
     -- Optional icon support.
     "nvim-tree/nvim-web-devicons"
   },
+  event = "VeryLazy",
   opts = {
     icons = true
   },

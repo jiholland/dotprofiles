@@ -1,5 +1,6 @@
 -- Undo history visualizer.
 
 return {
-  "mbbill/undotree"
+  "mbbill/undotree",
+  event = "VeryLazy",
 }

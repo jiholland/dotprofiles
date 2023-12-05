@@ -1,5 +1,6 @@
 -- Ansible syntax highlighting.
 
 return {
-  "pearofducks/ansible-vim"
+  "pearofducks/ansible-vim",
+  event = "VeryLazy",
 }

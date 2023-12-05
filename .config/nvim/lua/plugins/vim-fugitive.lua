@@ -1,5 +1,6 @@
 -- Git wrapper.
 
 return {
-  "tpope/vim-fugitive"
+  "tpope/vim-fugitive",
+  event = "VeryLazy",
 }
