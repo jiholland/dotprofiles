@@ -22,7 +22,7 @@ macOS dependencies:
 Neovim is loaded with the following plugins:
 - [ansible-vim](https://github.com/pearofducks/ansible-vim)
 - [bufferline](https://github.com/akinsho/bufferline.nvim)
-- [colorscheme](https://github.com/folke/tokyonight.nvim)
+- [colorscheme](https://github.com/catppuccin/nvim)
 - [comment](https://github.com/numToStr/Comment.nvim)
 - [fzf-lua](https://github.com/ibhagwan/fzf-lua)
 - [indent-blankline](https://github.com/lukas-reineke/indent-blankline.nvim)
@@ -30,8 +30,6 @@ Neovim is loaded with the following plugins:
 - [leap](https://github.com/ggandor/leap.nvim)
 - [lsp-zero](https://github.com/VonHeikemen/lsp-zero.nvim)
 - [lualine](https://github.com/nvim-lualine/lualine.nvim)
-- [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
-- [trouble](https://github.com/folke/trouble.nvim)
 - [undotree](https://github.com/mbbill/undotree)
 - [vim-fugitive](https://github.com/tpope/vim-fugitive)
 - [which-key](https://github.com/folke/which-key.nvim)
@@ -50,7 +48,6 @@ space fg = Live grep with fzf.
 space fk = List all fzf commands.
 space s  = Run install, clean and update on all plugins.
 space u  = Toggle undo-tree panel.
-space x  = Toggle trouble panel.
 ```
 Dependencies:
 - [git](https://github.com/git/git)
