@@ -2,7 +2,6 @@
 
 local opt = vim.opt
 
-opt.clipboard = "unnamedplus"  -- Sync with system clipboard.
 opt.confirm = true             -- Confirm to save changes before exiting modified buffer.
 opt.cursorline = true          -- Enable hightlight of the current line.
 opt.expandtab = true           -- Use spaces instead of tabs.

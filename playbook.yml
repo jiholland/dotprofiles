@@ -65,6 +65,12 @@
             path: "{{ ansible_facts['user_dir'] }}/.config/nvim/"
             state: absent
 
+        - name: Ensure directories for neovim is present.
+          ansible.builtin.file:
+            path: "{{ ansible_facts['user_dir'] }}/.config/nvim"
+            state: directory
+            mode: u=rwx,g=rx,o=rx
+
       rescue:
 
         - name: Ensure directories for neovim is present.
