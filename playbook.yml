@@ -65,12 +65,6 @@
             path: "{{ ansible_facts['user_dir'] }}/.config/nvim/"
             state: absent
 
-        - name: Ensure directories for neovim is present.
-          ansible.builtin.file:
-            path: "{{ ansible_facts['user_dir'] }}/.config/nvim"
-            state: directory
-            mode: u=rwx,g=rx,o=rx
-
       rescue:
 
         - name: Ensure directories for neovim is present.
@@ -81,6 +75,7 @@
 
 
     - name: Find all directories in .config/nvim
+      tags: nvim
       ansible.builtin.find:
         paths: "{{ playbook_dir }}/.config/nvim"
         recurse: true
@@ -88,6 +83,7 @@
       register: neovim_directories
 
     - name: Ensure directories for neovim is present.
+      tags: nvim
       ansible.builtin.file:
         path: "{{ ansible_facts['user_dir'] }}/.config/nvim/{{ item.split('nvim')[-1] }}"
         state: directory
@@ -95,6 +91,7 @@
       loop: "{{ neovim_directories['files'] | map(attribute='path') }}"
 
     - name: Find all files in .config/neovim
+      tags: nvim
       ansible.builtin.find:
         paths: "{{ playbook_dir }}/.config/nvim"
         recurse: true
@@ -102,6 +99,7 @@
       register: neovim_files
 
     - name: Install dotfiles for neovim.
+      tags: nvim
       ansible.builtin.template:
         src: "{{ item }}"
         dest: "{{ ansible_facts['user_dir'] }}/.config/nvim{{ item.split('.config/nvim')[-1] }}"

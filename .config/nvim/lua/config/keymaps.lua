@@ -16,4 +16,3 @@ map("n", "<leader>ll", vim.cmd.BufferLineCycleNext, { desc = "Go to next buffer.
 map("n", "<leader>lp", vim.cmd.BufferLinePick, { desc = "Pick buffer." })
 map("n", "<leader>s", function() require("lazy").sync() end, { desc = "Install, clean and update plugins." })
 map("n", "<leader>u", function() vim.cmd.UndotreeToggle() vim.cmd.UndotreeFocus() end, { desc = "Toggle undotree panel." })
-map("n", "<leader>x", function() require("trouble").toggle("workspace_diagnostics") end, { desc = "Toggle trouble panel." })
