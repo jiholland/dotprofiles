@@ -1,6 +1,10 @@
 -- ~/.config/nvim/init.lua
 
-require("config.api")
-require("config.keymap")
-require("config.opt")
-require("config.plugin")
+if vim.loader then
+  vim.loader.enable()
+end
+
+require("config.autocmds")
+require("config.keymaps")
+require("config.lazy")
+require("config.options")
