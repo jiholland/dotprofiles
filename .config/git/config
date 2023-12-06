@@ -1,0 +1,25 @@
+[user]
+  name = changeme
+  email = change@me.com
+  signingkey = changeme
+
+[push]
+  default = current
+
+[pull]
+  rebase = true
+
+[core]
+  editor = nvim
+
+[init]
+  defaultBranch = main
+
+[alias]
+  a   = add
+  b   = branch
+  c   = commit
+  s   = status
+
+[commit]
+  gpgsign = true
