@@ -20,9 +20,9 @@ export HISTFILESIZE=10000              # Maximum number of history events to sav
 export HISTSIZE=10000                  # Maximum number of events stored in the internal history list.
 export HISTCONTROL="ignoreboth"        # Lines which begin with a space character and lines which match the previous history entry are not saved in the history list.
 
-# Set vi as default visual editor.
-if (which vi &>/dev/null); then
-  export VISUAL="vi"
+# Set neovim as default visual editor.
+if (which nvim &>/dev/null); then
+  export VISUAL="nvim"
 fi
 
 # Source ~/.bashrc

@@ -1,13 +1,12 @@
-[user]
-  name = changeme
-  email = change@me.com
-  signingkey = changeme
+[alias]
+  a = add
+  b = branch
+  c = commit
+  s = status
 
-[push]
-  default = current
-
-[pull]
-  rebase = true
+[commit]
+  gpgsign = true
+  verbose = true
 
 [core]
   editor = nvim
@@ -15,11 +14,16 @@
 [init]
   defaultBranch = main
 
-[alias]
-  a   = add
-  b   = branch
-  c   = commit
-  s   = status
+[merge]
+  conflictStyle = diff3
 
-[commit]
-  gpgsign = true
+[pull]
+  ff = only
+
+[push]
+  default = current
+
+[user]
+  email = change@me.com
+  name = changeme
+  signingkey = changeme

@@ -49,7 +49,7 @@ source_file() {
 source_file "/usr/share/bash-completion/bash_completion"      # Source bash completion.
 source_file "/opt/homebrew/completions/bash/brew"             # Source Homebrew bash completion.
 source_file "/opt/homebrew/etc/profile.d/bash_completion.sh"  # Source Homebrew bash completion@2
-source_file "$HOME/.aliases"                                  # Source aliases.
+source_file "$HOME/.bash_aliases"                             # Source aliases.
 source_file "$HOME/.venv/bin/activate"                        # Source Python virtualenv.
 
 unset -f source_file  # Remove function.
