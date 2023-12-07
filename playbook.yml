@@ -13,7 +13,7 @@
           - min
 
     - name: Install dotbashprofiles if shell is bash.
-      tags: shell
+      tags: bash
       ansible.builtin.template:
         src: "{{ item['src'] }}"
         dest: "{{ item['dest'] }}"
@@ -25,14 +25,8 @@
           dest: "{{ ansible_facts['user_dir'] }}/.bash_profile"
         - src: .bashrc
           dest: "{{ ansible_facts['user_dir'] }}/.bashrc"
-
-    - name: Install dotaliases.
-      tags: alias
-      ansible.builtin.template:
-        src: .aliases
-        dest: "{{ ansible_facts['user_dir'] }}/.aliases"
-        mode: u=rw,g=r,o=r
-        backup: true
+        - src: .bash_aliases
+          dest: "{{ ansible_facts['user_dir'] }}/.bash_aliases"
 
     - name: Ensure directory for tmux is present.
       tags: tmux
