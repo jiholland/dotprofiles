@@ -6,7 +6,6 @@
 
 [commit]
   gpgsign = true
-  verbose = true
 
 [core]
   editor = nvim
@@ -18,7 +17,7 @@
   conflictStyle = diff3
 
 [pull]
-  ff = only
+  rebase = true
 
 [push]
   default = current
