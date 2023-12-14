@@ -6,6 +6,7 @@
 
 [commit]
   gpgsign = true
+  verbose = true
 
 [core]
   editor = nvim
