@@ -32,6 +32,7 @@ Neovim is loaded with the following plugins:
 - [lualine](https://github.com/nvim-lualine/lualine.nvim)
 - [undotree](https://github.com/mbbill/undotree)
 - [vim-fugitive](https://github.com/tpope/vim-fugitive)
+- [vim-repeat](https://github.com/tpope/vim-repeat)
 - [which-key](https://github.com/folke/which-key.nvim)
 
 Note-to-self:
@@ -39,15 +40,17 @@ Note-to-self:
 :sort u  = Sort lines.
 ctrl+d   = Move down.
 ctrl+u   = Move up.
-ctrl+w h = Switch to undo-tree panel/window. 
+ctrl+w h = Switch panel/window. 
 ctrl+y   = Confirm highlighted lsp.
-s te     = Leap to word starting with "te" (press enter, S for upwards).
+ste      = Leap to word starting with "te" (press enter, S for upwards).
 space cc = Comment current line ('space c' in Visual mode).
+space fb = Find buffers with fzf.
 space ff = Find files with fzf.
 space fg = Live grep with fzf.
 space fk = List all fzf commands.
-space s  = Run install, clean and update on all plugins.
+space ls = Run install, clean and update on all plugins.
 space u  = Toggle undo-tree panel.
+.        = Repeat native/plugin command.
 ```
 Dependencies:
 - [git](https://github.com/git/git)
