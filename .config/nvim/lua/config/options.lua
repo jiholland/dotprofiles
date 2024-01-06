@@ -7,7 +7,6 @@ opt.cursorline = true          -- Enable hightlight of the current line.
 opt.expandtab = true           -- Use spaces instead of tabs.
 opt.ignorecase = true          -- Ignore case when searching.
 opt.mouse = ""                 -- Disable mouse.
-opt.pumblend = 10              -- Popup blend.
 opt.pumheight = 10             -- Maximum number of items to show in popup menu.
 opt.relativenumber = true      -- Show relative line numbers.
 opt.scrolloff = 5              -- Minimal number of screen lines to keep above and below the cursor.
