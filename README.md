@@ -37,19 +37,14 @@ Neovim is loaded with the following plugins:
 
 Note-to-self:
 ```YAML
-:sort u  = Sort lines.
 ctrl+d   = Move down.
 ctrl+u   = Move up.
 ctrl+w h = Switch panel/window. 
 ctrl+y   = Confirm highlighted lsp.
+
+:sort u  = Sort lines.
+
 ste      = Leap to word starting with "te" (press enter, S for upwards).
-space cc = Comment current line ('space c' in Visual mode).
-space fb = Find buffers with fzf.
-space ff = Find files with fzf.
-space fg = Live grep with fzf.
-space fk = List all fzf commands.
-space ls = Run install, clean and update on all plugins.
-space u  = Toggle undo-tree panel.
 .        = Repeat native/plugin command.
 ```
 Dependencies:
