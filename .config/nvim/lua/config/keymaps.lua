@@ -15,7 +15,6 @@ map("n", "<leader>bc", vim.cmd.BufferLineCloseOthers, { desc = "Close all other 
 map("n", "<leader>bd", vim.cmd.bdelete, { desc = "Close buffer." })
 map("n", "<leader>bn", vim.cmd.BufferLineCycleNext, { desc = "Go to next buffer." })
 map("n", "<leader>bp", vim.cmd.BufferLineCyclePrev, { desc = "Go to previous buffer." })
-map("n", "<leader>bp", vim.cmd.BufferLinePick, { desc = "Pick buffer." })
 map("n", "<leader>ll", function() require("lazy").profile() end, { desc = "Open lazy plugin manager." })
 map("n", "<leader>lp", function() require("lazy").profile() end, { desc = "Show lazy profiling." })
 map("n", "<leader>ls", function() require("lazy").sync() end, { desc = "Install, clean and update plugins." })
