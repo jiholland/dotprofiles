@@ -7,7 +7,7 @@ local map = vim.keymap.set
 
 map("n", "<C-d>", "<C-d>zz", { desc = "Scroll down half page." })
 map("n", "<C-u>", "<C-u>zz", { desc = "Scroll up half page." })
-map("n", "<leader>fb", function() require("fzf-lua").buffers() end, { desc = "Live grep." })
+map("n", "<leader>fb", function() require("fzf-lua").buffers() end, { desc = "Find buffers." })
 map("n", "<leader>ff", function() require("fzf-lua").files() end, { desc = "Find files." })
 map("n", "<leader>fg", function() require("fzf-lua").live_grep() end, { desc = "Live grep." })
 map("n", "<leader>fk", function() require("fzf-lua").builtin() end, { desc = "List all fzf commands." })
