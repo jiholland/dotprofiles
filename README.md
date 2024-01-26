@@ -32,7 +32,6 @@ Neovim is loaded with the following plugins:
 - [lualine](https://github.com/nvim-lualine/lualine.nvim)
 - [undotree](https://github.com/mbbill/undotree)
 - [vim-fugitive](https://github.com/tpope/vim-fugitive)
-- [vim-repeat](https://github.com/tpope/vim-repeat)
 - [which-key](https://github.com/folke/which-key.nvim)
 
 Note-to-self:
@@ -45,7 +44,6 @@ ctrl+y   = Confirm highlighted lsp.
 :sort u  = Sort lines.
 
 ste      = Leap to word starting with "te" (press enter, S for upwards).
-.        = Repeat native/plugin command.
 ```
 Dependencies:
 - [git](https://github.com/git/git)
