@@ -1,4 +1,4 @@
-# ~/.aliases
+# ~/.bash_aliases
 
 if [[ "$TERM" == *"color"* ]]; then       # If colors are "supported" then...
   alias ls="ls --color=auto"              # Colorize ls command.
@@ -29,6 +29,5 @@ if (which python3 &>/dev/null); then      # Python virtual environments aliases.
 fi
 
 if (which git &>/dev/null); then          # Git aliases.
-  alias g="git"
   alias s="git status"
 fi
