@@ -1,8 +1,8 @@
 ---
 - name: Install dotprofiles with Ansible.
-  hosts: localhost
-  gather_facts: false
   connection: local
+  gather_facts: false
+  hosts: localhost
 
   tasks:
 
@@ -32,10 +32,10 @@
       tags: tmux
       ansible.builtin.file:
         path: "{{ ansible_facts['user_dir'] }}/.config/tmux"
-        state: directory
         mode: u=rwx,g=rx,o=rx
+        state: directory
 
-    - name: Install tmux.conf for tmux.
+    - name: Install configuration for tmux.
       tags: tmux
       ansible.builtin.template:
         src: .config/tmux/tmux.conf
@@ -61,42 +61,42 @@
 
       rescue:
 
-        - name: Ensure directories for neovim is present.
+        - name: Ensure directories for nvim is present.
           ansible.builtin.file:
             path: "{{ ansible_facts['user_dir'] }}/.config/nvim"
-            state: directory
             mode: u=rwx,g=rx,o=rx
+            state: directory
 
 
-    - name: Find all directories in .config/nvim
+    - name: Find and register all directories in .config/nvim
       tags: nvim
       ansible.builtin.find:
         paths: "{{ playbook_dir }}/.config/nvim"
         recurse: true
         file_type: directory
-      register: neovim_directories
+      register: __nvim_directories
 
-    - name: Ensure directories for neovim is present.
+    - name: Ensure directories for nvim is present.
       tags: nvim
       ansible.builtin.file:
         path: "{{ ansible_facts['user_dir'] }}/.config/nvim/{{ item.split('nvim')[-1] }}"
         state: directory
         mode: u=rwx,g=rx,o=rx
-      loop: "{{ neovim_directories['files'] | map(attribute='path') }}"
+      loop: "{{ __nvim_directories['files'] | map(attribute='path') }}"
 
-    - name: Find all files in .config/neovim
+    - name: Find and register all files in .config/nvim
       tags: nvim
       ansible.builtin.find:
         paths: "{{ playbook_dir }}/.config/nvim"
         recurse: true
         file_type: file
-      register: neovim_files
+      register: __nvim_files
 
-    - name: Install dotfiles for neovim.
+    - name: Install dotfiles for nvim.
       tags: nvim
       ansible.builtin.template:
         src: "{{ item }}"
         dest: "{{ ansible_facts['user_dir'] }}/.config/nvim{{ item.split('.config/nvim')[-1] }}"
         mode: u=rw,g=r,o=r
         backup: true
-      loop: "{{ neovim_files['files'] | map(attribute='path') }}"
+      loop: "{{ __nvim_files['files'] | map(attribute='path') }}"

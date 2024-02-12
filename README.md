@@ -1,5 +1,5 @@
 # Dotfiles
-Dotfiles for bash, neovim and tmux.
+Dotfiles for bash, nvim and tmux.
 
 ## Installation 
 Install dotfiles with [Ansible](https://github.com/ansible/ansible):
@@ -9,17 +9,17 @@ ansible-playbook playbook.yml
 
 ## Shell profiles
 Shell profiles provide:
-- colorization
-- prompt with [git](https://github.com/git/git) branch
-- history
-- completions
 - aliases
+- colorization
+- completions
+- history
+- prompt with [git](https://github.com/git/git) branch
 
 macOS dependencies:
-- [iterm2](https://github.com/gnachman/iTerm2) (true colors).
+- [iterm2](https://github.com/gnachman/iTerm2) (true colors)
 
-## Neovim
-Neovim is loaded with the following plugins:
+## Nvim
+Nvim is loaded with the following plugins:
 - [ansible-vim](https://github.com/pearofducks/ansible-vim)
 - [bufferline](https://github.com/akinsho/bufferline.nvim)
 - [colorscheme](https://github.com/catppuccin/nvim)
@@ -81,7 +81,7 @@ Copy-past might require xclip or xcopy.
 ```YAML
 dnf install xclip
 ```
-If path issues in MacOS - add something like this to ~/.config/tmux/tmux.conf
+If path issues in macOS - add something like this to ~/.config/tmux/tmux.conf
 ```YAML
 set-option -g default-command "/opt/homebrew/bin/bash"
 ```
