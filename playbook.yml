@@ -109,3 +109,24 @@
         mode: u=rw,g=r,o=r
         backup: true
       loop: "{{ __nvim_files['files'] | map(attribute='path') }}"
+
+
+    - name: Install tmux and nvim dependencies.
+      tags:
+        - tmux
+        - nvim
+      block:
+
+        - name: Install tmux and nvim dependencies.
+          ansible.builtin.package:
+            name:
+              - xclip
+              - ripgrep
+            state: present
+
+      rescue:
+
+        - name: Print dependencies.
+          ansible.builtin.debug:
+            msg: Consider manually installing xclip and ripgrep.
+            verbosity: 0
