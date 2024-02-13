@@ -6,6 +6,9 @@ Install dotfiles with [Ansible](https://github.com/ansible/ansible):
 ```YAML
 ansible-playbook playbook.yml
 ```
+Dependencies:
+- [iterm2](https://github.com/gnachman/iTerm2) (true colors in macOS)
+- [nerd-font](https://github.com/ryanoasis/nerd-fonts) (icons)
 
 ## Shell profiles
 Shell profiles provide:
@@ -14,9 +17,6 @@ Shell profiles provide:
 - completions
 - history
 - prompt with [git](https://github.com/git/git) branch
-
-macOS dependencies:
-- [iterm2](https://github.com/gnachman/iTerm2) (true colors)
 
 ## Nvim
 Nvim is loaded with the following plugins:
@@ -45,14 +45,6 @@ ctrl+y   = Confirm highlighted lsp.
 
 ste      = Leap to word starting with "te" (press enter, S for upwards).
 ```
-Dependencies:
-- [git](https://github.com/git/git)
-- [ripgrep](https://github.com/BurntSushi/ripgrep)
-- [nerd-font](https://github.com/ryanoasis/nerd-fonts)
-```YAML
-brew install git ripgrep
-```
-
 ## Tmux
 
 Note-to-self:
@@ -77,9 +69,4 @@ prefix c = Create window.
 prefix n = Next window.
 prefix p = Previous window.
 ```
-Copy-past might require xclip or xcopy.
-```YAML
-sudo dnf install xclip
-```
-
 ☕️ Jørn Ivar
