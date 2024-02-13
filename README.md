@@ -79,11 +79,7 @@ prefix p = Previous window.
 ```
 Copy-past might require xclip or xcopy.
 ```YAML
-dnf install xclip
-```
-If path issues in macOS - add something like this to ~/.config/tmux/tmux.conf
-```YAML
-set-option -g default-command "/opt/homebrew/bin/bash"
+sudo dnf install xclip
 ```
 
 ☕️ Jørn Ivar

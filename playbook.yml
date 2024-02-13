@@ -43,6 +43,15 @@
         mode: u=rw,g=r,o=r
         backup: true
 
+    - name: Fix path in tmux for macOS.
+      tags: tmux
+      ansible.builtin.lineinfile:
+        path: "{{ ansible_facts['user_dir'] }}/.config/tmux/tmux.conf"
+        line: set-option -g default-command "{{ ansible_facts['env']['SHELL'] }}"
+        insertafter: EOF
+        state: present
+      when: ansible_facts['distribution'] is eq('MacOSX')
+
     - name: Backup nvim.
       tags: nvim
       block:
