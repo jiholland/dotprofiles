@@ -1,3 +1,5 @@
+; ~/.config/git/config
+
 [alias]
   a = add
   b = branch
