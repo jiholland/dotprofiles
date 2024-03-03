@@ -26,6 +26,6 @@
   default = current
 
 [user]
-  email = change@me.com
-  name = changeme
-  signingkey = changeme
+  email = example@example.com
+  name = example
+  signingkey = example
