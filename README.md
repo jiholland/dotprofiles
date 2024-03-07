@@ -27,7 +27,6 @@ Nvim is loaded with the following plugins:
 - [fzf-lua](https://github.com/ibhagwan/fzf-lua)
 - [indent-blankline](https://github.com/lukas-reineke/indent-blankline.nvim)
 - [lazy](https://github.com/folke/lazy.nvim)
-- [leap](https://github.com/ggandor/leap.nvim)
 - [lsp-zero](https://github.com/VonHeikemen/lsp-zero.nvim)
 - [lualine](https://github.com/nvim-lualine/lualine.nvim)
 - [undotree](https://github.com/mbbill/undotree)
@@ -36,14 +35,7 @@ Nvim is loaded with the following plugins:
 
 Note-to-self:
 ```YAML
-ctrl+d   = Move down.
-ctrl+u   = Move up.
-ctrl+w h = Switch panel/window. 
-ctrl+y   = Confirm highlighted lsp.
-
-:sort u  = Sort lines.
-
-ste      = Leap to word starting with "te" (press enter, S for upwards).
+ctrl+y = Confirm highlighted lsp.
 ```
 ## Tmux
 
