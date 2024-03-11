@@ -4,7 +4,7 @@ if vim.loader then
   vim.loader.enable()
 end
 
-require("config.autocmds")
-require("config.keymaps")
-require("config.lazy")
 require("config.options")
+require("config.lazy")
+require("config.keymaps")
+require("config.autocmds")
