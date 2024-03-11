@@ -1,13 +1,16 @@
 -- Set options.
 
-vim.g.mapleader = " "          -- Set <Space> as leader key.
-vim.g.maplocalleader = " "     -- Set <Space> as local leader key.
+local g = vim.g
+
+-- Set <Space> as leader key.
+g.mapleader = " "
+g.maplocalleader = " "
 
 -- Disable providers.
-vim.g.loaded_python3_provider = 0
-vim.g.loaded_perl_provider = 0
-vim.g.loaded_ruby_provider = 0
-vim.g.loaded_node_provider = 0
+g.loaded_python3_provider = 0
+g.loaded_perl_provider = 0
+g.loaded_ruby_provider = 0
+g.loaded_node_provider = 0
 
 local opt = vim.opt
 
