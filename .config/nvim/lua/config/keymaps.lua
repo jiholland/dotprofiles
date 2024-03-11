@@ -1,8 +1,5 @@
 -- Remap keys.
 
-vim.g.mapleader = " "       -- Set <Space> as leader key.
-vim.g.maplocalleader = " "  -- Set <Space> as local leader key.
-
 local map = vim.keymap.set
 
 map("n", "<C-d>", "<C-d>zz", { desc = "Scroll down half page." })
@@ -19,3 +16,4 @@ map("n", "<leader>ll", function() require("lazy").profile() end, { desc = "Open 
 map("n", "<leader>lp", function() require("lazy").profile() end, { desc = "Show lazy profiling." })
 map("n", "<leader>ls", function() require("lazy").sync() end, { desc = "Install, clean and update plugins." })
 map("n", "<leader>u", function() vim.cmd.UndotreeToggle() vim.cmd.UndotreeFocus() end, { desc = "Toggle undotree panel." })
+map("n", "<leader>n", vim.cmd.NvimTreeToggle, { desc = "Toggle nvimtree panel." })
