@@ -10,8 +10,8 @@ return {
   config = function()
     require("bufferline").setup({
       options = {
+        show_buffer_close_icons = false,
         style_preset = "bufferline.style_preset.minimal",
-        show_buffer_icons = true,
       },
     })
   end,
