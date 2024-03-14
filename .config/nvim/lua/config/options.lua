@@ -15,7 +15,6 @@ g.loaded_node_provider = 0
 local opt = vim.opt
 
 opt.confirm = true             -- Confirm to save changes before exiting modified buffer.
-opt.cursorline = true          -- Enable hightlight of the current line.
 opt.expandtab = true           -- Use spaces instead of tabs.
 opt.ignorecase = true          -- Ignore case when searching.
 opt.mouse = ""                 -- Disable mouse.
