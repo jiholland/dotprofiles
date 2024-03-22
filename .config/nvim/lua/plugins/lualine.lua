@@ -3,8 +3,8 @@
 return {
   "nvim-lualine/lualine.nvim",
   dependencies = {
-    "catppuccin/nvim",
-    "nvim-tree/nvim-web-devicons"
+    { "catppuccin/nvim", name = "catppuccin" },
+    { "nvim-tree/nvim-web-devicons" },
   },
   config = function()
     require("lualine").setup({
