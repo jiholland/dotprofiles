@@ -2,7 +2,7 @@
 
 return {
   "VonHeikemen/lsp-zero.nvim",
-  branch = "v2.x",
+  branch = "v3.x",
   dependencies = {
     -- LSP support.
     { "neovim/nvim-lspconfig" },
@@ -15,16 +15,28 @@ return {
     { "L3MON4D3/LuaSnip" },
   },
   config = function()
-    local lsp = require("lsp-zero").preset({
-      manage_nvim_cmp = true,
-    })
-    lsp.ensure_installed({
+    local lsp_zero = require("lsp-zero")
+    lsp_zero.on_attach(function(client, bufnr)
+      lsp_zero.default_keymaps({buffer = bufnr})
+    end)
+    require("mason").setup({})
+    require("mason-lspconfig").setup({
+      ensure_installed = {
       "ansiblels",
       "bashls",
+      "docker_compose_language_service",
+      "html",
+      "jinja_lsp",
       "lua_ls",
       "marksman",
       "pyright",
+      "taplo",
+      "terraformls",
+      "yamlls",
+      },
+      handlers = {
+        lsp_zero.default_setup,
+      },
     })
-    lsp.setup()
   end,
 }
