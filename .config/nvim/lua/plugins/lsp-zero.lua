@@ -22,17 +22,17 @@ return {
     require("mason").setup({})
     require("mason-lspconfig").setup({
       ensure_installed = {
-      "ansiblels",
-      "bashls",
-      "docker_compose_language_service",
-      "html",
-      "jinja_lsp",
-      "lua_ls",
-      "marksman",
-      "pyright",
-      "taplo",
-      "terraformls",
-      "yamlls",
+        "ansiblels",
+        "bashls",
+        "docker_compose_language_service",
+        "html",
+        "jinja_lsp",
+        "lua_ls",
+        "marksman",
+        "pyright",
+        "taplo",
+        "terraformls",
+        "yamlls",
       },
       handlers = {
         lsp_zero.default_setup,
