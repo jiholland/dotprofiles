@@ -26,12 +26,10 @@ return {
         "bashls",
         "docker_compose_language_service",
         "html",
-        "jinja_lsp",
         "lua_ls",
         "marksman",
         "pyright",
         "taplo",
-        "terraformls",
         "yamlls",
       },
       handlers = {
