@@ -29,6 +29,7 @@ Nvim is loaded with the following plugins:
 - [lazy](https://github.com/folke/lazy.nvim)
 - [lsp-zero](https://github.com/VonHeikemen/lsp-zero.nvim)
 - [lualine](https://github.com/nvim-lualine/lualine.nvim)
+- [treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
 - [undotree](https://github.com/mbbill/undotree)
 - [vim-fugitive](https://github.com/tpope/vim-fugitive)
 - [which-key](https://github.com/folke/which-key.nvim)

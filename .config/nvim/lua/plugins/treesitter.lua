@@ -7,17 +7,13 @@ return {
     require("nvim-treesitter.configs").setup({
       ensure_installed = {
         "bash",
-        "html",
         "json",
         "lua",
         "markdown",
         "python",
-        "vim",
-        "yaml",
+        -- "yaml",  # ansible-vim plugin instead.
       },
-      sync_install = false,
       highlight = { enable = true },
-      indent = { enable = true },
     })
   end,
 }
