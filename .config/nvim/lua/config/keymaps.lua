@@ -12,6 +12,7 @@ map("n", "<leader>fb", function() require("fzf-lua").buffers() end, { desc = "Fi
 map("n", "<leader>ff", function() require("fzf-lua").files() end, { desc = "Find files." })
 map("n", "<leader>fg", function() require("fzf-lua").live_grep() end, { desc = "Live grep." })
 map("n", "<leader>fk", function() require("fzf-lua").builtin() end, { desc = "List all fzf commands." })
+map("n", "<leader>gp", function() require("gitsigns").preview_hunk_inline() end, { desc = "Preview git diffs of hunks." })
 map("n", "<leader>lh", function() require("lazy").home() end, { desc = "Open lazy plugin manager home." })
 map("n", "<leader>lp", function() require("lazy").profile() end, { desc = "Show lazy profiling." })
 map("n", "<leader>ls", function() require("lazy").sync() end, { desc = "Install, clean and update plugins." })
