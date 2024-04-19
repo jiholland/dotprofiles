@@ -25,6 +25,7 @@ Nvim is loaded with the following plugins:
 - [colorscheme](https://github.com/catppuccin/nvim)
 - [comment](https://github.com/numToStr/Comment.nvim)
 - [fzf-lua](https://github.com/ibhagwan/fzf-lua)
+- [gitsigns](https://github.com/lewis6991/gitsigns.nvim)
 - [indent-blankline](https://github.com/lukas-reineke/indent-blankline.nvim)
 - [lazy](https://github.com/folke/lazy.nvim)
 - [lsp-zero](https://github.com/VonHeikemen/lsp-zero.nvim)
