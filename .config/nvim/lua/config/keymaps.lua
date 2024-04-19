@@ -16,5 +16,4 @@ map("n", "<leader>gp", function() require("gitsigns").preview_hunk_inline() end,
 map("n", "<leader>lh", function() require("lazy").home() end, { desc = "Open lazy plugin manager home." })
 map("n", "<leader>lp", function() require("lazy").profile() end, { desc = "Show lazy profiling." })
 map("n", "<leader>ls", function() require("lazy").sync() end, { desc = "Install, clean and update plugins." })
-map("n", "<leader>m", vim.cmd.MasonUpdate, { desc = "Updates lsp registries." })
 map("n", "<leader>u", function() vim.cmd.UndotreeToggle() vim.cmd.UndotreeFocus() end, { desc = "Toggle undotree panel." })
