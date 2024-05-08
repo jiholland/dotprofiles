@@ -14,6 +14,5 @@ map("n", "<leader>fg", function() require("fzf-lua").live_grep() end, { desc = "
 map("n", "<leader>fk", function() require("fzf-lua").builtin() end, { desc = "List all fzf commands." })
 map("n", "<leader>gp", function() require("gitsigns").preview_hunk_inline() end, { desc = "Preview git diffs of hunks." })
 map("n", "<leader>lh", function() require("lazy").home() end, { desc = "Open lazy plugin manager home." })
-map("n", "<leader>lp", function() require("lazy").profile() end, { desc = "Show lazy profiling." })
 map("n", "<leader>ls", function() require("lazy").sync() end, { desc = "Install, clean and update plugins." })
 map("n", "<leader>u", function() vim.cmd.UndotreeToggle() vim.cmd.UndotreeFocus() end, { desc = "Toggle undotree panel." })
