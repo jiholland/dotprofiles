@@ -12,7 +12,15 @@ return {
         component_separators = "",
         section_separators = "",
         theme = "catppuccin",
-      }
+      },
+      sections = {
+        lualine_c = {
+          {
+            "filename",
+            path = 4,
+          },
+        },
+      },
     })
   end,
 }
