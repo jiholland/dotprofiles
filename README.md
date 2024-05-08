@@ -23,6 +23,7 @@ Shell profiles provide:
 Note-to-self:
 ```YAML
 ctrl+y = Confirm highlighted lsp.
+ctrl+n = List valid lsp-options.
 ```
 ## Tmux
 
