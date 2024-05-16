@@ -25,6 +25,7 @@ Note-to-self:
 ctrl+y = Confirm highlighted lsp.
 ctrl+n = List valid lsp-options.
 :Glow [path-to-md-file] = Preview markdown file.
+gcc = Comment line.
 ```
 ## Tmux
 
