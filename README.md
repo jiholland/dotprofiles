@@ -1,5 +1,5 @@
 # Dotfiles
-Dotfiles for bash, nvim and tmux.
+Dotfiles for bash, nvim, vim and tmux.
 
 ## Installation 
 Install dotfiles with [Ansible](https://github.com/ansible/ansible):
@@ -24,7 +24,6 @@ Note-to-self:
 ```YAML
 ctrl+y = Confirm highlighted lsp.
 ctrl+n = List valid lsp-options.
-:Glow [path-to-md-file] = Preview markdown file.
 gcc = Comment line.
 ```
 ## Tmux
