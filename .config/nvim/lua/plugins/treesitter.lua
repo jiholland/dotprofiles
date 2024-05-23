@@ -11,7 +11,6 @@ return {
         "lua",
         "markdown",
         "python",
-        -- "yaml",  # ansible-vim plugin instead.
       },
       highlight = { enable = true },
     })
