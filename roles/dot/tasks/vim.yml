@@ -1,0 +1,18 @@
+---
+# tasks file for dot
+
+- name: vim | Ensure directories for vim is present.
+  ansible.builtin.file:
+    path: "{{ dot_item }}"
+    state: directory
+    mode: u=rwx,g=r,o=r
+  loop: "{{ __dot_vim_directories }}"
+  loop_control:
+    loop_var: dot_item
+
+- name: vim | Install configuration for vim.
+  ansible.builtin.template:
+    src: "{{ playbook_dir }}/.vimrc"
+    dest: "{{ ansible_facts['user_dir'] }}/.vimrc"
+    mode: u=rw,g=r,o=r
+    backup: true

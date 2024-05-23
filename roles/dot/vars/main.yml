@@ -1,0 +1,12 @@
+---
+# vars file for dot
+
+__dot_bash_profiles:
+  - .bash_profile
+  - .bashrc
+  - .bash_aliases
+
+__dot_vim_directories:
+  - "{{ ansible_facts['user_dir'] }}/.local/state/vim/backup"
+  - "{{ ansible_facts['user_dir'] }}/.local/state/vim/swap"
+  - "{{ ansible_facts['user_dir'] }}/.local/state/vim/undo"
