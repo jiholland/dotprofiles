@@ -12,7 +12,7 @@
   ansible.builtin.template:
     src: "{{ playbook_dir }}/{{ dot_item }}"
     dest: "{{ ansible_facts['user_dir'] }}/{{ dot_item }}"
-    mode: u=rw,g=r,o=r
+    mode: "{{ dot_mode_file }}"
     backup: true
   when: ansible_facts['user_shell'] is ansible.builtin.search('bash')
   loop: "{{ __dot_bash_profiles }}"

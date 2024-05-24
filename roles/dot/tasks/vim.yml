@@ -5,7 +5,7 @@
   ansible.builtin.file:
     path: "{{ dot_item }}"
     state: directory
-    mode: u=rwx,g=rx,o=rx
+    mode: "{{ dot_mode_dir }}"
   loop: "{{ __dot_vim_directories }}"
   loop_control:
     loop_var: dot_item
@@ -14,11 +14,11 @@
   ansible.builtin.template:
     src: "{{ playbook_dir }}/.vimrc"
     dest: "{{ ansible_facts['user_dir'] }}/.vimrc"
-    mode: u=rw,g=r,o=r
+    mode: "{{ dot_mode_file }}"
     backup: true
 
 - name: vim | Download plug.vim.
   ansible.builtin.get_url:
-    url: https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    url: "{{ dot_vim_plug_url }}"
     dest: "{{ ansible_facts['user_dir'] }}/.vim/autoload/plug.vim"
-    mode: u=rw,g=r,o=r
+    mode: "{{ dot_mode_file }}"
