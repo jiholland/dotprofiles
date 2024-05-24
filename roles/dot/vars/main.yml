@@ -10,3 +10,4 @@ __dot_vim_directories:
   - "{{ ansible_facts['user_dir'] }}/.local/state/vim/backup"
   - "{{ ansible_facts['user_dir'] }}/.local/state/vim/swap"
   - "{{ ansible_facts['user_dir'] }}/.local/state/vim/undo"
+  - "{{ ansible_facts['user_dir'] }}/.vim/autoload"
