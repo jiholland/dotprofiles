@@ -1,5 +1,6 @@
 # ~/.bash_aliases
 
+# If colors are "supported" then...
 if [[ "$TERM" == *"color"* ]]; then
   alias grep="grep --color=auto"
   alias ls="ls --color=auto"

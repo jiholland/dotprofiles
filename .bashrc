@@ -8,11 +8,12 @@ if [ -z "$BASHRC_SOURCED" ]; then
   BASHRC_SOURCED="yes"
 fi
 
-shopt -s histappend
-shopt -s checkwinsize
-set -o vi
-bind "set bell-style none"
+shopt -s histappend         # Append history list to history file.
+shopt -s checkwinsize       # Update window size after each command.
+set -o vi                   # Use vi keybindings.
+bind "set bell-style none"  # Disable terminal bell.
 
+# Number of trailing directories to retian when expanding the 'w' and 'W' prompt string escapes.
 PROMPT_DIRTRIM=2
 
 # Function for getting the current git branch.
@@ -22,7 +23,8 @@ else
   git_branch() { :; }
 fi
 
-nocolor="\[\e[0m\]"    # All attributes off. Color codes: red=31,green=32,yellow=33,blue=34,purple=35,cyan=36.
+# Color codes: red=31,green=32,yellow=33,blue=34,purple=35,cyan=36.
+nocolor="\[\e[0m\]"
 green="\[\e[0;32m\]"
 yellow="\[\e[0;33m\]"
 cyan="\[\e[0;36m\]"
@@ -38,13 +40,13 @@ fi
 
 unset -v {nocolor,green,yellow,cyan}
 
-# Source file if it exists and is readable.
 source_file() {
   if [ -r "$1" ]; then
     source "$1"
   fi
 }
 
+# Source these files if they exist and are readable.
 source_file "/usr/share/bash-completion/bash_completion"
 source_file "/opt/homebrew/completions/bash/brew"
 source_file "/opt/homebrew/etc/profile.d/bash_completion.sh"
