@@ -2,10 +2,7 @@
 
 return {
   "ibhagwan/fzf-lua",
-  dependencies = {
-    { "junegunn/fzf", build = "./install --bin" },
-    { "nvim-tree/nvim-web-devicons" },
-  },
+  dependencies = { "junegunn/fzf", build = "./install --bin" },
   config = function()
     require("fzf-lua").setup({})
   end,
