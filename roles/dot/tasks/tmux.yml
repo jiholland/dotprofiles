@@ -4,14 +4,14 @@
 - name: tmux | Ensure directory for tmux is present.
   ansible.builtin.file:
     path: "{{ ansible_facts['user_dir'] }}/.config/tmux"
-    mode: u=rwx,g=rx,o=rx
+    mode: "{{ dot_mode_dir }}"
     state: directory
 
 - name: tmux | Install configuration for tmux.
   ansible.builtin.template:
     src: "{{ playbook_dir }}/.config/tmux/tmux.conf"
     dest: "{{ ansible_facts['user_dir'] }}/.config/tmux/tmux.conf"
-    mode: u=rw,g=r,o=r
+    mode: "{{ dot_mode_file }}"
     backup: true
 
 - name: tmux | Fix path in tmux for macOS.

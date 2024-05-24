@@ -11,7 +11,9 @@ None.
 Role Variables
 --------------
 
-None.
+- dot_mode_dir
+- dot_mode_file
+- dot_vim_plug_url
 
 Dependencies
 ------------

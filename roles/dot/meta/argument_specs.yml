@@ -1,0 +1,18 @@
+---
+# Argument specification file for dot
+
+argument_specs:
+  main:
+    options:
+
+      dot_dir_mode:
+        description: "Default permissions for directories."
+        type: str
+
+      dot_file_mode:
+        description: "Default permissions for files."
+        type: str
+
+      dot_vim_plug_url:
+        description: "Where vim-plug will be downloaded from."
+        type: str
