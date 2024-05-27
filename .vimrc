@@ -42,7 +42,6 @@ endif
 
 call plug#begin()
   Plug 'airblade/vim-gitgutter'
-  Plug 'ap/vim-buftabline'
   Plug 'gruvbox-community/gruvbox'
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
