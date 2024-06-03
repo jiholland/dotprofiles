@@ -45,6 +45,7 @@ call plug#begin()
   Plug 'gruvbox-community/gruvbox'
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
+  Plug 'mbbill/undotree'
   Plug 'pearofducks/ansible-vim'
   Plug 'tpope/vim-commentary'
   Plug 'tpope/vim-fugitive'
@@ -61,3 +62,4 @@ nnoremap <leader>bp :bprevious<CR>
 nnoremap <leader>fb :Buffers<CR>
 nnoremap <leader>ff :Files<CR>
 nnoremap <leader>fg :Rg<CR>
+nnoremap <leader>u :UndotreeToggle <bar> UndotreeFocus<CR>
