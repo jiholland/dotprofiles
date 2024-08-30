@@ -22,12 +22,6 @@ alias ll="ls -l"
 alias mkdir="mkdir -p"
 alias ping="ping -c 5"
 
-if (which python3 &>/dev/null); then
-  alias pa="source .venv/bin/activate"
-  alias pd="deactivate"
-  alias pv="python3 -m venv .venv"
-fi
-
 if (which git &>/dev/null); then
   alias s="git status"
 fi
