@@ -1,6 +1,5 @@
 ---
 - name: Install dotprofiles with Ansible.
-  connection: local
   gather_facts: false
   hosts: localhost
 

@@ -25,7 +25,6 @@ Example Playbook
 ```yaml
 ---
 - name: Install dotprofiles with Ansible.
-  connection: local
   gather_facts: false
   hosts: localhost
   roles:
