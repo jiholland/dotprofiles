@@ -2,8 +2,8 @@
 
 local map = vim.keymap.set
 
-map("n", "<C-d>", "<C-d>zz", { desc = "Scroll down half page." })
-map("n", "<C-u>", "<C-u>zz", { desc = "Scroll up half page." })
+map("n", "<C-d>", "<C-d>zz")
+map("n", "<C-u>", "<C-u>zz")
 map("n", "<leader>bd", vim.cmd.bdelete)
 map("n", "<leader>bn", vim.cmd.bnext)
 map("n", "<leader>bp", vim.cmd.bprevious)
