@@ -1,7 +1,7 @@
 # Dotfiles
 Dotfiles for bash, nvim, vim and tmux.
 
-## Installation 
+## Installation
 Install dotfiles with [Ansible](https://github.com/ansible/ansible):
 ```YAML
 ansible-playbook playbook.yml

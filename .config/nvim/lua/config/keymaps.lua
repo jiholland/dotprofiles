@@ -4,6 +4,10 @@ local map = vim.keymap.set
 
 map("n", "<C-d>", "<C-d>zz")
 map("n", "<C-u>", "<C-u>zz")
+map("n", "<C-h>", "<C-w>h")
+map("n", "<C-j>", "<C-w>j")
+map("n", "<C-k>", "<C-w>k")
+map("n", "<C-l>", "<C-w>l")
 map("n", "<leader>bd", vim.cmd.bdelete)
 map("n", "<leader>bn", vim.cmd.bnext)
 map("n", "<leader>bp", vim.cmd.bprevious)
