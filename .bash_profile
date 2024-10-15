@@ -5,7 +5,7 @@ pathadd() {
     PATH="$1:$PATH"
   fi
 }
-# Add these directories to path.
+# Add these directories to $PATH.
 pathadd "$HOME/.local/bin"
 pathadd "/opt/homebrew/bin"
 pathadd "/opt/homebrew/sbin"
