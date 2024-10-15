@@ -1,11 +1,11 @@
 # ~/.bash_profile
 
 pathadd() {
-    if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
-      PATH="$1:$PATH"
-    fi
+  if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
+    PATH="$1:$PATH"
+  fi
 }
-# Add these entries to path (if not already in path).
+# Add these directories to path.
 pathadd "$HOME/.local/bin"
 pathadd "/opt/homebrew/bin"
 pathadd "/opt/homebrew/sbin"
