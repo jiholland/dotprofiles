@@ -17,8 +17,8 @@ fi
 
 alias c="clear -x"
 alias cp="cp -r"
-alias la="ls -laF"
-alias ll="ls -l"
+alias la="ls -lhaF"
+alias ll="ls -lh"
 alias mkdir="mkdir -p"
 alias ping="ping -c 5"
 
