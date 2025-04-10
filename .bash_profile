@@ -20,7 +20,7 @@ export LC_ALL="en_US.UTF-8"            # Use en_us.UTF-8 encoding for all locale
 export LS_COLORS="di=0;36:ln=1;35"     # Export colors for ls command (directory, symbolic link and leave the rest to default values).
 
 # Set neovim as default visual editor.
-if (which nvim &>/dev/null); then
+if command -v nvim &>/dev/null; then
   export VISUAL="nvim"
 fi
 

@@ -4,13 +4,13 @@
 if [[ "$TERM" == *"color"* ]]; then
   alias grep="grep --color=auto"
   alias ls="ls --color=auto"
-  if (which colordiff &>/dev/null); then
+  if command -v colordiff &>/dev/null; then
     alias diff="colordiff"
   fi
-  if (which htop &>/dev/null); then
+  if command -v htop &>/dev/null; then
     alias top="htop"
   fi
-  if (which tree &>/dev/null); then
+  if command -v tree &>/dev/null; then
     alias tree="tree -C"
   fi
 fi
@@ -22,6 +22,6 @@ alias ll="ls -lh"
 alias mkdir="mkdir -p"
 alias ping="ping -c 5"
 
-if (which git &>/dev/null); then
+if command -v git &>/dev/null; then
   alias s="git status"
 fi

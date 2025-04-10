@@ -13,12 +13,12 @@ shopt -s checkwinsize       # Update window size after each command.
 set -o vi                   # Use vi keybindings.
 bind "set bell-style none"  # Disable terminal bell.
 
-# Number of trailing directories to retian when expanding the 'w' and 'W' prompt string escapes.
+# Number of trailing directories to retain when expanding the 'w' and 'W' prompt string escapes.
 PROMPT_DIRTRIM=2
 
 # Function for getting the current git branch.
-if (which git &>/dev/null); then
-  git_branch() { git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1) /'; }
+if command -v git &>/dev/null; then
+  git_branch() { git branch 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1) /'; }
 else
   git_branch() { :; }
 fi
@@ -47,10 +47,15 @@ source_file() {
 }
 
 # Source these files if they exist and are readable.
-source_file "/usr/share/bash-completion/bash_completion"
 source_file "/opt/homebrew/completions/bash/brew"
 source_file "/opt/homebrew/etc/profile.d/bash_completion.sh"
+source_file "/usr/share/bash-completion/bash_completion"
 source_file "$HOME/.bash_aliases"
 source_file "$HOME/.venv/bin/activate"
 
 unset -f source_file
+
+# Attach to or create tmux session.
+if command -v tmux &>/dev/null && [ -z "$TMUX" ]; then
+  tmux attach-session -t default || tmux new-session -s default
+fi
