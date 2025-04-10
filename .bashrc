@@ -8,6 +8,11 @@ if [ -z "$BASHRC_SOURCED" ]; then
   BASHRC_SOURCED="yes"
 fi
 
+# Attach to or create tmux session.
+if command -v tmux &>/dev/null && [ -z "$TMUX" ]; then
+  tmux attach-session -t default || tmux new-session -s default
+fi
+
 shopt -s histappend         # Append history list to history file.
 shopt -s checkwinsize       # Update window size after each command.
 set -o vi                   # Use vi keybindings.
@@ -54,8 +59,3 @@ source_file "$HOME/.bash_aliases"
 source_file "$HOME/.venv/bin/activate"
 
 unset -f source_file
-
-# Attach to or create tmux session.
-if command -v tmux &>/dev/null && [ -z "$TMUX" ]; then
-  tmux attach-session -t default || tmux new-session -s default
-fi
