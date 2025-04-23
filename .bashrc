@@ -8,11 +8,6 @@ if [ -z "$BASHRC_SOURCED" ]; then
   BASHRC_SOURCED="yes"
 fi
 
-# Attach to or create tmux session.
-if command -v tmux &>/dev/null && [ -z "$TMUX" ]; then
-  tmux attach-session -t default || tmux new-session -s default
-fi
-
 shopt -s histappend         # Append history list to history file.
 shopt -s checkwinsize       # Update window size after each command.
 set -o vi                   # Use vi keybindings.
@@ -34,8 +29,8 @@ green="\[\e[0;32m\]"
 yellow="\[\e[0;33m\]"
 cyan="\[\e[0;36m\]"
 
-# Set prompt with colors if terminal supports colors.
-if [[ "$TERM" == *"color"* ]]
+# Set prompt with colors when terminal supports it.
+if [[ "$TERM" =~ 256color$ ]]
 then
   # [username@hostname working-dir (git-branch) ]prompt-indicator
   PS1="${nocolor}[${green}\u${nocolor}@\h ${cyan}\w ${yellow}\$(git_branch)${nocolor}]\\$ "
@@ -59,3 +54,8 @@ source_file "$HOME/.bash_aliases"
 source_file "$HOME/.venv/bin/activate"
 
 unset -f source_file
+
+# Attach to or create tmux session.
+if command -v tmux &>/dev/null && [ -z "$TMUX" ]; then
+  tmux attach-session -t default || tmux new-session -s default
+fi
