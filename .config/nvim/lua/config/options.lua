@@ -26,6 +26,7 @@ opt.signcolumn = "yes"
 opt.smartcase = true
 opt.softtabstop = 2
 opt.tabstop = 2
+opt.termguicolors = true
 opt.timeoutlen = 300
 opt.undofile = true
 opt.updatetime = 200
