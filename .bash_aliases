@@ -1,7 +1,7 @@
 # ~/.bash_aliases
 
-# If colors are "supported" then...
-if [[ "$TERM" == *"color"* ]]; then
+# Add colors to various commands when the terminal supports it.
+if [[ "$TERM" =~ 256color$ ]]; then
   alias grep="grep --color=auto"
   alias ls="ls --color=auto"
   if command -v colordiff &>/dev/null; then
