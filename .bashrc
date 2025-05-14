@@ -8,14 +8,13 @@ set -o vi
 bind "set bell-style none"
 shopt -s checkwinsize
 
-# Append to history file, set max history size for disk and memory, ignore space-staring
-# commands and duplicates, add timestamps and sync history across shells.
+# Append to history file, set max history size for disk and memory,
+# ignore space-staring, commands and duplicates and add timestamps.
 shopt -s histappend
 export HISTFILESIZE=100000
 export HISTSIZE=100000
 export HISTCONTROL="ignoreboth"
 export HISTTIMEFORMAT="%F %T "
-PROMPT_COMMAND="history -a; history -n"
 
 # Set colors for ls command (directory, symbolic link and leave the rest to default values).
 export LS_COLORS="di=0;36:ln=1;35"
