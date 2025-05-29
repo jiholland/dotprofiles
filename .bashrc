@@ -8,8 +8,8 @@ set -o vi
 bind "set bell-style none"
 shopt -s checkwinsize
 
-# Append to history file, set max history size for disk and memory,
-# ignore space-staring, commands and duplicates and add timestamps.
+# Append to history file, set max history size for disk and memory, ignore space-staring
+# commands and duplicates, add timestamps and sync history across shells.
 shopt -s histappend
 export HISTFILESIZE=100000
 export HISTSIZE=100000
@@ -43,7 +43,6 @@ then
 else
   PS1="[\u@\h \w \$(git_branch)]\\$ "
 fi
-
 unset -v {nocolor,green,yellow,cyan}
 
 source_file() {
@@ -51,17 +50,28 @@ source_file() {
     source "$1"
   fi
 }
-
-# Source these files if they exist and is a regular file.
+# Source these files, if they exist.
 source_file "/usr/share/bash-completion/bash_completion"
 source_file "/opt/homebrew/completions/bash/brew"
 source_file "/opt/homebrew/etc/profile.d/bash_completion.sh"
 source_file "$HOME/.bash_aliases"
-source_file "$HOME/.venv/bin/activate"
-
 unset -f source_file
 
+activate_venv() {
+  if [ -z "$VIRTUAL_ENV" ] && [ -f "$1" ]; then
+    source "$1"
+  fi
+}
+# Activate Python virtual environment, if not already active.
+activate_venv "$HOME/.venv/bin/activate"
+unset -f activate_venv
+
+# Restore prompt if Python virtual environment is active, but prompt is missing (tmux).
+if [ -n "$VIRTUAL_ENV" ] && [[ "$PS1" != *"$(basename "$VIRTUAL_ENV")"* ]]; then
+  PS1="($(basename "$VIRTUAL_ENV")) $PS1"
+fi
+
 # Attach to or create tmux session.
-if command -v tmux &>/dev/null && [ -z "$TMUX" ]; then
+if command -v tmux &>/dev/null && [ -z "$TMUX" ] && [[ "$TERM" != "tmux"* ]]; then
   tmux attach-session -t default || tmux new-session -s default
 fi
