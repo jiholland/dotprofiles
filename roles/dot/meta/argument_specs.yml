@@ -12,7 +12,3 @@ argument_specs:
       dot_file_mode:
         description: "Default permissions for files."
         type: str
-
-      dot_vim_plug_url:
-        description: "Where vim-plug will be downloaded from."
-        type: str

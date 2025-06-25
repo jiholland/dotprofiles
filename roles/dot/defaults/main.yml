@@ -3,4 +3,35 @@
 
 dot_mode_dir: "u=xrw,g=xr,o=x"
 dot_mode_file: "u=rw,g=r,o=r"
-dot_vim_plug_url: "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+
+dot_nvim_plugins:
+  - repo: "https://github.com/pearofducks/ansible-vim"
+    version: master
+    dest: ansible
+  - repo: "https://github.com/akinsho/bufferline.nvim"
+    version: main
+    dest: bufferline
+  - repo: "https://github.com/nvim-tree/nvim-web-devicons"
+    version: master
+    dest: devicons
+  - repo: "https://github.com/catppuccin/nvim"
+    version: main
+    dest: catppuccin
+  - repo: "https://github.com/ibhagwan/fzf-lua"
+    version: main
+    dest: fzf-lua
+  - repo: "https://github.com/lewis6991/gitsigns.nvim"
+    version: main
+    dest: gitsigns
+  - repo: "https://github.com/lukas-reineke/indent-blankline.nvim"
+    version: master
+    dest: ibl
+  - repo: "https://github.com/nvim-treesitter/nvim-treesitter"
+    version: main
+    dest: treesitter
+  - repo: "https://github.com/mbbill/undotree"
+    version: master
+    dest: undotree
+  - repo: "https://github.com/folke/which-key.nvim"
+    version: main
+    dest: which-key

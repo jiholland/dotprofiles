@@ -6,8 +6,33 @@ __dot_bash_profiles:
   - .bashrc
   - .bash_aliases
 
-__dot_vim_directories:
-  - "{{ ansible_facts['user_dir'] }}/.local/state/vim/backup"
-  - "{{ ansible_facts['user_dir'] }}/.local/state/vim/swap"
-  - "{{ ansible_facts['user_dir'] }}/.local/state/vim/undo"
-  - "{{ ansible_facts['user_dir'] }}/.vim/autoload"
+__dot_nvim_directories:
+  - "{{ ansible_facts['user_dir'] }}/.local/share/nvim/site/pack/plugins/start"
+  - "{{ ansible_facts['user_dir'] }}/.config/nvim/lua"
+  - "{{ ansible_facts['user_dir'] }}/.config/nvim/lsp"
+
+__dot_nvim_files:
+  - src: "{{ playbook_dir }}/.config/nvim/init.lua"
+    dest: "{{ ansible_facts['user_dir'] }}/.config/nvim/init.lua"
+  - src: "{{ playbook_dir }}/.config/nvim/lua/autocmds.lua"
+    dest: "{{ ansible_facts['user_dir'] }}/.config/nvim/lua/autocmds.lua"
+  - src: "{{ playbook_dir }}/.config/nvim/lua/keymaps.lua"
+    dest: "{{ ansible_facts['user_dir'] }}/.config/nvim/lua/keymaps.lua"
+  - src: "{{ playbook_dir }}/.config/nvim/lua/options.lua"
+    dest: "{{ ansible_facts['user_dir'] }}/.config/nvim/lua/options.lua"
+  - src: "{{ playbook_dir }}/.config/nvim/lua/plugins.lua"
+    dest: "{{ ansible_facts['user_dir'] }}/.config/nvim/lua/plugins.lua"
+  - src: "{{ playbook_dir }}/.config/nvim/lsp/ansible.lua"
+    dest: "{{ ansible_facts['user_dir'] }}/.config/nvim/lsp/ansible.lua"
+  - src: "{{ playbook_dir }}/.config/nvim/lsp/bash.lua"
+    dest: "{{ ansible_facts['user_dir'] }}/.config/nvim/lsp/bash.lua"
+  - src: "{{ playbook_dir }}/.config/nvim/lsp/jinja.lua"
+    dest: "{{ ansible_facts['user_dir'] }}/.config/nvim/lsp/jinja.lua"
+  - src: "{{ playbook_dir }}/.config/nvim/lsp/json.lua"
+    dest: "{{ ansible_facts['user_dir'] }}/.config/nvim/lsp/json.lua"
+  - src: "{{ playbook_dir }}/.config/nvim/lsp/lua.lua"
+    dest: "{{ ansible_facts['user_dir'] }}/.config/nvim/lsp/lua.lua"
+  - src: "{{ playbook_dir }}/.config/nvim/lsp/markdown.lua"
+    dest: "{{ ansible_facts['user_dir'] }}/.config/nvim/lsp/markdown.lua"
+  - src: "{{ playbook_dir }}/.config/nvim/lsp/python.lua"
+    dest: "{{ ansible_facts['user_dir'] }}/.config/nvim/lsp/python.lua"

@@ -18,38 +18,33 @@
 
   rescue:
 
-    - name: nvim | Ensure directories for nvim is present.
+    - name: nvim | Ensure directory for nvim is present.
       ansible.builtin.file:
         path: "{{ ansible_facts['user_dir'] }}/.config/nvim"
         mode: "{{ dot_mode_dir }}"
         state: directory
 
 
-- name: nvim | Find and register all directories in .config/nvim
-  ansible.builtin.find:
-    paths: "{{ playbook_dir }}/.config/nvim"
-    recurse: true
-    file_type: directory
-  register: __nvim_directories
-
-- name: nvim | Ensure directories for nvim is present.
+- name: nvim | Ensure directories are present.
   ansible.builtin.file:
-    path: "{{ ansible_facts['user_dir'] }}/.config/nvim/{{ item.split('nvim')[-1] }}"
+    path: "{{ item }}"
     state: directory
     mode: "{{ dot_mode_dir }}"
-  loop: "{{ __nvim_directories['files'] | map(attribute='path') }}"
+  loop: "{{ __dot_nvim_directories }}"
 
-- name: nvim | Find and register all files in .config/nvim
-  ansible.builtin.find:
-    paths: "{{ playbook_dir }}/.config/nvim"
-    recurse: true
-    file_type: file
-  register: __nvim_files
-
-- name: nvim | Install dotfiles for nvim.
-  ansible.builtin.template:
-    src: "{{ item }}"
-    dest: "{{ ansible_facts['user_dir'] }}/.config/nvim{{ item.split('.config/nvim')[-1] }}"
+- name: nvim | Install configuration files.
+  ansible.builtin.copy:
+    src: "{{ item['src'] }}"
+    dest: "{{ item['dest'] }}"
     mode: "{{ dot_mode_file }}"
-    backup: true
-  loop: "{{ __nvim_files['files'] | map(attribute='path') }}"
+  loop: "{{ __dot_nvim_files }}"
+
+- name: nvim | Install plugins.
+  ansible.builtin.git:
+    repo: "{{ item['repo'] }}"
+    dest: "{{ ansible_facts['user_dir'] }}/.local/share/nvim/site/pack/plugins/start/{{ item['dest'] }}"
+    depth: 1
+    update: true
+    force: true
+    version: "{{ item['version'] }}"
+  loop: "{{ dot_nvim_plugins }}"
