@@ -1,5 +1,3 @@
--- Set options.
-
 local g = vim.g
 
 g.mapleader = " "
@@ -12,6 +10,7 @@ g.loaded_ruby_provider = 0
 
 local opt = vim.opt
 
+opt.background = none
 opt.confirm = true
 opt.expandtab = true
 opt.guicursor = ""
