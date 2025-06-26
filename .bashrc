@@ -8,8 +8,8 @@ set -o vi
 bind "set bell-style none"
 shopt -s checkwinsize
 
-# Append to history file, set max history size for disk and memory, ignore space-staring
-# commands and duplicates, add timestamps and sync history across shells.
+# Append to history file, set max history size for disk and memory,
+# ignore space-staring commands and duplicates, and add timestamps.
 shopt -s histappend
 export HISTFILESIZE=100000
 export HISTSIZE=100000
