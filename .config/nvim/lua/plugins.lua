@@ -1,3 +1,5 @@
+-- ~/.config/nvim/lua/plugins.lua
+
 require("bufferline").setup({})
 require("fzf-lua").setup({})
 require("gitsigns").setup({})

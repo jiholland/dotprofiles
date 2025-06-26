@@ -1,3 +1,5 @@
+-- ~/.config/nvim/init.lua
+
 if vim.loader then
   vim.loader.enable()
 end
@@ -7,12 +9,7 @@ require("plugins")
 require("keymaps")
 require("autocmds")
 
-vim.lsp.enable(
+vim.lsp.enable({
   "ansible",
-  "bash",
-  "jinja",
-  "json",
-  "lua",
-  "markdown",
   "python"
-)
+})
