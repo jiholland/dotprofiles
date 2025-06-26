@@ -1,3 +1,5 @@
+-- ~/.config/nvim/lua/keymaps.lua
+
 local map = vim.keymap.set
 
 map("n", "<C-d>", "<C-d>zz")

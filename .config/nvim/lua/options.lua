@@ -1,3 +1,5 @@
+-- ~/.config/nvim/lua/options.lua
+
 local g = vim.g
 
 g.mapleader = " "
