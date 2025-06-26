@@ -13,7 +13,6 @@ map("n", "<leader>do", vim.diagnostic.open_float, { desc = "Show diagnostics" })
 map("n", "<leader>dp", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic" })
 map("n", "<leader>dn", vim.diagnostic.goto_next, { desc = "Go to next diagnostic" })
 
-
 map("n", "<leader>bd", vim.cmd.bdelete, { desc = "Close current buffer" })
 map("n", "<leader>bn", vim.cmd.bnext, { desc = "Go to next buffer" })
 map("n", "<leader>bp", vim.cmd.bprevious, { desc = "Go to previous buffer" })
