@@ -8,9 +8,9 @@
 
 - name: Install dotbashprofiles if shell is bash.
   ansible.builtin.template:
-    src: "{{ playbook_dir }}/{{ dot_item }}"
-    dest: "{{ ansible_facts['user_dir'] }}/{{ dot_item }}"
-    mode: "{{ dot_mode_file }}"
+    src: "{{ playbook_dir }}/.{{ dot_item }}"
+    dest: "{{ ansible_facts['user_dir'] }}/.{{ dot_item }}"
+    mode: u=rw,g=r,o=r
     backup: true
   when: ansible_facts['user_shell'] is ansible.builtin.search('bash')
   loop: "{{ __dot_bash_profiles }}"
@@ -20,21 +20,21 @@
 - name: Ensure directory for tmux is present.
   ansible.builtin.file:
     path: "{{ ansible_facts['user_dir'] }}/.config/tmux"
-    mode: "{{ dot_mode_dir }}"
+    mode: u=xrw,g=xr,o=x
     state: directory
 
 - name: Install configuration for tmux.
   ansible.builtin.template:
     src: "{{ playbook_dir }}/.config/tmux/tmux.conf"
     dest: "{{ ansible_facts['user_dir'] }}/.config/tmux/tmux.conf"
-    mode: "{{ dot_mode_file }}"
+    mode: u=rw,g=r,o=r
     backup: true
 
 - name: Ensure directories for nvim are present.
   ansible.builtin.file:
     path: "{{ dot_item }}"
     state: directory
-    mode: "{{ dot_mode_dir }}"
+    mode: u=xrw,g=xr,o=x
   loop: "{{ __dot_nvim_directories }}"
   loop_control:
     loop_var: dot_item
@@ -43,16 +43,17 @@
   ansible.builtin.copy:
     src: "{{ dot_item['src'] }}"
     dest: "{{ dot_item['dest'] }}"
-    mode: "{{ dot_mode_file }}"
+    mode: u=rw,g=r,o=r
     backup: true
-  loop: "{{ __dot_nvim_files }}"
+  loop: "{{ dot_nvim_files }}"
   loop_control:
     loop_var: dot_item
+    label: "{{ dot_item['dest'] }}"
 
 - name: Install plugins for nvim.
   ansible.builtin.git:
     repo: "{{ dot_item['repo'] }}"
-    dest: "{{ ansible_facts['user_dir'] }}/.local/share/nvim/site/pack/plugins/start/{{ dot_item['dest'] }}"
+    dest: "{{ dot_item['dest'] }}"
     depth: 1
     update: true
     force: true
@@ -60,3 +61,4 @@
   loop: "{{ dot_nvim_plugins }}"
   loop_control:
     loop_var: dot_item
+    label: "{{ dot_item['repo'] }}"
