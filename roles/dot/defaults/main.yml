@@ -1,37 +1,50 @@
 ---
 # defaults file for dot
 
-dot_mode_dir: "u=xrw,g=xr,o=x"
-dot_mode_file: "u=rw,g=r,o=r"
+dot_nvim_files:
+  - src: "{{ playbook_dir }}/.config/nvim/init.lua"
+    dest: "{{ ansible_facts['user_dir'] }}/.config/nvim/init.lua"
+  - src: "{{ playbook_dir }}/.config/nvim/lua/autocmds.lua"
+    dest: "{{ ansible_facts['user_dir'] }}/.config/nvim/lua/autocmds.lua"
+  - src: "{{ playbook_dir }}/.config/nvim/lua/keymaps.lua"
+    dest: "{{ ansible_facts['user_dir'] }}/.config/nvim/lua/keymaps.lua"
+  - src: "{{ playbook_dir }}/.config/nvim/lua/options.lua"
+    dest: "{{ ansible_facts['user_dir'] }}/.config/nvim/lua/options.lua"
+  - src: "{{ playbook_dir }}/.config/nvim/lua/plugins.lua"
+    dest: "{{ ansible_facts['user_dir'] }}/.config/nvim/lua/plugins.lua"
+  - src: "{{ playbook_dir }}/.config/nvim/lsp/ansible.lua"
+    dest: "{{ ansible_facts['user_dir'] }}/.config/nvim/lsp/ansible.lua"
+  - src: "{{ playbook_dir }}/.config/nvim/lsp/python.lua"
+    dest: "{{ ansible_facts['user_dir'] }}/.config/nvim/lsp/python.lua"
 
 dot_nvim_plugins:
   - repo: "https://github.com/pearofducks/ansible-vim"
     version: master
-    dest: ansible
+    dest: "{{ ansible_facts['user_dir'] }}/.local/share/nvim/site/pack/plugins/start/ansible"
   - repo: "https://github.com/akinsho/bufferline.nvim"
     version: main
-    dest: bufferline
+    dest: "{{ ansible_facts['user_dir'] }}/.local/share/nvim/site/pack/plugins/start/bufferline"
   - repo: "https://github.com/nvim-tree/nvim-web-devicons"
     version: master
-    dest: devicons
+    dest: "{{ ansible_facts['user_dir'] }}/.local/share/nvim/site/pack/plugins/start/devicons"
   - repo: "https://github.com/catppuccin/nvim"
     version: main
-    dest: catppuccin
+    dest: "{{ ansible_facts['user_dir'] }}/.local/share/nvim/site/pack/plugins/start/catppuccin"
   - repo: "https://github.com/ibhagwan/fzf-lua"
     version: main
-    dest: fzf-lua
+    dest: "{{ ansible_facts['user_dir'] }}/.local/share/nvim/site/pack/plugins/start/fzf-lua"
   - repo: "https://github.com/lewis6991/gitsigns.nvim"
     version: main
-    dest: gitsigns
+    dest: "{{ ansible_facts['user_dir'] }}/.local/share/nvim/site/pack/plugins/start/gitsigns"
   - repo: "https://github.com/lukas-reineke/indent-blankline.nvim"
     version: master
-    dest: ibl
+    dest: "{{ ansible_facts['user_dir'] }}/.local/share/nvim/site/pack/plugins/start/ibl"
   - repo: "https://github.com/nvim-treesitter/nvim-treesitter"
     version: main
-    dest: treesitter
+    dest: "{{ ansible_facts['user_dir'] }}/.local/share/nvim/site/pack/plugins/start/treesitter"
   - repo: "https://github.com/mbbill/undotree"
     version: master
-    dest: undotree
+    dest: "{{ ansible_facts['user_dir'] }}/.local/share/nvim/site/pack/plugins/start/undotree"
   - repo: "https://github.com/folke/which-key.nvim"
     version: main
-    dest: which-key
+    dest: "{{ ansible_facts['user_dir'] }}/.local/share/nvim/site/pack/plugins/start/which-key"
