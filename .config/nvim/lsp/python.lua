@@ -1,4 +1,4 @@
--- pip install pyright
+-- ~/.config/nvim/lsp/python.lua
 
 return {
   cmd = { "pyright-langserver", "--stdio" },
