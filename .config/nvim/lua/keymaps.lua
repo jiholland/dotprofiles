@@ -19,8 +19,8 @@ map("n", "<leader>bp", vim.cmd.bprevious, { desc = "Buffer: Go to previous" })
 map("n", "<leader>bo", function() vim.cmd.BufferLineCloseOthers() end, { desc = "Buffer: Close others" })
 
 map("n", "<leader>fb", function() require("fzf-lua").buffers() end, { desc = "Fuzzy finder: List buffers" })
-map("n", "<leader>fd", function() require("fzf-lua").diagnostics_document() end, { desc = "Fuzzy finder: Diagnostics" })
-map("n", "<leader>ff", function() require("fzf-lua").files() end, { desc = "Fuzzy finder: Files" })
+map("n", "<leader>fd", function() require("fzf-lua").diagnostics_document() end, { desc = "Fuzzy finder: Diagnostics document" })
+map("n", "<leader>ff", function() require("fzf-lua").files() end, { desc = "Fuzzy finder: Find giles" })
 map("n", "<leader>fg", function() require("fzf-lua").live_grep() end, { desc = "Fuzzy finder: Live grep" })
 
 map("n", "<leader>hp", function() require("gitsigns").preview_hunk_inline() end, { desc = "Git: Preview hunk inline" })
