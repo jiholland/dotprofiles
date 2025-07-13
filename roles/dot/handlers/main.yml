@@ -1,0 +1,9 @@
+---
+# handlers file for dot
+
+- name: Remove temporary directory.
+  ansible.builtin.file:
+    path: "{{ __dot_temp_dir_output['path'] }}"
+    state: absent
+  run_once: true
+  check_mode: false
