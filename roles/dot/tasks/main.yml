@@ -6,14 +6,32 @@
     gather_subset:
       - min
 
+- name: Create temporary directory.
+  ansible.builtin.tempfile:
+    path: "{{ dot_temp_dir }}"
+    state: directory
+  run_once: true
+  register: __dot_temp_dir_output
+  notify: Remove temporary directory.
+  check_mode: false
+
+- name: Checkout git repo.
+  ansible.builtin.git:
+    repo: "{{ dot_git_repo }}"
+    dest: "{{ __dot_temp_dir_output['path'] }}"
+    accept_newhostkey: "{{ dot_git_accept_newhostkey }}"
+    depth: 1
+    version: "{{ dot_git_version }}"
+  run_once: true
+
 - name: Install dotbashprofiles if shell is bash.
   ansible.builtin.template:
-    src: "{{ playbook_dir }}/.{{ dot_item }}"
+    src: "{{ __dot_temp_dir_output['path'] }}/.{{ dot_item }}"
     dest: "{{ ansible_facts['user_dir'] }}/.{{ dot_item }}"
     mode: u=rw,g=r,o=r
     backup: true
   when: ansible_facts['user_shell'] is ansible.builtin.search('bash')
-  loop: "{{ __dot_bash_profiles }}"
+  loop: "{{ dot_bash_profiles }}"
   loop_control:
     loop_var: dot_item
 
@@ -25,7 +43,7 @@
 
 - name: Install configuration for tmux.
   ansible.builtin.template:
-    src: "{{ playbook_dir }}/.config/tmux/tmux.conf"
+    src: "{{ __dot_temp_dir_output['path'] }}/.config/tmux/tmux.conf"
     dest: "{{ ansible_facts['user_dir'] }}/.config/tmux/tmux.conf"
     mode: u=rw,g=r,o=r
     backup: true
@@ -41,19 +59,18 @@
 
 - name: Install configuration files for nvim.
   ansible.builtin.copy:
-    src: "{{ dot_item['src'] }}"
-    dest: "{{ dot_item['dest'] }}"
+    src: "{{ __dot_temp_dir_output['path'] }}/.config/nvim/{{ dot_item }}"
+    dest: "{{ ansible_facts['user_dir'] }}/.config/nvim/{{ dot_item }}"
     mode: u=rw,g=r,o=r
     backup: true
   loop: "{{ dot_nvim_files }}"
   loop_control:
     loop_var: dot_item
-    label: "{{ dot_item['dest'] }}"
 
-- name: Install plugins for nvim.
+- name: Clone repositories containing plugins for nvim.
   ansible.builtin.git:
     repo: "{{ dot_item['repo'] }}"
-    dest: "{{ dot_item['dest'] }}"
+    dest: "{{ ansible_facts['user_dir'] }}/.local/share/nvim/site/pack/plugins/start/{{ dot_item['dest'] }}"
     depth: 1
     update: true
     force: true
