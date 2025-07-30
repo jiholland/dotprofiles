@@ -23,6 +23,7 @@
     depth: 1
     version: "{{ dot_git_version }}"
   run_once: true
+  check_mode: false
 
 - name: Install dotbashprofiles if shell is bash.
   ansible.builtin.template:
