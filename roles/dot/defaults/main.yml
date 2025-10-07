@@ -3,7 +3,7 @@
 
 dot_temp_dir: /tmp
 
-dot_git_repo: "git@github.com:jiholland/dotprofiles.git"
+dot_git_repo: "https://github.com/jiholland/dotprofiles.git"
 dot_git_version: main
 dot_git_accept_newhostkey: true
 
