@@ -67,16 +67,3 @@
   loop: "{{ dot_nvim_files }}"
   loop_control:
     loop_var: dot_item
-
-- name: Clone repositories containing plugins for nvim.
-  ansible.builtin.git:
-    repo: "{{ dot_item['repo'] }}"
-    dest: "{{ ansible_facts['user_dir'] }}/.local/share/nvim/site/pack/plugins/start/{{ dot_item['dest'] }}"
-    depth: 1
-    update: true
-    force: true
-    version: "{{ dot_item['version'] }}"
-  loop: "{{ dot_nvim_plugins }}"
-  loop_control:
-    loop_var: dot_item
-    label: "{{ dot_item['repo'] }}"

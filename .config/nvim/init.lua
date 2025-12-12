@@ -7,7 +7,7 @@ end
 require("options")
 require("plugins")
 require("keymaps")
-require("autocmds")
+require("commands")
 
 vim.lsp.enable({
   "ansible",
