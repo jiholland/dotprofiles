@@ -10,8 +10,8 @@ map("n", "<C-k>", "<C-w>k")
 map("n", "<C-l>", "<C-w>l")
 
 map("n", "<leader>dd", vim.diagnostic.open_float, { desc = "Diagnostics: Show current" })
-map("n", "<leader>dp", vim.diagnostic.goto_prev, { desc = "Diagnostics: Go to previous" })
 map("n", "<leader>dn", vim.diagnostic.goto_next, { desc = "Diagnostics: Go to next" })
+map("n", "<leader>dp", vim.diagnostic.goto_prev, { desc = "Diagnostics: Go to previous" })
 
 map("n", "<leader>bd", vim.cmd.bdelete, { desc = "Buffer: Close current" })
 map("n", "<leader>bn", vim.cmd.bnext, { desc = "Buffer: Go to next" })
