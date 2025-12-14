@@ -23,3 +23,7 @@ map("n", "<leader>fd", function() require("fzf-lua").diagnostics_document() end,
 map("n", "<leader>ff", function() require("fzf-lua").files() end, { desc = "Fuzzy finder: Find giles" })
 map("n", "<leader>fg", function() require("fzf-lua").live_grep() end, { desc = "Fuzzy finder: Live grep" })
 map("n", "<leader>fu", function() require("fzf-lua").undotree() end, { desc = "Fuzzy finder: Undotree" })
+
+map("n", "<leader>hp", function() require("gitsigns").preview_hunk_inline() end, { desc = "Git: Preview hunk inline" })
+map("n", "<leader>hs", function() require("gitsigns").stage_hunk() end, { desc = "Git: Stage hunk" })
+map("n", "<leader>hu", function() require("gitsigns").undo_stage_hunk() end, { desc = "Git: Undo stage hunk" })
