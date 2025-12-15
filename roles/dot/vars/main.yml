@@ -2,6 +2,5 @@
 # vars file for dot
 
 __dot_nvim_directories:
-  - "{{ ansible_facts['user_dir'] }}/.local/share/nvim/site/pack/plugins/start"
   - "{{ ansible_facts['user_dir'] }}/.config/nvim/lua"
   - "{{ ansible_facts['user_dir'] }}/.config/nvim/lsp"
