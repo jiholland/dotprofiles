@@ -12,6 +12,7 @@ vim.o.completeopt = "menu,fuzzy"
 vim.o.confirm = true
 vim.o.expandtab = true
 vim.o.guicursor = ""
+vim.o.laststatus = 3
 vim.o.list = true 
 vim.o.listchars = "extends:»,leadmultispace:▏ ,precedes:«,trail:·"
 vim.o.mouse = ""
