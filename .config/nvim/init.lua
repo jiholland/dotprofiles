@@ -13,3 +13,6 @@ vim.lsp.enable({
   "ansible",
   "python"
 })
+
+-- No more press enter
+-- require("vim._core.ui2").enable({})
