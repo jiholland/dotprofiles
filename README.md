@@ -9,8 +9,8 @@ ansible-playbook playbook.yml
 LSPs for nvim must be installed manually:
 ```YAML
 pip install pyright
-npm install --prefix ~/.local/npm @ansible/ansible-language-server
-ln -s ~/.local/npm/node_modules/@ansible/ansible-language-server/bin/ansible-language-server ~/.local/bin
+npm install --prefix ~/.local/npm @ansible/ansible-language-server@latest
+ln -s ~/.local/npm/node_modules/.bin/ansible-language-server ~/.local/bin
 ```
 
 ## Dependencies
